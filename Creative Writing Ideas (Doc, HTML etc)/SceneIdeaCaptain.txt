@@ -1,0 +1,8 @@
+We should model this up and maybe do some in game cutscene experiments with cinemachine to simulate it in water perhaps? That would be an interesting mini project. I storyboarded the captain reveal but maybe coukd storyboard an intro scene with in game cutscene or pre rendered but could try both or use both so its like
+
+In game  / pre rendered cutscene intro - setting story beats,
+event (explosion for example) in game cutscene,
+captain reveal (storyboarded in docs),
+endong (pre rendered),
+
+Or summit like that but if we get a nice sub model we could experimenrt with that for a start
