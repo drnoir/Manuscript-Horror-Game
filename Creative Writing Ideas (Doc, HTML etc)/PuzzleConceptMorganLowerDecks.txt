@@ -1,0 +1,44 @@
+So I had an idea on how you could implement something like this.
+
+Okay, so imagine there are three different colored buttons you need to press.
+ On the main console, you see a green light with a circle symbol on it, 
+ a blue light with a stick and a ball shape on it, and a yellow light with a 
+ cross symbol under it. These lights are lit up, but above each one, there's a 
+ red light that isn't lit. That red light will turn on when the player finds 
+ and flips the matching switch somewhere in the level. That way, you can 
+ easily see which ones you've already done.
+
+Now here's the fun—or tricky—part. The switches you need to find are hidden
+ cleverly around the level. One is a lever, one is a button, and the other
+  is a wheel you turn (like a pressure release valve).
+
+Because the game has fixed camera angles and you can't really look around 
+freely, the player has to carefully examine each scene to find what they 
+need. I'm guessing that's why they have a flashlight—to help reveal
+ certain things in the environment. (Side note: maybe the flashlight 
+ could also act as a tool to reveal things you wouldn't normally see 
+ without it, or even help activate something.)
+Anyway, here's an example: let's say for the green button you need to 
+press, you don't actually see the button itself in the scene. Instead,
+ you see a green glow. You have to figure out that you need to stand 
+ in front of it and press it without ever seeing it's actually a button. 
+ 
+ The only clue that the button is in that room might be a sign or a poster 
+ with a green circle on it. Or maybe it's more subtle—like a green sphere 
+ sitting on a table in the room. It gives you a hint that you're supposed 
+ to be in that room.
+
+You could even take it a step further by using that same green color on monsters
+ or somewhere else in the level to fake the player out. Maybe they see a glowing 
+ piece of nuclear waste that looks like it could be the green button, but it 
+ isn't. You could do the same with the valve—have things that are cross-shaped
+  to trick the player, or hide the actual valve in a spot where it blends in
+   with other cross-shaped objects.
+
+And like you said, we could have symbols in the screens in the room also as 
+clues that what you're looking for is in that room. So the rooms that actually
+ have the real lever, button, or valve could have computer screens showing the 
+ matching symbol. Maybe even the TV head girl monster could be displaying those
+  symbols on her screen. I was also thinking that TV head girl could be a less 
+  hostile character, and instead the player could interact with her to get clues.
+   That could be a cool way to guide them without making it too obvious.
