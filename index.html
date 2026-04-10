@@ -774,7 +774,7 @@
         padding: 10px 14px
       }
 
-      
+
     }
   </style>
 </head>
@@ -795,7 +795,7 @@
       // Optional: GitHub Personal Access Token
       // Creates one at: github.com/settings/tokens (only needs "public_repo" read scope)
       // Leave as "" for unauthenticated access (60 API requests/hour — fine for most usage)
-      TOKEN: "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",
+      TOKEN: "",
     };
   </script>
   <!-- ══════════════════════════════════════════════════════════ -->
@@ -824,9 +824,9 @@
         <div class="repo-stats" id="ri-stats"></div>
       </div>
     </div>
-<div class="search-bar-wrap">
-  <input id="file-search" type="text" placeholder="Search files & folders..." />
-</div>
+    <div class="search-bar-wrap">
+      <input id="file-search" type="text" placeholder="Search files & folders..." />
+    </div>
     <div class="explorer-header">
       <div class="section-label">
         <span>📂</span>
@@ -960,6 +960,18 @@
         if (e.target.id === 'overlay') closeViewer();
       });
       document.getElementById('vw-close').addEventListener('click', closeViewer);
+
+      const search = document.getElementById('file-search');
+
+      search.addEventListener('input', () => {
+        const q = search.value.toLowerCase();
+        const rows = document.querySelectorAll('.file-row');
+
+        rows.forEach(r => {
+          const name = r.querySelector('.row-name').textContent.toLowerCase();
+          r.style.display = name.includes(q) ? '' : 'none';
+        });
+      });
     }
 
     function showConfigError() {
@@ -1005,11 +1017,17 @@
         const apiPath = `/repos/${CONFIG.OWNER}/${CONFIG.REPO}/contents/${path}?ref=${CONFIG.BRANCH}`;
         const items = await apiFetch(apiPath);
 
-        if (!Array.isArray(items)) throw new Error('Expected a directory listing.');
+        if (!items || typeof items !== 'object') {
+          throw new Error('Unexpected API response');
+        }
+
+        if (!Array.isArray(items)) {
+          items = [items];
+        }
 
         items.sort((a, b) => {
-          if (a.type === b.type) return a.name.localeCompare(b.name);
-          return a.type === 'dir' ? -1 : 1;
+          if (a.type !== b.type) return a.type === 'dir' ? -1 : 1;
+          return a.name.localeCompare(b.name, undefined, { numeric: true });
         });
 
         renderExplorer(items);
@@ -1137,7 +1155,7 @@
         content.appendChild(f);
 
         // ❌ HTML FIX (NO iframe rendering of raw GitHub HTML anymore)
-      } else if (type === 'html') {
+      } else if (type === 'code' || type === 'text') {
         fetchFileText(raw).then(text => {
           const wrap = document.createElement('div');
           wrap.className = 'code-viewer';
@@ -1190,10 +1208,16 @@
     }
 
     function clearLoading() {
-      const l = content.querySelector('.viewer-loading');
+      const el = document.getElementById('vw-content');
+      const l = el.querySelector('.viewer-loading');
       if (l) l.remove();
     }
 
+    function viewerError() {
+      const el = document.getElementById('vw-content');
+      clearLoading();
+      el.innerHTML += `<div class="viewer-loading" style="color:var(--red)">⚠ Could not load preview.</div>`;
+    }
     function viewerError() {
       clearLoading();
       content.innerHTML += `<div class="viewer-loading" style="color:var(--red)">⚠ Could not load preview.</div>`;
