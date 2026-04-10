@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Repo Viewer</title>
 
-<!--
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repo Viewer</title>
+
+  <!--
 ╔══════════════════════════════════════════════════════════════╗
 ║  GITHUB PAGES FILE VIEWER — SETUP INSTRUCTIONS              ║
 ║                                                              ║
@@ -29,332 +30,937 @@
 ╚══════════════════════════════════════════════════════════════╝
 -->
 
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap"
+    rel="stylesheet">
 
-<style>
-:root {
-  --bg:      #f5f2eb;
-  --surface: #faf8f3;
-  --card:    #ffffff;
-  --border:  #ddd8cc;
-  --ink:     #1a1814;
-  --ink2:    #4a4640;
-  --muted:   #9a9488;
-  --tag-bg:  #e8e3d8;
-  --green:   #2d6a4f;
-  --blue:    #1e3a5f;
-  --amber:   #92400e;
-  --red:     #7f1d1d;
-  --r:       8px;
-  --t:       0.16s cubic-bezier(0.4,0,0.2,1);
-  --shadow:  0 2px 12px rgba(26,24,20,0.08);
-}
+  <style>
+    :root {
+      --bg: #f5f2eb;
+      --surface: #faf8f3;
+      --card: #ffffff;
+      --border: #ddd8cc;
+      --ink: #1a1814;
+      --ink2: #4a4640;
+      --muted: #9a9488;
+      --tag-bg: #e8e3d8;
+      --green: #2d6a4f;
+      --blue: #1e3a5f;
+      --amber: #92400e;
+      --red: #7f1d1d;
+      --r: 8px;
+      --t: 0.16s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 2px 12px rgba(26, 24, 20, 0.08);
+    }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:15px}
-body{font-family:'IBM Plex Mono',monospace;background:var(--bg);color:var(--ink);min-height:100vh;line-height:1.6;background-image:radial-gradient(circle at 20% 50%,rgba(45,106,79,.04) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(30,58,95,.04) 0%,transparent 40%)}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── HEADER ── */
-header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 28px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;height:56px}
-.repo-badge{display:flex;align-items:center;gap:10px;font-size:.82rem;flex-shrink:0}
-.repo-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.02em}
-.repo-branch{font-size:.7rem;background:var(--tag-bg);color:var(--muted);padding:2px 8px;border-radius:20px;border:1px solid var(--border)}
+    html {
+      font-size: 15px
+    }
 
-/* ── BREADCRUMBS ── */
-.breadcrumbs{display:flex;align-items:center;gap:4px;flex-wrap:wrap;flex:1;justify-content:center;font-size:.75rem}
-.bc-item{color:var(--muted);cursor:pointer;padding:3px 7px;border-radius:4px;transition:all var(--t)}
-.bc-item:hover{background:var(--tag-bg);color:var(--ink)}
-.bc-item.active{color:var(--ink);cursor:default;font-weight:500}
-.bc-sep{color:var(--border);user-select:none}
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at 20% 50%, rgba(45, 106, 79, .04) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(30, 58, 95, .04) 0%, transparent 40%)
+    }
 
-/* ── HEADER RIGHT ── */
-.header-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.gh-link{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted);text-decoration:none;padding:5px 10px;border:1px solid var(--border);border-radius:6px;transition:all var(--t);white-space:nowrap}
-.gh-link:hover{border-color:var(--ink);color:var(--ink)}
+    /* ── HEADER ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow)
+    }
 
-/* ── LAYOUT ── */
-.app{max-width:1200px;margin:0 auto;padding:28px 28px 60px}
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      height: 56px
+    }
 
-/* ── REPO INFO CARD ── */
-.repo-info{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 26px;margin-bottom:24px;box-shadow:var(--shadow);animation:slideDown .3s ease both}
-@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.repo-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.03em;margin-bottom:4px}
-.repo-desc{font-size:.82rem;color:var(--ink2);line-height:1.6;max-width:680px;margin-bottom:10px}
-.repo-stats{display:flex;gap:14px;flex-wrap:wrap}
-.stat{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:4px}
+    .repo-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .82rem;
+      flex-shrink: 0
+    }
 
-/* ── EXPLORER ── */
-.explorer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.section-label{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
-.item-count{font-size:.7rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-weight:400}
+    .repo-name {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -.02em
+    }
 
-/* ── FILE TABLE ── */
-.file-table{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
-.file-row{display:grid;grid-template-columns:28px 1fr auto;align-items:center;padding:10px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background var(--t);animation:rowIn .2s ease both;text-decoration:none;color:inherit;gap:0}
-@keyframes rowIn{from{opacity:0;transform:translateX(-4px)}to{opacity:1;transform:translateX(0)}}
-.file-row:last-child{border-bottom:none}
-.file-row:hover{background:var(--bg)}
-.file-row.is-dir:hover{background:#f0ede6}
-.row-icon{font-size:1rem;line-height:1}
-.row-name{font-size:.83rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color var(--t);padding:0 8px}
-.file-row:hover .row-name{color:var(--blue)}
-.file-row.is-dir .row-name{font-weight:500}
-.row-meta{display:flex;align-items:center;gap:8px;font-size:.7rem;color:var(--muted);flex-shrink:0;margin-left:4px}
-.ext-badge{background:var(--tag-bg);padding:1px 6px;border-radius:3px;font-size:.65rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--border)}
-.ext-badge.type-image{background:#f0f4ff;color:#1e3a8a;border-color:#bfdbfe}
-.ext-badge.type-video{background:#fdf4ff;color:#701a75;border-color:#f0abfc}
-.ext-badge.type-pdf{background:#fff4f4;color:var(--red);border-color:#fecaca}
-.ext-badge.type-code{background:#f0fdf4;color:var(--green);border-color:#86efac}
-.ext-badge.type-text{background:#fffbeb;color:var(--amber);border-color:#fde68a}
+    .repo-branch {
+      font-size: .7rem;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border)
+    }
 
-/* ── STATE BOXES ── */
-.state-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:48px 32px;text-align:center;box-shadow:var(--shadow);color:var(--muted);font-size:.85rem}
-.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--ink);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.error-box{background:#fff4f4;border:1px solid #fecaca;border-radius:var(--r);padding:18px 22px;color:var(--red);font-size:.82rem;line-height:1.8}
-.error-box code{background:rgba(127,29,29,.08);padding:1px 5px;border-radius:3px;font-size:.75rem}
+    /* ── BREADCRUMBS ── */
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      flex: 1;
+      justify-content: center;
+      font-size: .75rem
+    }
 
-/* ── VIEWER OVERLAY ── */
-.overlay{position:fixed;inset:0;background:rgba(26,24,20,.6);z-index:200;display:flex;flex-direction:column;backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .2s ease}
-.overlay.open{opacity:1;pointer-events:all}
-.viewer-panel{background:var(--card);border-radius:12px 12px 0 0;margin-top:auto;height:92vh;display:flex;flex-direction:column;box-shadow:0 -8px 40px rgba(26,24,20,.2);transform:translateY(20px);transition:transform .25s cubic-bezier(.34,1.2,.64,1)}
-.overlay.open .viewer-panel{transform:translateY(0)}
-.viewer-toolbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);flex-shrink:0;gap:12px}
-.viewer-file-info{min-width:0}
-.viewer-filename{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.viewer-path{font-size:.7rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.viewer-btns{display:flex;gap:8px;flex-shrink:0;align-items:center}
-.btn{font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:6px 13px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--ink2);cursor:pointer;transition:all var(--t);text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.btn:hover{border-color:var(--ink);color:var(--ink)}
-.btn-close{background:var(--ink);color:var(--bg);border-color:var(--ink);padding:6px 10px}
-.btn-close:hover{background:#333}
-.viewer-content{flex:1;overflow:hidden;position:relative}
-.viewer-content iframe,.viewer-content video{width:100%;height:100%;border:none}
-.viewer-content img{width:100%;height:100%;object-fit:contain;background:var(--bg);padding:20px;display:block}
-.viewer-content video{background:#000}
-.viewer-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--surface);font-size:.82rem;color:var(--muted);gap:12px}
+    .bc-item {
+      color: var(--muted);
+      cursor: pointer;
+      padding: 3px 7px;
+      border-radius: 4px;
+      transition: all var(--t)
+    }
 
-/* ── CODE VIEWER ── */
-.code-viewer{width:100%;height:100%;overflow:auto;background:#1e1e2e}
-.code-viewer::-webkit-scrollbar{width:6px;height:6px}
-.code-viewer::-webkit-scrollbar-track{background:transparent}
-.code-viewer::-webkit-scrollbar-thumb{background:#444;border-radius:3px}
-.code-viewer pre{padding:24px 28px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;line-height:1.75;color:#cdd6f4;white-space:pre-wrap;word-break:break-word;margin:0}
+    .bc-item:hover {
+      background: var(--tag-bg);
+      color: var(--ink)
+    }
 
-/* ── MARKDOWN VIEWER ── */
-.md-viewer{width:100%;height:100%;overflow:auto;background:var(--surface);padding:32px 48px;font-family:'Cabinet Grotesk',sans-serif;font-size:.95rem;line-height:1.8;color:var(--ink)}
-.md-viewer::-webkit-scrollbar{width:6px}
-.md-viewer::-webkit-scrollbar-track{background:transparent}
-.md-viewer::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-.md-viewer h1,.md-viewer h2,.md-viewer h3{font-weight:800;letter-spacing:-.02em;margin:1.4em 0 .6em}
-.md-viewer h1{font-size:1.8rem}
-.md-viewer h2{font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:6px}
-.md-viewer h3{font-size:1.05rem}
-.md-viewer p{margin-bottom:1em}
-.md-viewer a{color:var(--blue)}
-.md-viewer code{font-family:'IBM Plex Mono',monospace;background:var(--tag-bg);padding:2px 5px;border-radius:3px;font-size:.82em}
-.md-viewer pre{background:#1e1e2e;color:#cdd6f4;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:1em 0;font-family:'IBM Plex Mono',monospace;font-size:.8rem;line-height:1.7}
-.md-viewer pre code{background:none;padding:0;font-size:inherit}
-.md-viewer blockquote{border-left:3px solid var(--border);padding-left:16px;color:var(--ink2);margin:1em 0}
-.md-viewer ul,.md-viewer ol{padding-left:22px;margin-bottom:1em}
-.md-viewer li{margin-bottom:.3em}
-.md-viewer table{border-collapse:collapse;width:100%;margin-bottom:1em;font-size:.85rem}
-.md-viewer th,.md-viewer td{border:1px solid var(--border);padding:8px 12px;text-align:left}
-.md-viewer th{background:var(--tag-bg);font-weight:600}
-.md-viewer img{max-width:100%;border-radius:6px}
-.md-viewer hr{border:none;border-top:1px solid var(--border);margin:2em 0}
+    .bc-item.active {
+      color: var(--ink);
+      cursor: default;
+      font-weight: 500
+    }
 
-/* ── RESPONSIVE ── */
-@media(max-width:640px){
-  header{padding:0 16px}
-  .header-inner{height:auto;padding:10px 0;flex-wrap:wrap;gap:8px}
-  .breadcrumbs{justify-content:flex-start;order:3;width:100%}
-  .app{padding:16px 14px 40px}
-  .viewer-panel{height:96vh}
-  .md-viewer{padding:20px}
-  .file-row{padding:10px 14px}
-}
-</style>
+    .bc-sep {
+      color: var(--border);
+      user-select: none
+    }
+
+    /* ── HEADER RIGHT ── */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0
+    }
+
+    .gh-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all var(--t);
+      white-space: nowrap
+    }
+
+    .gh-link:hover {
+      border-color: var(--ink);
+      color: var(--ink)
+    }
+
+    /* ── LAYOUT ── */
+    .app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 28px 60px
+    }
+
+    /* ── REPO INFO CARD ── */
+    .repo-info {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px 26px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      animation: slideDown .3s ease both
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .repo-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -.03em;
+      margin-bottom: 4px
+    }
+
+    .repo-desc {
+      font-size: .82rem;
+      color: var(--ink2);
+      line-height: 1.6;
+      max-width: 680px;
+      margin-bottom: 10px
+    }
+
+    .repo-stats {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .stat {
+      font-size: .72rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    /* ── EXPLORER ── */
+    .explorer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px
+    }
+
+    .section-label {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .item-count {
+      font-size: .7rem;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400
+    }
+
+    /* ── FILE TABLE ── */
+    .file-table {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      box-shadow: var(--shadow)
+    }
+
+    .file-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      align-items: center;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background var(--t);
+      animation: rowIn .2s ease both;
+      text-decoration: none;
+      color: inherit;
+      gap: 0
+    }
+
+    @keyframes rowIn {
+      from {
+        opacity: 0;
+        transform: translateX(-4px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    .file-row:last-child {
+      border-bottom: none
+    }
+
+    .file-row:hover {
+      background: var(--bg)
+    }
+
+    .file-row.is-dir:hover {
+      background: #f0ede6
+    }
+
+    .row-icon {
+      font-size: 1rem;
+      line-height: 1
+    }
+
+    .row-name {
+      font-size: .83rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: color var(--t);
+      padding: 0 8px
+    }
+
+    .file-row:hover .row-name {
+      color: var(--blue)
+    }
+
+    .file-row.is-dir .row-name {
+      font-weight: 500
+    }
+
+    .row-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .7rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-left: 4px
+    }
+
+    .ext-badge {
+      background: var(--tag-bg);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: .65rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border: 1px solid var(--border)
+    }
+
+    .ext-badge.type-image {
+      background: #f0f4ff;
+      color: #1e3a8a;
+      border-color: #bfdbfe
+    }
+
+    .ext-badge.type-video {
+      background: #fdf4ff;
+      color: #701a75;
+      border-color: #f0abfc
+    }
+
+    .ext-badge.type-pdf {
+      background: #fff4f4;
+      color: var(--red);
+      border-color: #fecaca
+    }
+
+    .ext-badge.type-code {
+      background: #f0fdf4;
+      color: var(--green);
+      border-color: #86efac
+    }
+
+    .ext-badge.type-text {
+      background: #fffbeb;
+      color: var(--amber);
+      border-color: #fde68a
+    }
+
+    /* ── STATE BOXES ── */
+    .state-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 48px 32px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-size: .85rem
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--ink);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .error-box {
+      background: #fff4f4;
+      border: 1px solid #fecaca;
+      border-radius: var(--r);
+      padding: 18px 22px;
+      color: var(--red);
+      font-size: .82rem;
+      line-height: 1.8
+    }
+
+    .error-box code {
+      background: rgba(127, 29, 29, .08);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: .75rem
+    }
+
+    /* ── VIEWER OVERLAY ── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 24, 20, .6);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease
+    }
+
+    .overlay.open {
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .viewer-panel {
+      background: var(--card);
+      border-radius: 12px 12px 0 0;
+      margin-top: auto;
+      height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -8px 40px rgba(26, 24, 20, .2);
+      transform: translateY(20px);
+      transition: transform .25s cubic-bezier(.34, 1.2, .64, 1)
+    }
+
+    .overlay.open .viewer-panel {
+      transform: translateY(0)
+    }
+
+    .viewer-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      gap: 12px
+    }
+
+    .viewer-file-info {
+      min-width: 0
+    }
+
+    .viewer-filename {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .viewer-path {
+      font-size: .7rem;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .viewer-btns {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      align-items: center
+    }
+
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .75rem;
+      padding: 6px 13px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink2);
+      cursor: pointer;
+      transition: all var(--t);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap
+    }
+
+    .btn:hover {
+      border-color: var(--ink);
+      color: var(--ink)
+    }
+
+    .btn-close {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+      padding: 6px 10px
+    }
+
+    .btn-close:hover {
+      background: #333
+    }
+
+    .viewer-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative
+    }
+
+    .viewer-content iframe,
+    .viewer-content video {
+      width: 100%;
+      height: 100%;
+      border: none
+    }
+
+    .viewer-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--bg);
+      padding: 20px;
+      display: block
+    }
+
+    .viewer-content video {
+      background: #000
+    }
+
+    .viewer-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      font-size: .82rem;
+      color: var(--muted);
+      gap: 12px
+    }
+
+    /* ── CODE VIEWER ── */
+    .code-viewer {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: #1e1e2e
+    }
+
+    .code-viewer::-webkit-scrollbar {
+      width: 6px;
+      height: 6px
+    }
+
+    .code-viewer::-webkit-scrollbar-track {
+      background: transparent
+    }
+
+    .code-viewer::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 3px
+    }
+
+    .code-viewer pre {
+      padding: 24px 28px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .8rem;
+      line-height: 1.75;
+      color: #cdd6f4;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0
+    }
+
+    /* ── MARKDOWN VIEWER ── */
+    .md-viewer {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: var(--surface);
+      padding: 32px 48px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--ink)
+    }
+
+    .md-viewer::-webkit-scrollbar {
+      width: 6px
+    }
+
+    .md-viewer::-webkit-scrollbar-track {
+      background: transparent
+    }
+
+    .md-viewer::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px
+    }
+
+    .md-viewer h1,
+    .md-viewer h2,
+    .md-viewer h3 {
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin: 1.4em 0 .6em
+    }
+
+    .md-viewer h1 {
+      font-size: 1.8rem
+    }
+
+    .md-viewer h2 {
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px
+    }
+
+    .md-viewer h3 {
+      font-size: 1.05rem
+    }
+
+    .md-viewer p {
+      margin-bottom: 1em
+    }
+
+    .md-viewer a {
+      color: var(--blue)
+    }
+
+    .md-viewer code {
+      font-family: 'IBM Plex Mono', monospace;
+      background: var(--tag-bg);
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: .82em
+    }
+
+    .md-viewer pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 18px 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1em 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .8rem;
+      line-height: 1.7
+    }
+
+    .md-viewer pre code {
+      background: none;
+      padding: 0;
+      font-size: inherit
+    }
+
+    .md-viewer blockquote {
+      border-left: 3px solid var(--border);
+      padding-left: 16px;
+      color: var(--ink2);
+      margin: 1em 0
+    }
+
+    .md-viewer ul,
+    .md-viewer ol {
+      padding-left: 22px;
+      margin-bottom: 1em
+    }
+
+    .md-viewer li {
+      margin-bottom: .3em
+    }
+
+    .md-viewer table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+      font-size: .85rem
+    }
+
+    .md-viewer th,
+    .md-viewer td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left
+    }
+
+    .md-viewer th {
+      background: var(--tag-bg);
+      font-weight: 600
+    }
+
+    .md-viewer img {
+      max-width: 100%;
+      border-radius: 6px
+    }
+
+    .md-viewer hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2em 0
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:640px) {
+      header {
+        padding: 0 16px
+      }
+
+      .header-inner {
+        height: auto;
+        padding: 10px 0;
+        flex-wrap: wrap;
+        gap: 8px
+      }
+
+      .breadcrumbs {
+        justify-content: flex-start;
+        order: 3;
+        width: 100%
+      }
+
+      .app {
+        padding: 16px 14px 40px
+      }
+
+      .viewer-panel {
+        height: 96vh
+      }
+
+      .md-viewer {
+        padding: 20px
+      }
+
+      .file-row {
+        padding: 10px 14px
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ══════════════════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════════════════
      ★  CONFIGURATION — EDIT THIS SECTION
 ══════════════════════════════════════════════════════════ -->
-<script>
-const CONFIG = {
-  OWNER:       "drnoir",   // ← Your GitHub username or organisation
-  REPO:        "Manuscript-Horror-Game",       // ← Your repository name
-  BRANCH:      "main",            // ← Branch to browse ("main", "master", etc.)
-  TITLE:       "Leviathan - Manuscript Horror Game and File Viewer",                // ← Custom title shown in the header (leave "" to use repo name)
-  DESCRIPTION: "",                // ← Short description under the title (leave "" to use repo description)
+  <script>
+    const CONFIG = {
+      OWNER: "drnoir",   // ← Your GitHub username or organisation
+      REPO: "Manuscript-Horror-Game",       // ← Your repository name
+      BRANCH: "main",            // ← Branch to browse ("main", "master", etc.)
+      TITLE: "Leviathan - Manuscript Horror Game and File Viewer",                // ← Custom title shown in the header (leave "" to use repo name)
+      DESCRIPTION: "",                // ← Short description under the title (leave "" to use repo description)
 
-  // Optional: GitHub Personal Access Token
-  // Creates one at: github.com/settings/tokens (only needs "public_repo" read scope)
-  // Leave as "" for unauthenticated access (60 API requests/hour — fine for most usage)
-  TOKEN: "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",
-};
-</script>
-<!-- ══════════════════════════════════════════════════════════ -->
-
-
-<header>
-  <div class="header-inner">
-    <div class="repo-badge">
-      <span style="font-size:1.2rem">⬡</span>
-      <span class="repo-name" id="hdr-name">Loading…</span>
-      <span class="repo-branch" id="hdr-branch"></span>
-    </div>
-    <nav class="breadcrumbs" id="breadcrumbs"></nav>
-    <div class="header-right">
-      <a id="gh-link" class="gh-link" href="#" target="_blank" rel="noopener">↗ GitHub</a>
-    </div>
-  </div>
-</header>
-
-<div class="app">
-
-  <div id="repo-info-wrap" style="display:none">
-    <div class="repo-info">
-      <div class="repo-title" id="ri-title"></div>
-      <div class="repo-desc"  id="ri-desc"></div>
-      <div class="repo-stats" id="ri-stats"></div>
-    </div>
-  </div>
-
-  <div class="explorer-header">
-    <div class="section-label">
-      <span>📂</span>
-      <span id="section-title">Repository</span>
-      <span class="item-count" id="section-count"></span>
-    </div>
-  </div>
-
-  <div id="explorer-body">
-    <div class="state-box"><span class="spinner"></span>Loading repository…</div>
-  </div>
-
-</div>
+      // Optional: GitHub Personal Access Token
+      // Creates one at: github.com/settings/tokens (only needs "public_repo" read scope)
+      // Leave as "" for unauthenticated access (60 API requests/hour — fine for most usage)
+      TOKEN: "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",
+    };
+  </script>
+  <!-- ══════════════════════════════════════════════════════════ -->
 
 
-<!-- ── VIEWER OVERLAY ── -->
-<div class="overlay" id="overlay">
-  <div class="viewer-panel">
-    <div class="viewer-toolbar">
-      <div class="viewer-file-info">
-        <div class="viewer-filename" id="vw-name"></div>
-        <div class="viewer-path"    id="vw-path"></div>
+  <header>
+    <div class="header-inner">
+      <div class="repo-badge">
+        <span style="font-size:1.2rem">⬡</span>
+        <span class="repo-name" id="hdr-name">Loading…</span>
+        <span class="repo-branch" id="hdr-branch"></span>
       </div>
-      <div class="viewer-btns">
-        <a class="btn" id="vw-raw" href="#" target="_blank" rel="noopener">⬇ raw</a>
-        <a class="btn" id="vw-gh"  href="#" target="_blank" rel="noopener">↗ GitHub</a>
-        <button class="btn btn-close" id="vw-close">✕</button>
+      <nav class="breadcrumbs" id="breadcrumbs"></nav>
+      <div class="header-right">
+        <a id="gh-link" class="gh-link" href="#" target="_blank" rel="noopener">↗ GitHub</a>
       </div>
     </div>
-    <div class="viewer-content" id="vw-content"></div>
+  </header>
+
+  <div class="app">
+
+    <div id="repo-info-wrap" style="display:none">
+      <div class="repo-info">
+        <div class="repo-title" id="ri-title"></div>
+        <div class="repo-desc" id="ri-desc"></div>
+        <div class="repo-stats" id="ri-stats"></div>
+      </div>
+    </div>
+
+    <div class="explorer-header">
+      <div class="section-label">
+        <span>📂</span>
+        <span id="section-title">Repository</span>
+        <span class="item-count" id="section-count"></span>
+      </div>
+    </div>
+
+    <div id="explorer-body">
+      <div class="state-box"><span class="spinner"></span>Loading repository…</div>
+    </div>
+
   </div>
-</div>
 
 
-<script>
-// ════════════════════════════════════════════════════════════
-//  API HELPERS
-// ════════════════════════════════════════════════════════════
+  <!-- ── VIEWER OVERLAY ── -->
+  <div class="overlay" id="overlay">
+    <div class="viewer-panel">
+      <div class="viewer-toolbar">
+        <div class="viewer-file-info">
+          <div class="viewer-filename" id="vw-name"></div>
+          <div class="viewer-path" id="vw-path"></div>
+        </div>
+        <div class="viewer-btns">
+          <a class="btn" id="vw-raw" href="#" target="_blank" rel="noopener">⬇ raw</a>
+          <a class="btn" id="vw-gh" href="#" target="_blank" rel="noopener">↗ GitHub</a>
+          <button class="btn btn-close" id="vw-close">✕</button>
+        </div>
+      </div>
+      <div class="viewer-content" id="vw-content"></div>
+    </div>
+  </div>
 
-const API_BASE = 'https://api.github.com';
 
-async function apiFetch(path) {
-  const headers = { Accept: 'application/vnd.github.v3+json' };
-  if (CONFIG.TOKEN) headers['Authorization'] = `token ${CONFIG.TOKEN}`;
-  const res = await fetch(API_BASE + path, { headers });
-  if (!res.ok) {
-    const err = new Error(`${res.status} ${res.statusText}`);
-    err.status = res.status;
-    throw err;
-  }
-  return res.json();
-}
+  <script>
+    // ════════════════════════════════════════════════════════════
+    //  API HELPERS
+    // ════════════════════════════════════════════════════════════
 
-const rawURL  = p => `https://raw.githubusercontent.com/${CONFIG.OWNER}/${CONFIG.REPO}/${CONFIG.BRANCH}/${p}`;
-const ghFile  = p => `https://github.com/${CONFIG.OWNER}/${CONFIG.REPO}/blob/${CONFIG.BRANCH}/${p}`;
-const ghRepo  = () => `https://github.com/${CONFIG.OWNER}/${CONFIG.REPO}`;
+    const API_BASE = 'https://api.github.com';
 
-// ════════════════════════════════════════════════════════════
-//  FILE TYPE HELPERS
-// ════════════════════════════════════════════════════════════
+    async function apiFetch(path) {
+      const headers = { Accept: 'application/vnd.github.v3+json' };
+      if (CONFIG.TOKEN) headers['Authorization'] = `token ${CONFIG.TOKEN}`;
+      const res = await fetch(API_BASE + path, { headers });
+      if (!res.ok) {
+        const err = new Error(`${res.status} ${res.statusText}`);
+        err.status = res.status;
+        throw err;
+      }
+      return res.json();
+    }
 
-const TYPE_MAP = {
-  image: ['png','jpg','jpeg','gif','webp','svg','bmp','ico','avif','tiff'],
-  video: ['mp4','webm','ogg','mov','avi','mkv'],
-  pdf:   ['pdf'],
-  md:    ['md','mdx','markdown'],
-  html:  ['html','htm'],
-  code:  ['js','ts','jsx','tsx','py','rb','go','rs','java','c','cpp','cs','php',
-          'css','scss','sass','sh','bash','zsh','yaml','yml','toml','ini','env',
-          'json','xml','sql','graphql','vue','svelte','kt','swift','lua','r',
-          'ex','exs','erl','clj','hs','ml','fs','scala','dart','jl'],
-  text:  ['txt','log','csv','conf','cfg','lock','gitignore','editorconfig'],
-};
+    const rawURL = p => `https://raw.githubusercontent.com/${CONFIG.OWNER}/${CONFIG.REPO}/${CONFIG.BRANCH}/${p}`;
+    const ghFile = p => `https://github.com/${CONFIG.OWNER}/${CONFIG.REPO}/blob/${CONFIG.BRANCH}/${p}`;
+    const ghRepo = () => `https://github.com/${CONFIG.OWNER}/${CONFIG.REPO}`;
 
-function fileType(name) {
-  const ext = name.split('.').pop().toLowerCase();
-  for (const [t, exts] of Object.entries(TYPE_MAP)) {
-    if (exts.includes(ext)) return t;
-  }
-  return 'other';
-}
+    async function fetchFileText(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to load: ${res.status}`);
+      return await res.text();
+    }
 
-const ICONS = { dir:'📁', image:'🖼', video:'🎬', pdf:'📄', md:'📝', html:'🌐', code:'⟨⟩', text:'📃', other:'📎' };
+    // ════════════════════════════════════════════════════════════
+    //  FILE TYPE HELPERS
+    // ════════════════════════════════════════════════════════════
 
-const BADGE_CLASS = { image:'type-image', video:'type-video', pdf:'type-pdf', code:'type-code', md:'type-text', text:'type-text', html:'type-code' };
+    const TYPE_MAP = {
+      image: ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'bmp', 'ico', 'avif', 'tiff'],
+      video: ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'],
+      pdf: ['pdf'],
+      md: ['md', 'mdx', 'markdown'],
+      html: ['html', 'htm'],
+      code: ['js', 'ts', 'jsx', 'tsx', 'py', 'rb', 'go', 'rs', 'java', 'c', 'cpp', 'cs', 'php',
+        'css', 'scss', 'sass', 'sh', 'bash', 'zsh', 'yaml', 'yml', 'toml', 'ini', 'env',
+        'json', 'xml', 'sql', 'graphql', 'vue', 'svelte', 'kt', 'swift', 'lua', 'r',
+        'ex', 'exs', 'erl', 'clj', 'hs', 'ml', 'fs', 'scala', 'dart', 'jl'],
+      text: ['txt', 'log', 'csv', 'conf', 'cfg', 'lock', 'gitignore', 'editorconfig'],
+    };
 
-function fmtSize(b) {
-  if (!b) return '';
-  if (b < 1024) return `${b} B`;
-  if (b < 1048576) return `${(b/1024).toFixed(1)} KB`;
-  return `${(b/1048576).toFixed(1)} MB`;
-}
+    function fileType(name) {
+      const ext = name.split('.').pop().toLowerCase();
+      for (const [t, exts] of Object.entries(TYPE_MAP)) {
+        if (exts.includes(ext)) return t;
+      }
+      return 'other';
+    }
 
-// ════════════════════════════════════════════════════════════
-//  STATE
-// ════════════════════════════════════════════════════════════
+    const ICONS = { dir: '📁', image: '🖼', video: '🎬', pdf: '📄', md: '📝', html: '🌐', code: '⟨⟩', text: '📃', other: '📎' };
 
-let currentPath = '';
+    const BADGE_CLASS = { image: 'type-image', video: 'type-video', pdf: 'type-pdf', code: 'type-code', md: 'type-text', text: 'type-text', html: 'type-code' };
 
-// ════════════════════════════════════════════════════════════
-//  INIT
-// ════════════════════════════════════════════════════════════
+    function fmtSize(b) {
+      if (!b) return '';
+      if (b < 1024) return `${b} B`;
+      if (b < 1048576) return `${(b / 1024).toFixed(1)} KB`;
+      return `${(b / 1048576).toFixed(1)} MB`;
+    }
 
-async function init() {
-  if (CONFIG.OWNER === 'your-username' || CONFIG.REPO === 'your-repo') {
-    showConfigError(); return;
-  }
+    // ════════════════════════════════════════════════════════════
+    //  STATE
+    // ════════════════════════════════════════════════════════════
 
-  document.getElementById('hdr-name').textContent   = CONFIG.REPO;
-  document.getElementById('hdr-branch').textContent = CONFIG.BRANCH;
-  document.getElementById('gh-link').href           = ghRepo();
-  document.title = CONFIG.TITLE || CONFIG.REPO;
+    let currentPath = '';
 
-  // Load root dir and repo meta in parallel
-  const [, meta] = await Promise.allSettled([
-    navigateTo(''),
-    apiFetch(`/repos/${CONFIG.OWNER}/${CONFIG.REPO}`)
-  ]);
+    // ════════════════════════════════════════════════════════════
+    //  INIT
+    // ════════════════════════════════════════════════════════════
 
-  if (meta.status === 'fulfilled') renderRepoInfo(meta.value);
+    async function init() {
+      if (CONFIG.OWNER === 'your-username' || CONFIG.REPO === 'your-repo') {
+        showConfigError(); return;
+      }
 
-  // Keyboard
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeViewer(); });
-  document.getElementById('overlay').addEventListener('click', e => {
-    if (e.target.id === 'overlay') closeViewer();
-  });
-  document.getElementById('vw-close').addEventListener('click', closeViewer);
-}
+      document.getElementById('hdr-name').textContent = CONFIG.REPO;
+      document.getElementById('hdr-branch').textContent = CONFIG.BRANCH;
+      document.getElementById('gh-link').href = ghRepo();
+      document.title = CONFIG.TITLE || CONFIG.REPO;
 
-function showConfigError() {
-  document.getElementById('hdr-name').textContent = 'Setup needed';
-  document.getElementById('explorer-body').innerHTML = `
+      // Load root dir and repo meta in parallel
+      const [, meta] = await Promise.allSettled([
+        navigateTo(''),
+        apiFetch(`/repos/${CONFIG.OWNER}/${CONFIG.REPO}`)
+      ]);
+
+      if (meta.status === 'fulfilled') renderRepoInfo(meta.value);
+
+      // Keyboard
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeViewer(); });
+      document.getElementById('overlay').addEventListener('click', e => {
+        if (e.target.id === 'overlay') closeViewer();
+      });
+      document.getElementById('vw-close').addEventListener('click', closeViewer);
+    }
+
+    function showConfigError() {
+      document.getElementById('hdr-name').textContent = 'Setup needed';
+      document.getElementById('explorer-body').innerHTML = `
     <div class="error-box">
       <strong>⚙ Configuration required</strong><br><br>
       Open <code>index.html</code> and edit the <code>CONFIG</code> block at the top of the file:<br><br>
@@ -363,294 +969,314 @@ function showConfigError() {
       <code>BRANCH: "main"</code><br><br>
       Then push to GitHub and enable <em>Settings → Pages → Deploy from branch</em>.
     </div>`;
-}
+    }
 
-function renderRepoInfo(meta) {
-  document.getElementById('ri-title').textContent = CONFIG.TITLE || meta.full_name;
-  document.getElementById('ri-desc').textContent  = CONFIG.DESCRIPTION || meta.description || '';
-  const stats = [
-    meta.stargazers_count != null ? `⭐ ${meta.stargazers_count.toLocaleString()}` : null,
-    meta.forks_count      != null ? `⑂ ${meta.forks_count.toLocaleString()} forks` : null,
-    meta.language                 ? `◈ ${meta.language}` : null,
-    meta.license?.spdx_id        ? `⚖ ${meta.license.spdx_id}` : null,
-  ].filter(Boolean);
-  document.getElementById('ri-stats').innerHTML = stats.map(s => `<span class="stat">${s}</span>`).join('');
-  document.getElementById('repo-info-wrap').style.display = '';
-}
+    function renderRepoInfo(meta) {
+      document.getElementById('ri-title').textContent = CONFIG.TITLE || meta.full_name;
+      document.getElementById('ri-desc').textContent = CONFIG.DESCRIPTION || meta.description || '';
+      const stats = [
+        meta.stargazers_count != null ? `⭐ ${meta.stargazers_count.toLocaleString()}` : null,
+        meta.forks_count != null ? `⑂ ${meta.forks_count.toLocaleString()} forks` : null,
+        meta.language ? `◈ ${meta.language}` : null,
+        meta.license?.spdx_id ? `⚖ ${meta.license.spdx_id}` : null,
+      ].filter(Boolean);
+      document.getElementById('ri-stats').innerHTML = stats.map(s => `<span class="stat">${s}</span>`).join('');
+      document.getElementById('repo-info-wrap').style.display = '';
+    }
 
-// ════════════════════════════════════════════════════════════
-//  NAVIGATION
-// ════════════════════════════════════════════════════════════
+    // ════════════════════════════════════════════════════════════
+    //  NAVIGATION
+    // ════════════════════════════════════════════════════════════
 
-async function navigateTo(path) {
-  currentPath = path;
-  renderBreadcrumbs(path);
-  document.getElementById('section-title').textContent = path ? path.split('/').pop() : 'Repository';
-  document.getElementById('section-count').textContent = '';
+    async function navigateTo(path) {
+      currentPath = path;
+      renderBreadcrumbs(path);
+      document.getElementById('section-title').textContent = path ? path.split('/').pop() : 'Repository';
+      document.getElementById('section-count').textContent = '';
 
-  const body = document.getElementById('explorer-body');
-  body.innerHTML = `<div class="state-box"><span class="spinner"></span>Loading…</div>`;
+      const body = document.getElementById('explorer-body');
+      body.innerHTML = `<div class="state-box"><span class="spinner"></span>Loading…</div>`;
 
-  try {
-    const apiPath = `/repos/${CONFIG.OWNER}/${CONFIG.REPO}/contents/${path}?ref=${CONFIG.BRANCH}`;
-    const items = await apiFetch(apiPath);
+      try {
+        const apiPath = `/repos/${CONFIG.OWNER}/${CONFIG.REPO}/contents/${path}?ref=${CONFIG.BRANCH}`;
+        const items = await apiFetch(apiPath);
 
-    if (!Array.isArray(items)) throw new Error('Expected a directory listing.');
+        if (!Array.isArray(items)) throw new Error('Expected a directory listing.');
 
-    items.sort((a, b) => {
-      if (a.type === b.type) return a.name.localeCompare(b.name);
-      return a.type === 'dir' ? -1 : 1;
-    });
+        items.sort((a, b) => {
+          if (a.type === b.type) return a.name.localeCompare(b.name);
+          return a.type === 'dir' ? -1 : 1;
+        });
 
-    renderExplorer(items);
-  } catch (e) {
-    let hint = '';
-    if (e.status === 404) hint = '<br><br>Check that <code>OWNER</code>, <code>REPO</code>, and <code>BRANCH</code> are correct in the CONFIG block.';
-    if (e.status === 403) hint = '<br><br>API rate limit reached. Add a GitHub token to <code>CONFIG.TOKEN</code>.';
-    body.innerHTML = `<div class="error-box"><strong>⚠ Could not load directory</strong>: ${e.message}${hint}</div>`;
-  }
-}
+        renderExplorer(items);
+      } catch (e) {
+        let hint = '';
+        if (e.status === 404) hint = '<br><br>Check that <code>OWNER</code>, <code>REPO</code>, and <code>BRANCH</code> are correct in the CONFIG block.';
+        if (e.status === 403) hint = '<br><br>API rate limit reached. Add a GitHub token to <code>CONFIG.TOKEN</code>.';
+        body.innerHTML = `<div class="error-box"><strong>⚠ Could not load directory</strong>: ${e.message}${hint}</div>`;
+      }
+    }
 
-// ════════════════════════════════════════════════════════════
-//  BREADCRUMBS
-// ════════════════════════════════════════════════════════════
+    // ════════════════════════════════════════════════════════════
+    //  BREADCRUMBS
+    // ════════════════════════════════════════════════════════════
 
-function renderBreadcrumbs(path) {
-  const nav = document.getElementById('breadcrumbs');
-  nav.innerHTML = '';
+    function renderBreadcrumbs(path) {
+      const nav = document.getElementById('breadcrumbs');
+      nav.innerHTML = '';
 
-  function crumb(label, crumbPath, isActive) {
-    const el = document.createElement('span');
-    el.className = 'bc-item' + (isActive ? ' active' : '');
-    el.textContent = label;
-    if (!isActive) el.addEventListener('click', () => navigateTo(crumbPath));
-    return el;
-  }
+      function crumb(label, crumbPath, isActive) {
+        const el = document.createElement('span');
+        el.className = 'bc-item' + (isActive ? ' active' : '');
+        el.textContent = label;
+        if (!isActive) el.addEventListener('click', () => navigateTo(crumbPath));
+        return el;
+      }
 
-  nav.appendChild(crumb('root', '', !path));
+      nav.appendChild(crumb('root', '', !path));
 
-  if (path) {
-    const parts = path.split('/');
-    parts.forEach((part, i) => {
-      const sep = document.createElement('span');
-      sep.className = 'bc-sep';
-      sep.textContent = ' / ';
-      nav.appendChild(sep);
-      nav.appendChild(crumb(part, parts.slice(0, i + 1).join('/'), i === parts.length - 1));
-    });
-  }
-}
+      if (path) {
+        const parts = path.split('/');
+        parts.forEach((part, i) => {
+          const sep = document.createElement('span');
+          sep.className = 'bc-sep';
+          sep.textContent = ' / ';
+          nav.appendChild(sep);
+          nav.appendChild(crumb(part, parts.slice(0, i + 1).join('/'), i === parts.length - 1));
+        });
+      }
+    }
 
-// ════════════════════════════════════════════════════════════
-//  FILE TABLE
-// ════════════════════════════════════════════════════════════
+    // ════════════════════════════════════════════════════════════
+    //  FILE TABLE
+    // ════════════════════════════════════════════════════════════
 
-function renderExplorer(items) {
-  const body = document.getElementById('explorer-body');
-  document.getElementById('section-count').textContent = `${items.length} items`;
+    function renderExplorer(items) {
+      const body = document.getElementById('explorer-body');
+      document.getElementById('section-count').textContent = `${items.length} items`;
 
-  if (!items.length) {
-    body.innerHTML = `<div class="state-box">📭 This folder is empty.</div>`;
-    return;
-  }
+      if (!items.length) {
+        body.innerHTML = `<div class="state-box">📭 This folder is empty.</div>`;
+        return;
+      }
 
-  const table = document.createElement('div');
-  table.className = 'file-table';
+      const table = document.createElement('div');
+      table.className = 'file-table';
 
-  items.forEach((item, i) => {
-    const isDir = item.type === 'dir';
-    const type  = isDir ? 'dir' : fileType(item.name);
-    const ext   = !isDir && item.name.includes('.') ? item.name.split('.').pop().toUpperCase() : '';
-    const size  = !isDir ? fmtSize(item.size) : '';
+      items.forEach((item, i) => {
+        const isDir = item.type === 'dir';
+        const type = isDir ? 'dir' : fileType(item.name);
+        const ext = !isDir && item.name.includes('.') ? item.name.split('.').pop().toUpperCase() : '';
+        const size = !isDir ? fmtSize(item.size) : '';
 
-    const row = document.createElement('div');
-    row.className = 'file-row' + (isDir ? ' is-dir' : '');
-    row.style.animationDelay = `${i * 0.022}s`;
-    row.setAttribute('title', item.name);
+        const row = document.createElement('div');
+        row.className = 'file-row' + (isDir ? ' is-dir' : '');
+        row.style.animationDelay = `${i * 0.022}s`;
+        row.setAttribute('title', item.name);
 
-    row.innerHTML = `
+        row.innerHTML = `
       <span class="row-icon">${ICONS[type] || ICONS.other}</span>
       <span class="row-name">${item.name}</span>
       <span class="row-meta">
         ${size ? `<span>${size}</span>` : ''}
-        ${ext   ? `<span class="ext-badge ${BADGE_CLASS[type]||''}">${ext}</span>` : ''}
+        ${ext ? `<span class="ext-badge ${BADGE_CLASS[type] || ''}">${ext}</span>` : ''}
         ${isDir ? `<span class="ext-badge">folder</span>` : ''}
       </span>`;
 
-    row.addEventListener('click', () => isDir ? navigateTo(item.path) : openViewer(item, type));
-    table.appendChild(row);
-  });
+        row.addEventListener('click', () => isDir ? navigateTo(item.path) : openViewer(item, type));
+        table.appendChild(row);
+      });
 
-  body.innerHTML = '';
-  body.appendChild(table);
-}
+      body.innerHTML = '';
+      body.appendChild(table);
+    }
 
-// ════════════════════════════════════════════════════════════
-//  VIEWER
-// ════════════════════════════════════════════════════════════
+    // ════════════════════════════════════════════════════════════
+    //  VIEWER
+    // ════════════════════════════════════════════════════════════
 
-function openViewer(item, type) {
-  document.getElementById('vw-name').textContent = item.name;
-  document.getElementById('vw-path').textContent = item.path;
-  document.getElementById('vw-raw').href = rawURL(item.path);
-  document.getElementById('vw-gh').href  = ghFile(item.path);
+    function openViewer(item, type) {
+      document.getElementById('vw-name').textContent = item.name;
+      document.getElementById('vw-path').textContent = item.path;
+      document.getElementById('vw-raw').href = rawURL(item.path);
+      document.getElementById('vw-gh').href = ghFile(item.path);
 
-  const content = document.getElementById('vw-content');
-  content.innerHTML = `<div class="viewer-loading"><span class="spinner"></span>Loading…</div>`;
-  document.getElementById('overlay').classList.add('open');
+      const content = document.getElementById('vw-content');
+      content.innerHTML = `<div class="viewer-loading"><span class="spinner"></span>Loading…</div>`;
+      document.getElementById('overlay').classList.add('open');
 
-  const raw = rawURL(item.path);
+      const raw = rawURL(item.path);
 
-  if (type === 'image') {
-    const img = document.createElement('img');
-    img.alt = item.name;
-    img.onload  = clearLoading;
-    img.onerror = viewerError;
-    img.src = raw;
-    content.appendChild(img);
+      // IMAGE
+      if (type === 'image') {
+        const img = document.createElement('img');
+        img.alt = item.name;
+        img.src = raw;
+        img.onload = clearLoading;
+        img.onerror = viewerError;
+        content.appendChild(img);
 
-  } else if (type === 'video') {
-    const v = document.createElement('video');
-    v.controls = true;
-    v.oncanplay = clearLoading;
-    v.onerror   = viewerError;
-    v.src = raw;
-    content.appendChild(v);
+        // VIDEO
+      } else if (type === 'video') {
+        const v = document.createElement('video');
+        v.controls = true;
+        v.src = raw;
+        v.oncanplay = clearLoading;
+        v.onerror = viewerError;
+        content.appendChild(v);
 
-  } else if (type === 'pdf') {
-    const f = document.createElement('iframe');
-    f.onload = clearLoading;
-    f.src = raw;
-    content.appendChild(f);
+        // PDF (still iframe is OK for PDFs)
+      } else if (type === 'pdf') {
+        const f = document.createElement('iframe');
+        f.src = raw;
+        f.onload = clearLoading;
+        content.appendChild(f);
 
-  } else if (type === 'html') {
-    const f = document.createElement('iframe');
-    f.sandbox = 'allow-scripts allow-same-origin';
-    f.onload = clearLoading;
-    f.src = raw;
-    content.appendChild(f);
+        // ❌ HTML FIX (NO iframe rendering of raw GitHub HTML anymore)
+      } else if (type === 'html') {
+        fetchFileText(raw).then(text => {
+          const wrap = document.createElement('div');
+          wrap.className = 'code-viewer';
 
-  } else if (type === 'md') {
-    fetchText(raw, text => {
-      const div = document.createElement('div');
-      div.className = 'md-viewer';
-      div.innerHTML = renderMarkdown(text);
+          const pre = document.createElement('pre');
+          pre.textContent = text;
+
+          clearLoading();
+          wrap.appendChild(pre);
+          content.appendChild(wrap);
+        }).catch(viewerError);
+
+        // MARKDOWN
+      } else if (type === 'md') {
+        fetchFileText(raw)
+          .then(text => {
+            const div = document.createElement('div');
+            div.className = 'md-viewer';
+            div.innerHTML = renderMarkdown(text);
+            clearLoading();
+            content.appendChild(div);
+          })
+          .catch(viewerError);
+
+        // CODE / TEXT (THIS IS THE IMPORTANT FIX)
+      } else if (type === 'code' || type === 'text' || type === 'html') {
+        fetchFileText(raw)
+          .then(text => {
+            const wrap = document.createElement('div');
+            wrap.className = 'code-viewer';
+
+            const pre = document.createElement('pre');
+            pre.textContent = text;
+
+            wrap.appendChild(pre);
+            clearLoading();
+            content.appendChild(wrap);
+          })
+          .catch(viewerError);
+
+        // FALLBACK
+      } else {
+        content.innerHTML = `
+    <div class="viewer-loading">
+      <div style="font-size:2rem;opacity:.3">📎</div>
+      <div>No preview available for this file type.</div>
+      <a class="btn" href="${raw}" download target="_blank">⬇ Download file</a>
+    </div>`;
+      }
+    }
+
+    function clearLoading() {
+      const l = content.querySelector('.viewer-loading');
+      if (l) l.remove();
+    }
+
+    function viewerError() {
       clearLoading();
-      content.appendChild(div);
-    });
+      content.innerHTML += `<div class="viewer-loading" style="color:var(--red)">⚠ Could not load preview.</div>`;
+    }
 
-  } else if (type === 'code' || type === 'text') {
-    fetchText(raw, text => {
-      const wrap = document.createElement('div');
-      wrap.className = 'code-viewer';
-      const pre = document.createElement('pre');
-      pre.textContent = text;
-      wrap.appendChild(pre);
-      clearLoading();
-      content.appendChild(wrap);
-    });
-
-  } else {
-    // No preview available
-    content.innerHTML = `
-      <div class="viewer-loading">
-        <div style="font-size:2rem;opacity:.3">📎</div>
-        <div>No preview available for this file type.</div>
-        <a class="btn" href="${raw}" download target="_blank" rel="noopener">⬇ Download file</a>
-      </div>`;
-  }
-
-  function clearLoading() {
-    const l = content.querySelector('.viewer-loading');
-    if (l) l.remove();
-  }
-
-  function viewerError() {
-    clearLoading();
-    content.innerHTML += `<div class="viewer-loading" style="color:var(--red)">⚠ Could not load preview.</div>`;
-  }
-
-  function fetchText(url, cb) {
-    fetch(url)
-      .then(r => { if (!r.ok) throw new Error(); return r.text(); })
-      .then(cb)
-      .catch(() => viewerError());
-  }
+    function fetchText(url, cb) {
+      fetch(url)
+        .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+        .then(cb)
+        .catch(() => viewerError());
+    }
 }
 
-function closeViewer() {
-  document.getElementById('overlay').classList.remove('open');
-  const v = document.getElementById('vw-content').querySelector('video');
-  if (v) { v.pause(); v.src = ''; }
-  setTimeout(() => {
-    if (!document.getElementById('overlay').classList.contains('open'))
-      document.getElementById('vw-content').innerHTML = '';
-  }, 250);
-}
+    function closeViewer() {
+      document.getElementById('overlay').classList.remove('open');
+      const v = document.getElementById('vw-content').querySelector('video');
+      if (v) { v.pause(); v.src = ''; }
+      setTimeout(() => {
+        if (!document.getElementById('overlay').classList.contains('open'))
+          document.getElementById('vw-content').innerHTML = '';
+      }, 250);
+    }
 
-// ════════════════════════════════════════════════════════════
-//  MINIMAL MARKDOWN RENDERER (zero dependencies)
-// ════════════════════════════════════════════════════════════
+    // ════════════════════════════════════════════════════════════
+    //  MINIMAL MARKDOWN RENDERER (zero dependencies)
+    // ════════════════════════════════════════════════════════════
 
-function renderMarkdown(raw) {
-  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    function renderMarkdown(raw) {
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-  function inline(s) {
-    return esc(s)
-      .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-      .replace(/\*\*(.+?)\*\*/g,     '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g,         '<em>$1</em>')
-      .replace(/_(.+?)_/g,           '<em>$1</em>')
-      .replace(/~~(.+?)~~/g,         '<del>$1</del>')
-      .replace(/`(.+?)`/g,           '<code>$1</code>')
-      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g,  '<a href="$2" target="_blank" rel="noopener">$1</a>');
-  }
+      function inline(s) {
+        return esc(s)
+          .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.+?)\*/g, '<em>$1</em>')
+          .replace(/_(.+?)_/g, '<em>$1</em>')
+          .replace(/~~(.+?)~~/g, '<del>$1</del>')
+          .replace(/`(.+?)`/g, '<code>$1</code>')
+          .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">')
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      }
 
-  let html = '';
-  const lines = raw.split('\n');
-  let inCode = false, inUL = false, inOL = false;
+      let html = '';
+      const lines = raw.split('\n');
+      let inCode = false, inUL = false, inOL = false;
 
-  const closeL = () => {
-    if (inUL) { html += '</ul>'; inUL = false; }
-    if (inOL) { html += '</ol>'; inOL = false; }
-  };
+      const closeL = () => {
+        if (inUL) { html += '</ul>'; inUL = false; }
+        if (inOL) { html += '</ol>'; inOL = false; }
+      };
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
 
-    if (line.startsWith('```')) {
+        if (line.startsWith('```')) {
+          closeL();
+          if (inCode) { html += '</code></pre>'; inCode = false; }
+          else { html += '<pre><code>'; inCode = true; }
+          continue;
+        }
+        if (inCode) { html += esc(line) + '\n'; continue; }
+
+        const hm = line.match(/^(#{1,6})\s+(.*)/);
+        if (hm) { closeL(); html += `<h${hm[1].length}>${inline(hm[2])}</h${hm[1].length}>`; continue; }
+
+        if (/^[-*_]{3,}$/.test(line.trim())) { closeL(); html += '<hr>'; continue; }
+        if (/^>\s?/.test(line)) { closeL(); html += `<blockquote>${inline(line.replace(/^>\s?/, ''))}</blockquote>`; continue; }
+        if (/^[-*+] /.test(line)) {
+          if (!inUL) { closeL(); html += '<ul>'; inUL = true; }
+          html += `<li>${inline(line.replace(/^[-*+] /, ''))}</li>`; continue;
+        }
+        if (/^\d+\.\s/.test(line)) {
+          if (!inOL) { closeL(); html += '<ol>'; inOL = true; }
+          html += `<li>${inline(line.replace(/^\d+\.\s/, ''))}</li>`; continue;
+        }
+        if (!line.trim()) { closeL(); html += '\n'; continue; }
+        closeL();
+        html += `<p>${inline(line)}</p>`;
+      }
       closeL();
-      if (inCode) { html += '</code></pre>'; inCode = false; }
-      else        { html += '<pre><code>';   inCode = true;  }
-      continue;
+      if (inCode) html += '</code></pre>';
+      return html;
     }
-    if (inCode) { html += esc(line) + '\n'; continue; }
 
-    const hm = line.match(/^(#{1,6})\s+(.*)/);
-    if (hm) { closeL(); html += `<h${hm[1].length}>${inline(hm[2])}</h${hm[1].length}>`; continue; }
-
-    if (/^[-*_]{3,}$/.test(line.trim())) { closeL(); html += '<hr>'; continue; }
-    if (/^>\s?/.test(line))  { closeL(); html += `<blockquote>${inline(line.replace(/^>\s?/,''))}</blockquote>`; continue; }
-    if (/^[-*+] /.test(line))  {
-      if (!inUL) { closeL(); html += '<ul>'; inUL = true; }
-      html += `<li>${inline(line.replace(/^[-*+] /,''))}</li>`; continue;
-    }
-    if (/^\d+\.\s/.test(line)) {
-      if (!inOL) { closeL(); html += '<ol>'; inOL = true; }
-      html += `<li>${inline(line.replace(/^\d+\.\s/,''))}</li>`; continue;
-    }
-    if (!line.trim()) { closeL(); html += '\n'; continue; }
-    closeL();
-    html += `<p>${inline(line)}</p>`;
-  }
-  closeL();
-  if (inCode) html += '</code></pre>';
-  return html;
-}
-
-// ════════════════════════════════════════════════════════════
-init();
-</script>
+    // ════════════════════════════════════════════════════════════
+    init();
+  </script>
 </body>
+
 </html>
