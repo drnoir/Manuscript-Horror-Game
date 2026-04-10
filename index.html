@@ -1114,7 +1114,7 @@
     }
 
     // ════════════════════════════════════════════════════════════
-    //  VIEWER
+    //  VIEWER (UPDATED FOR HTML RENDERING)
     // ════════════════════════════════════════════════════════════
 
     function openViewer(item, type) {
@@ -1138,7 +1138,7 @@
         img.onerror = viewerError;
         content.appendChild(img);
 
-        // VIDEO
+      // VIDEO
       } else if (type === 'video') {
         const v = document.createElement('video');
         v.controls = true;
@@ -1147,28 +1147,25 @@
         v.onerror = viewerError;
         content.appendChild(v);
 
-        // PDF (still iframe is OK for PDFs)
+      // PDF
       } else if (type === 'pdf') {
         const f = document.createElement('iframe');
         f.src = raw;
         f.onload = clearLoading;
         content.appendChild(f);
 
-        // ❌ HTML FIX (NO iframe rendering of raw GitHub HTML anymore)
-      } else if (type === 'code' || type === 'text') {
+      // HTML (RENDER AS LIVE PREVIEW)
+      } else if (type === 'html') {
         fetchFileText(raw).then(text => {
-          const wrap = document.createElement('div');
-          wrap.className = 'code-viewer';
-
-          const pre = document.createElement('pre');
-          pre.textContent = text;
-
-          clearLoading();
-          wrap.appendChild(pre);
-          content.appendChild(wrap);
+          const f = document.createElement('iframe');
+          f.style.background = "white";
+          // Injecting the raw text into srcdoc allows the browser to render it as HTML
+          f.srcdoc = text;
+          f.onload = clearLoading;
+          content.appendChild(f);
         }).catch(viewerError);
 
-        // MARKDOWN
+      // MARKDOWN
       } else if (type === 'md') {
         fetchFileText(raw)
           .then(text => {
@@ -1180,30 +1177,20 @@
           })
           .catch(viewerError);
 
-        // CODE / TEXT (THIS IS THE IMPORTANT FIX)
-      } else if (type === 'code' || type === 'text' || type === 'html') {
-        fetchFileText(raw)
-          .then(text => {
-            const wrap = document.createElement('div');
-            wrap.className = 'code-viewer';
+      // CODE / TEXT (RENDER AS RAW TEXT)
+      } else if (type === 'code' || type === 'text') {
+        fetchFileText(raw).then(text => {
+          const wrap = document.createElement('div');
+          wrap.className = 'code-viewer';
+          const pre = document.createElement('pre');
+          pre.textContent = text;
+          clearLoading();
+          wrap.appendChild(pre);
+          content.appendChild(wrap);
+        }).catch(viewerError);
 
-            const pre = document.createElement('pre');
-            pre.textContent = text;
-
-            wrap.appendChild(pre);
-            clearLoading();
-            content.appendChild(wrap);
-          })
-          .catch(viewerError);
-
-        // FALLBACK
       } else {
-        content.innerHTML = `
-    <div class="viewer-loading">
-      <div style="font-size:2rem;opacity:.3">📎</div>
-      <div>No preview available for this file type.</div>
-      <a class="btn" href="${raw}" download target="_blank">⬇ Download file</a>
-    </div>`;
+        viewerError(new Error("Preview not available for this file type."));
       }
     }
 

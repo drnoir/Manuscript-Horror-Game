@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Viewer - Complete Working System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px; 
+            color: #333; 
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        h2 { 
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .back-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        h2 .back-btn:hover {
+            background: #5a67d8;
+            transform: translateX(-3px);
+        }
+
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .folder-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .folder-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .icon { 
+            font-size: 3.5rem; 
+            margin-bottom: 12px; 
+            display: block;
+        }
+
+        .folder-name { 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            color: #2c3e50; 
+            margin-bottom: 5px;
+        }
+
+        .folder-type { 
+            font-size: 0.75rem; 
+            color: #7f8c8d; 
+            text-transform: uppercase; 
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .type-media { color: #e74c3c; }
+        .type-html { color: #3498db; }
+        .type-text { color: #2ecc71; }
+        .type-pdf { color: #f39c12; }
+
+        /* File Viewer Styles */
+        .file-viewer {
+            animation: fadeIn 0.4s ease;
+        }
+
+        .file-list-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .folder-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .folder-info .big-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .folder-info h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .file-count-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .back-to-folders {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-to-folders:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .file-item {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .file-item:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .file-icon {
+            font-size: 2.5rem;
+        }
+
+        .file-details {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            word-break: break-word;
+        }
+
+        .file-meta {
+            font-size: 0.75rem;
+            color: #95a5a6;
+        }
+
+        .view-indicator {
+            color: #667eea;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .file-item:hover .view-indicator {
+            opacity: 1;
+        }
+
+        /* Individual File Viewer */
+        .individual-viewer {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+        }
+
+        .viewer-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .viewer-header button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .viewer-header button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-3px);
+        }
+
+        .file-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .file-content-display {
+            padding: 30px;
+            background: #f8f9fa;
+            min-height: 400px;
+        }
+
+        /* Content styling */
+        .text-content {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 25px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .pdf-container, .unsupported-container {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .pdf-container .pdf-icon, .unsupported-container .icon-large {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .empty-folder {
+            text-align: center;
+            padding: 60px;
+            color: #95a5a6;
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .container { padding: 20px; }
+            .files-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="pageTitle">
+            📁 Directory Archive
+        </h2>
+
+        <div id="folderGrid" class="folder-grid">
+            <div class="folder-card" data-folder="Design Assets">
+                <span class="icon type-media">🖼️</span>
+                <div class="folder-name">Design Assets</div>
+                <div class="folder-type">Media</div>
+            </div>
+            <div class="folder-card" data-folder="Areas (HTML)">
+                <span class="icon type-html">🌐</span>
+                <div class="folder-name">Areas (HTML)</div>
+                <div class="folder-type">HTML</div>
+            </div>
+            <div class="folder-card" data-folder="Creative Writing Ideas">
+                <span class="icon type-text">📝</span>
+                <div class="folder-name">Creative Writing Ideas</div>
+                <div class="folder-type">Documents / Text</div>
+            </div>
+            <div class="folder-card" data-folder="PitchBible">
+                <span class="icon type-pdf">📕</span>
+                <div class="folder-name">PitchBible</div>
+                <div class="folder-type">PDF</div>
+            </div>
+        </div>
+
+        <div id="contentArea"></div>
+    </div>
+
+    <script>
+      
+
+        // ============================================
+        // APPLICATION STATE
+        // ============================================
+        let currentView = 'folders';
+        let currentFolder = null;
+
+        // ============================================
+        // DOM Elements
+        // ============================================
+        const folderGrid = document.getElementById('folderGrid');
+        const contentArea = document.getElementById('contentArea');
+        const pageTitle = document.getElementById('pageTitle');
+
+        // ============================================
+        // CORE FUNCTIONS
+        // ============================================
+        
+        // Show folder grid
+        function showFolderGrid() {
+            currentView = 'folders';
+            currentFolder = null;
+            folderGrid.style.display = 'grid';
+            contentArea.innerHTML = '';
+            pageTitle.innerHTML = '📁 Directory Archive';
+        }
+
+        // Show files in a folder
+        function showFileList(folderName) {
+            const folder = fileDatabase[folderName];
+            if (!folder) return;
+            
+            currentView = 'files';
+            currentFolder = folderName;
+            folderGrid.style.display = 'none';
+            
+            // Create file viewer HTML
+            let filesHtml = `
+                <div class="file-viewer">
+                    <div class="file-list-header">
+                        <div class="folder-info">
+                            <span class="big-icon">${folder.icon}</span>
+                            <h3>${folderName}</h3>
+                            <span class="file-count-badge">${folder.files.length} files</span>
+                        </div>
+                        <button class="back-to-folders" onclick="showFolderGrid()">← Back to Folders</button>
+                    </div>
+                    <div class="files-grid">
+            `;
+            
+            if (folder.files.length === 0) {
+                filesHtml += `<div class="empty-folder">📂 This folder is empty</div>`;
+            } else {
+                folder.files.forEach((file, index) => {
+                    const fileIcon = getFileIcon(file.type);
+                    filesHtml += `
+                        <div class="file-item" onclick="viewIndividualFile('${folderName}', ${index})">
+                            <div class="file-icon">${fileIcon}</div>
+                            <div class="file-details">
+                                <div class="file-name">${escapeHtml(file.name)}</div>
+                                <div class="file-meta">${file.size} • ${file.type.toUpperCase()}</div>
+                            </div>
+                            <div class="view-indicator">👁️</div>
+                        </div>
+                    `;
+                });
+            }
+            
+            filesHtml += `</div></div>`;
+            contentArea.innerHTML = filesHtml;
+            pageTitle.innerHTML = `📂 ${folderName} <button class="back-btn" onclick="showFolderGrid()">← Back</button>`;
+        }
+        
+        // Get icon based on file type
+        function getFileIcon(type) {
+            const icons = {
+                'image': '🖼️',
+                'html': '🌐',
+                'css': '🎨',
+                'text': '📝',
+                'pdf': '📕'
+            };
+            return icons[type] || '📄';
+        }
+        
+        // View individual file
+        function viewIndividualFile(folderName, fileIndex) {
+            const folder = fileDatabase[folderName];
+            const file = folder.files[fileIndex];
+            if (!file) return;
+            
+            currentView = 'file';
+            
+            let contentHtml = '';
+            
+            // Render based on file type
+            if (file.type === 'text' || file.type === 'html' || file.type === 'css') {
+                const displayContent = file.content || 'No content available';
+                contentHtml = `
+                    <div class="text-content">
+                        <pre style="margin:0; font-family:inherit;">${escapeHtml(displayContent)}</pre>
+                    </div>
+                `;
+            } 
+            else if (file.type === 'image') {
+                contentHtml = `
+                    <div class="image-container">
+                        <img src="${file.content}" alt="${file.name}" style="max-width:100%; max-height:500px; object-fit:contain;">
+                        <div style="margin-top:15px; color:#666;">Image: ${file.name} (${file.size})</div>
+                    </div>
+                `;
+            }
+            else if (file.type === 'pdf') {
+                contentHtml = `
+                    <div class="pdf-container">
+                        <div class="pdf-icon">📕</div>
+                        <h3>${file.name}</h3>
+                        <p>File size: ${file.size}</p>
+                        <p>⚠️ PDF viewer would be integrated here in a production environment</p>
+                        <button class="download-btn" onclick="alert('In production, this would download ${file.name}')">
+                            📥 Download PDF
+                        </button>
+                    </div>
+                `;
+            }
+            else {
+                contentHtml = `
+                    <div class="unsupported-container">
+                        <div class="icon-large">📄</div>
+                        <h3>${file.name}</h3>
+                        <p>Preview not available for this file type</p>
+                        <button class="download-btn" onclick="alert('In production, this would download ${file.name}')">
+                            💾 Download File
+                        </button>
+                    </div>
+                `;
+            }
+            
+            const viewerHtml = `
+                <div class="individual-viewer">
+                    <div class="viewer-header">
+                        <div class="file-title">
+                            <span>${getFileIcon(file.type)}</span>
+                            <span>${escapeHtml(file.name)}</span>
+                        </div>
+                        <button onclick="showFileList('${folderName}')">← Back to Files</button>
+                    </div>
+                    <div class="file-content-display">
+                        ${contentHtml}
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = viewerHtml;
+            pageTitle.innerHTML = `📄 ${escapeHtml(file.name)} <button class="back-btn" onclick="showFileList('${folderName}')">← Back</button>`;
+        }
+        
+        // Helper: Escape HTML
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+                return c;
+            });
+        }
+        
+        // Initialize event listeners
+        function initialize() {
+            // Add click handlers to folder cards
+            const folderCards = document.querySelectorAll('.folder-card');
+            folderCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const folderName = card.getAttribute('data-folder');
+                    showFileList(folderName);
+                });
+            });
+        }
+        
+        // Start the app
+        initialize();
+    </script>
+</body>
+</html>
