@@ -795,7 +795,7 @@
       // Optional: GitHub Personal Access Token
       // Creates one at: github.com/settings/tokens (only needs "public_repo" read scope)
       // Leave as "" for unauthenticated access (60 API requests/hour — fine for most usage)
-      TOKEN: " ",
+      TOKEN: localStorage.getItem('gh_token') || "",
     };
   </script>
   <!-- ══════════════════════════════════════════════════════════ -->
@@ -810,6 +810,7 @@
       </div>
       <nav class="breadcrumbs" id="breadcrumbs"></nav>
       <div class="header-right">
+        <button class="btn" onclick="promptToken()" style="margin-right: 10px;">🔑 Set Token</button>
         <a id="gh-link" class="gh-link" href="#" target="_blank" rel="noopener">↗ GitHub</a>
       </div>
     </div>
@@ -1290,6 +1291,21 @@
 
     // ════════════════════════════════════════════════════════════
     init();
+
+    function promptToken() {
+  const token = prompt("Enter your GitHub Personal Access Token (PAT):", localStorage.getItem('gh_token') || "");
+  
+  if (token === null) return; // User cancelled
+  
+  if (token === "") {
+    localStorage.removeItem('gh_token');
+    alert("Token cleared. Using unauthenticated rate limits.");
+  } else {
+    localStorage.setItem('gh_token', token);
+    alert("Token saved to your browser! Page will now refresh.");
+  }
+  window.location.reload();
+}
   </script>
 </body>
 
