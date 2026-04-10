@@ -773,6 +773,8 @@
       .file-row {
         padding: 10px 14px
       }
+
+      
     }
   </style>
 </head>
@@ -822,7 +824,9 @@
         <div class="repo-stats" id="ri-stats"></div>
       </div>
     </div>
-
+<div class="search-bar-wrap">
+  <input id="file-search" type="text" placeholder="Search files & folders..." />
+</div>
     <div class="explorer-header">
       <div class="section-label">
         <span>📂</span>
@@ -1201,7 +1205,6 @@
         .then(cb)
         .catch(() => viewerError());
     }
-}
 
     function closeViewer() {
       document.getElementById('overlay').classList.remove('open');
