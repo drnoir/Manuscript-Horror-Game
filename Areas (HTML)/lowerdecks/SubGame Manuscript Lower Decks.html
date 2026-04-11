@@ -333,7 +333,7 @@ Don&#39;t forget this time, shit for brains. Give me some extra portions of your
 {text input for: &#39;powerpassword&#39;}
 
 &gt;[[Enter Temp Control Board Password]]
-&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="" position="1300,875" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="" position="1300,575" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Attempt Password Entry" tags="" position="700,975" size="100,100">## Attempt Password Entry 
+&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="" position="1300,875" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="" position="1575,675" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Attempt Password Entry" tags="" position="700,975" size="100,100">## Attempt Password Entry 
 
 [if password === &#39;0878&#39;]
 Password Entered Correctly. 
@@ -342,7 +342,7 @@ Password Entered Correctly.
 Password Incorrect
 [continued]
 &gt;[[Enter Observation Post 1]] 
-</tw-passagedata><tw-passagedata pid="19" name="Examine Computer Panel OS OS1" tags="" position="375,1050" size="100,100">This is the control panel interface for the Nuclear Control Room. The desktop background is a garish poster of a semi nude woman on a beach. 
+</tw-passagedata><tw-passagedata pid="19" name="Examine Computer Panel OS OS1" tags="" position="475,1050" size="100,100">This is the control panel interface for the Nuclear Control Room. The desktop background is a garish poster of a semi nude woman on a beach. 
 
 &#39;Classy Guys&#39; You roll your eyes.
 
@@ -361,7 +361,17 @@ or exit from the control panel and return [[Enter Observation Post 2]] </tw-pass
 &gt;[[Unlock Door 4 Prison Cell]]
 
 **Return:**
-&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="21" name="Lighting Control" tags="" position="575,1300" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="" position="75,1075" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="200,1325" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="325,1325" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="262.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="" position="1050,975" size="100,100">You see a blue neon UI pop up on the control board.
+&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="21" name="Lighting Control" tags="" position="575,1300" size="100,100">### Lighting Control
+
+This controls the light on / off state for various rooms in the lower decks
+
+&gt;[[Turn on Reactor Control Room Lights]]
+&gt;[[Turn on Supply Room Lights]]
+&gt;[[Turn on Corridor Lighting]]
+
+or return to the computer menu 
+
+[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="" position="75,1075" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="200,1325" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="325,1325" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="262.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="" position="1050,975" size="100,100">You see a blue neon UI pop up on the control board.
 
 THOUGHT: Proceed with caution You think to yourself. This is the temperature control for nucelear generators aftera all and I ain&#39;t a Nuclear Physicsist.
 
@@ -410,4 +420,10 @@ The Temperature is indecraed  by 10 in the Nuclear Generator Room
 Temp is currently {temp}
 
 &gt;[[Enter Temp Control Board Password]] 
-&gt;[[Increase Temp by 10]] </tw-passagedata><tw-passagedata pid="31" name="END GAME" tags="" position="1025,1200" size="100,100"></tw-passagedata></tw-storydata></html>
+&gt;[[Increase Temp by 10]] </tw-passagedata><tw-passagedata pid="31" name="END GAME" tags="" position="1025,1200" size="100,100"></tw-passagedata><tw-passagedata pid="32" name="Turn on Reactor Control Room Lights" tags="" position="575,1425" size="100,100">
+
+&gt;[[Lighting Control]] </tw-passagedata><tw-passagedata pid="33" name="Turn on Supply Room Lights" tags="" position="700,1425" size="100,100">
+
+&gt;[[Lighting Control]] </tw-passagedata><tw-passagedata pid="34" name="Turn on Corridor Lighting" tags="" position="450,1425" size="100,100">
+
+&gt;[[Lighting Control]] </tw-passagedata></tw-storydata></html>
