@@ -225,6 +225,7 @@ password: &#39;0000&#39;
 powerpassword: &#39;0000&#39;
 temp: 10
 monsterAlive: true
+powerGenPassword: &#39;0000&#39;
 --
 
 # Lower Decks
@@ -343,7 +344,7 @@ Don&#39;t forget this time, shit for brains. Give me some extra portions of your
 {text input for: &#39;powerpassword&#39;}
 
 &gt;[[Enter Temp Control Board Password]]
-&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="" position="1300,875" size="100,100"># A list of Prisoners is listed on a Note 
+&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="" position="1275,875" size="100,100"># A list of Prisoners is listed on a Note 
 
 There are 8 prisoners listed as being on Work Detail Month 1
 You can enter their room if they are unlocked.
@@ -481,4 +482,99 @@ Monster Dead
 
 
 &gt;[[Examine window to the right]] 
-</tw-passagedata><tw-passagedata pid="36" name="Look at Nuclear Power Generators" tags="" position="1500,175" size="100,100"></tw-passagedata><tw-passagedata pid="37" name="Talk to Crazy Ivan" tags="" position="1575,800" size="100,100"></tw-passagedata><tw-passagedata pid="38" name="Enter the Power Generator Vent" tags="" position="1700,800" size="100,100"></tw-passagedata><tw-passagedata pid="39" name="Use Computer Terminals" tags="" position="1700,600" size="100,100"></tw-passagedata><tw-passagedata pid="40" name="ROOM 1 - Terry Gnasher" tags="" position="1575,1000" size="100,100"></tw-passagedata><tw-passagedata pid="41" name="ROOM2 - Barry Goob Aka Wasteman" tags="" position="1525,1175" size="100,100"></tw-passagedata><tw-passagedata pid="42" name="ROOM 3 - Mary Tunnenberg" tags="" position="1300,1250" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="ROOM4 - Craig Roalnd Aka The Crybaby Killer" tags="" position="1425,1250" size="100,100"></tw-passagedata><tw-passagedata pid="44" name="ROOM 5 - Rex Rogers" tags="" position="1075,1350" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="ROOM 6 - Robert Finnigan - The Candyman" tags="" position="1300,1375" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Talk to the Mutant Monster" tags="" position="1775,300" size="100,100"></tw-passagedata></tw-storydata></html>
+</tw-passagedata><tw-passagedata pid="36" name="Look at Nuclear Power Generators" tags="" position="1525,250" size="100,100"></tw-passagedata><tw-passagedata pid="37" name="Talk to Crazy Ivan" tags="" position="1575,800" size="100,100">### CRAZY IVAN
+
+DIALOGUE 
+
+LORE
+
+&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="38" name="Enter the Power Generator Vent" tags="" position="1800,750" size="100,100">The Door is locked it must be unlocked by a technician or with the relevent passcode.
+
+{text input for: &#39;powerGenPassword&#39;}
+
+
+&gt;[[Attempt Password Entry of Power Generator Vault]]
+&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="39" name="Use Computer Terminals" tags="" position="1700,600" size="100,100">### COMPUTER TERMINALS NUCLEAR CONTROL ROOM
+DIALOGUE 
+
+### LORE
+
+
+
+&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="40" name="ROOM 1 - Terry Gnasher" tags="" position="1575,1000" size="100,100"></tw-passagedata><tw-passagedata pid="41" name="ROOM2 - Barry Goob Aka Wasteman" tags="" position="1525,1175" size="100,100"></tw-passagedata><tw-passagedata pid="42" name="ROOM 3 - Mary Tunnenberg" tags="" position="1300,1250" size="100,100"></tw-passagedata><tw-passagedata pid="43" name="ROOM4 - Craig Roalnd Aka The Crybaby Killer" tags="" position="1425,1250" size="100,100"></tw-passagedata><tw-passagedata pid="44" name="ROOM 5 - Rex Rogers" tags="" position="1075,1350" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="ROOM 6 - Robert Finnigan - The Candyman" tags="" position="1300,1375" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Talk to the Mutant Monster" tags="" position="1775,300" size="100,100">The monster looks at you before shrieking an unholy shreik
+You listen to the hoarse scream on your dictophone. 
+There are shards of what sound like words in the inhumane screaming.
+It might be worth analyzing on the dictophone.
+
+DIALOGUE: Bone chilling, it reminds me of the time I covered the bombing of civilian populations during the war in Korea. 
+
+A time I would rather forget.
+
+&gt;[[Analyze the Screaming Sound]]
+
+Back Away
+
+&gt;[[Examine window to the right]] 
+
+## LORE The War</tw-passagedata><tw-passagedata pid="47" name="Analyze the Screaming Sound" tags="" position="1900,425" size="100,100">processSound : random.d6;
+--
+
+## Analzing the Screaming Sound
+
+Your eyes strain and can process at {processSound} strength 
+
+[if processSound&lt;3]
+You hear nothing but the sharp shriek unable to discern any other noise admist the chaos.
+[else]
+You listen with intent as you hear a sequence of noise on the audio.
+You rewind your dictophone and slow the speed down.
+The numbers 
+
+6966 
+
+are intoned at 5 second intervals. 
+
+DIALOGUE: 
+What could that mean? Best make a note of it. Could be a random bunch of numbers it spits out, could be a memory of whoever that poor soul was before she was ragahed by the pestilence that haunts these halls.
+
+[continued]
+
+Return to the window
+&gt;[[Examine window to the right]] </tw-passagedata><tw-passagedata pid="48" name="Attempt Password Entry of Power Generator Vault" tags="" position="1775,875" size="100,100">
+[if powerGenPassword]
+The Door unlocks. You enter into a blinding light and unbearable heat. You should not stay here for long, this area is highly radioatcitve to 3.6 - Not Great but Not Terrible either. 
+&gt;[[Enter the Power Generator Vent Room]] 
+
+[else]
+Password Incorrect. 
+
+DIALOGUE Nope not today then you sigh
+[[Unlock Nuclear Control Room]] 
+[continued]
+</tw-passagedata><tw-passagedata pid="49" name="Enter the Power Generator Vent Room" tags="" position="1750,1050" size="100,100">This room is the radiation vent for the submarine. You enter and feel a slight stinging on your skin. You run into the room and see a dead body and a computer panel in the center of the room
+
+&gt;[[Examine the dead body in the Vent Room]]
+&gt;[[Use Computer OS NPG Vent]]</tw-passagedata><tw-passagedata pid="50" name="Examine the dead body in the Vent Room" tags="" position="1875,1050" size="100,100"></tw-passagedata><tw-passagedata pid="51" name="Use Computer OS NPG Vent" tags="" position="1750,1350" size="100,100">
+[if blowUp]
+
+### Self Destruct Ending
+
+You choose to blow up the reactor on the sub, goaded on by the Captains words. 
+He smiles as all goes to white
+
+#LORE 
+
+END
+
+&gt;[[END GAME]] 
+
+[else]
+
+### DIALOGUE This is a failsafe button for the reactor to shut it down. Those hateful bastards even designed this so that the workers would suffer from radioacitive poisoning when they had to do an emergency shutdown. The cynicalness of these rich bastards knows no ends! 
+
+Best not to touch it.
+
+&gt;[[Unlock Nuclear Control Room]] 
+
+[continued]
+</tw-passagedata></tw-storydata></html>
