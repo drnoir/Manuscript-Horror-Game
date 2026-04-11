@@ -221,6 +221,7 @@ ${i}`),b(i)}function $e(n,e=!1){return Ko(zo(n),An(),Pn(),e)}class Yo extends fe
 </style></head><body><state-css-variables><state-dark-theme-css-overrides><div id="backdrop"><page-skip><page-transition><div id="page" aria-live="polite"><header hidden></header><article></article><warning-list></warning-list><footer hidden></footer><error-handler></error-handler><page-skip-indicator></page-skip-indicator></div></page-transition></page-skip></div></state-dark-theme-css-overrides></state-css-variables><external-fonts></external-fonts><noscript>This requires JavaScript.</noscript></body><tw-storydata name="SubGame Manuscript Lower Decks" startnode="1" creator="Twine" creator-version="2.11.1" format="Chapbook" format-version="2.3.0" ifid="8A244ECC-BA02-4BA8-9B17-7D3D4C685357" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Lower Decks" tags="" position="450,75" size="100,100">config.style.dark.page.color: &quot;white on black&quot;
 config.style.dark.page.link.active.color: &quot;black on white&quot;
 config.style.dark.page.link.lineColor: &quot;raspberry-1&quot;
+password: &#39;0000&#39;
 --
 
 # Lower Decks
@@ -275,7 +276,7 @@ You look at the control panel and examine its screen and mechanical interfaces f
 
 
 **EXAMINE**
-You peer through the thick window and see a strange mutant monster glowing which wonders the nuclear power generators which are controlled by the reactor room. The mutant does not seem to notice you and walks around seeminly aimlessly.</tw-passagedata><tw-passagedata pid="8" name="Enter Observation Post 1" tags="" position="850,775" size="100,100">## OBSERVATION POST 1
+You peer through the thick window and see a strange mutant monster glowing which wonders the nuclear power generators which are controlled by the reactor room. The mutant does not seem to notice you and walks around seeminly aimlessly.</tw-passagedata><tw-passagedata pid="8" name="Enter Observation Post 1" tags="" position="850,575" size="100,100">## OBSERVATION POST 1
 
 {embed image: &#39;observationpost1.jpg&#39;}
 
@@ -296,21 +297,40 @@ A single monitor is playing a old television noir in the corner of the room. A d
 Return to [[Observation Posts]]  or move to [[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="10" name="Examine Skeleton" tags="" position="500,675" size="100,100">The skeleton lies motionless on the floor. The bones are unnaturally shiny and gloss. There are no signs of decomposistion. There is a note clutched in the cadavers right hand. 
 
 &gt;[[Read the note on the skeleton]]
-&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="11" name="Examine Obserservation Post 2 Control Panel" tags="" position="650,725" size="100,100">A control panel. It seems to control access to the Nuclear Power Generator rooms.
-To access it requires an elevated access key card.
+&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="11" name="Examine Obserservation Post 2 Control Panel" tags="" position="700,775" size="100,100">
 
-&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="12" name="Examine TV" tags="" position="325,600" size="100,100">A recording of a noir detective film plays on a loop on the television. There is a DVD case next to the television. The film depicts a detective running through Vienna streets. It looks like it is set in the 1940&#39;s. 
+A control panel. It seems to control access to the Nuclear Power Generator rooms.
+To access it requires a password. 
+
+You see the input form flashing slowly in front of oyu
+
+{text input for: &#39;password&#39;}
 
 &gt;[[Enter Observation Post 2]] 
-&gt;[[Examine DVD case]]</tw-passagedata><tw-passagedata pid="13" name="Read the note on the skeleton" tags="" position="525,850" size="100,100">The note reads
+&gt;[[Attempt Password Entry]]
+</tw-passagedata><tw-passagedata pid="12" name="Examine TV" tags="" position="325,600" size="100,100">A recording of a noir detective film plays on a loop on the television. There is a DVD case next to the television. The film depicts a detective running through Vienna streets. It looks like it is set in the 1940&#39;s. 
+
+&gt;[[Enter Observation Post 2]] 
+&gt;[[Examine DVD case]]</tw-passagedata><tw-passagedata pid="13" name="Read the note on the skeleton" tags="" position="525,850" size="100,100">## Skeletons Note
+
+The note reads:
 
 0878 
 
-Don&#39;t forget this time, shit for brains.
-- REx
+Don&#39;t forget this time, shit for brains. Give me some extra portions of your UberJuice to say Thanks. 
+-  Rex
+
+# LORE 
 
 &gt;[[Examine Skeleton]] </tw-passagedata><tw-passagedata pid="14" name="Examine DVD case" tags="" position="200,750" size="100,100">## Examine DVD Case
 
 # LORE
 
-&gt;[[Examine TV]] </tw-passagedata><tw-passagedata pid="15" name="Examine Observation Post 1 Control Panel" tags="" position="825,975" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="" position="1300,875" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="" position="1300,575" size="100,100"></tw-passagedata></tw-storydata></html>
+&gt;[[Examine TV]] </tw-passagedata><tw-passagedata pid="15" name="Examine Observation Post 1 Control Panel" tags="" position="1025,800" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="" position="1300,875" size="100,100"></tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="" position="1300,575" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="Attempt Password Entry" tags="" position="700,975" size="100,100">## Attempt Password Entry 
+
+[if password === &#39;0878&#39;]
+Password Entered Correctly. The Nuclear Control Room is unclear . 
+[else]
+Password Incorrect
+[continued]
+</tw-passagedata></tw-storydata></html>
