@@ -88,8 +88,8 @@ jobs:
           cp -r ./app/. ./electron-temp/src/
           
           # 2. Copy the icon from the root of 'app' to the root of 'electron-temp'
-          # We use ./app/Icon.png because that's where it lives in your repo
-          cp ./app/Icon.png ./electron-temp/Icon.png
+          # We use ./app/icon.png because that's where it lives in your repo
+          cp ./app/icon.png ./electron-temp/icon.png
           
           # 3. Clean up and swap
           rm -rf ./app 
