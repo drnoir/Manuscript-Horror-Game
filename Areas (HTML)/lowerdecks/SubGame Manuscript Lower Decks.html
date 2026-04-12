@@ -414,7 +414,10 @@ This controls the light on / off state for various rooms in the lower decks
 
 or return to the computer menu 
 
-[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="" position="75,1075" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="200,1325" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="325,1325" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="262.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="" position="925,925" size="100,100">You see a blue neon UI pop up on the control board.
+[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="" position="75,1075" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="200,1325" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="325,1325" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="262.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="" position="925,925" size="100,100">
+[if powerpassword === &#39;0887&#39;]
+
+You see a blue neon UI pop up on the control board.
 
 THOUGHT: Proceed with caution You think to yourself. This is the temperature control for nucelear generators aftera all and I ain&#39;t a Nuclear Physicsist.
 
@@ -425,8 +428,10 @@ The current Temp is {temp}
 &gt;[[Increase Temp by 10]]
 &gt;[[Decrease Temp to 10]]
 
+Return [[Examine Observation Post 1 Control Panel]] 
 
 [if temp&gt;40]
+
 This is far too hot for Nuclear Containment.
 The room starts shaking as green stream vents from the observation window.
 
@@ -440,13 +445,18 @@ THis fragments as a Lippy Lady glowing green smashes through the window as the C
 [continue]
 
 
-[if temp=&lt; -20]
+[if temp&lt;-20]
 You hear a horrendus howl in the distance. The temperateure has fallen cold enough to
 have killed the Lippy Lady glowing in the corridor. In the distance you see her putrid green flow fade from sight. Player can now enter the Nuclear Power Generator room without the monster there.
 [continue]
 
+[continue]
 
-Return to [[Examine Observation Post 1 Control Panel]] </tw-passagedata><tw-passagedata pid="29" name="Increase Temp by 10" tags="" position="900,1075" size="100,100">temp: temp+10
+[if powerpassword!== &#39;0887&#39;]
+Wrong password. 
+[[Examine Observation Post 1 Control Panel]] 
+[continue]
+</tw-passagedata><tw-passagedata pid="29" name="Increase Temp by 10" tags="" position="900,1075" size="100,100">temp: temp+10
 --
 
 The Temperature is increased by 10 in the Nuclear Generator Room
