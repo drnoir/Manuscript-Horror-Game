@@ -72,7 +72,7 @@ jobs:
 
       - name: move webapp into Electron folder
         run: |
-          cp -r ./src/* ./app/src
+          cp -r ./src/. ./app/src
           mv ./icon.png ./app
 
       - name: Generate icons
