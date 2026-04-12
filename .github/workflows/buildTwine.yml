@@ -86,7 +86,7 @@ jobs:
           # Copy your source files into the template's src
           cp -r ./app/src/. ./electron-temp/src/
           # Move your icon into the template
-          cp ./app/icon.png ./electron-temp/icon.png
+          cp ./app/src/icon.png ./electron-temp/icon.png
           # Rename the template folder to 'app' so the rest of your script works
           rm -rf ./app 
           mv ./electron-temp ./app
