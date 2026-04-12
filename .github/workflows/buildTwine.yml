@@ -83,11 +83,15 @@ jobs:
      # 3. Move your actual game files into the template
       - name: move webapp into Electron folder
         run: |
-          # Copy your source files into the template's src
-          cp -r ./app/src/. ./electron-temp/src/
-          # Move your icon into the template
-          cp ./app/src/icon.png ./electron-temp/icon.png
-          # Rename the template folder to 'app' so the rest of your script works
+          # 1. Copy everything FROM your 'app' folder INTO the 'electron-temp/src' folder
+          # This includes index.html, Areas, etc.
+          cp -r ./app/. ./electron-temp/src/
+          
+          # 2. Copy the icon from the root of 'app' to the root of 'electron-temp'
+          # We use ./app/icon.png because that's where it lives in your repo
+          cp ./app/icon.png ./electron-temp/icon.png
+          
+          # 3. Clean up and swap
           rm -rf ./app 
           mv ./electron-temp ./app
 
