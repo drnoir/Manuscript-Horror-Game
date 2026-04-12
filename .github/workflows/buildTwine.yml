@@ -1,4 +1,4 @@
-sname: Build the Twine game
+name: Build the Twine game
 
 permissions:
   contents: write
