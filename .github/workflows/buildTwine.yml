@@ -59,6 +59,20 @@ jobs:
         env:
           CERTIFICATE_WINDOWS_PFX: ${{ secrets.CERTIFICATE_WINDOWS_PFX }}
 
+
+          # 1. Check out your code (The "app" folder is now on the VM)
+      - uses: actions/checkout@v3
+
+
+      # 2. Check out the template to a SEPARATE folder called 'template'
+      - name: Check out Electron app template
+        uses: actions/checkout@v3
+        with:
+          repository: lazerwalker/electron-wrapper-template
+          ref: v1.1.0
+          path: electron-temp  # Changed from 'app' to avoid overwriting your code
+
+    
       - name: Check out Electron app template
         uses: actions/checkout@v3
         with:
@@ -66,14 +80,21 @@ jobs:
           ref: v1.1.0
           path: app
 
+     # 3. Move your actual game files into the template
+      - name: move webapp into Electron folder
+        run: |
+          # Copy your source files into the template's src
+          cp -r ./app/src/. ./electron-temp/src/
+          # Move your icon into the template
+          cp ./icon.png ./electron-temp/icon.png
+          # Rename the template folder to 'app' so the rest of your script works
+          rm -rf ./app 
+          mv ./electron-temp ./app
+
+      # 4. Now run install inside the newly prepared 'app' folder
       - name: Set up Electron app environment
         working-directory: ./app
         run: npm install
-
-      - name: move webapp into Electron folder
-        run: |
-          cp -r ./src/. ./app/src
-          mv ./icon.png ./app
 
       - name: Generate icons
         working-directory: ./app
