@@ -30,53 +30,39 @@ jobs:
       - name: Prepare Internal Structure
         shell: bash
         run: |
-          # 1. Clean out template
+          # 1. Clean out template src
           rm -rf ./build-workspace/src/*
 
           # 2. Move your game files in
           cp -ra ./game/. ./build-workspace/src/
 
-          # 3. Ensure index.html exists
+          # 3. Ensure your file is named index.html for the template
           if [ -f "./build-workspace/src/game.html" ]; then
             mv ./build-workspace/src/game.html ./build-workspace/src/index.html
           fi
 
-          # 4. Handle Icon (Always needed)
+          # 4. Handle Icon (Dummy icon if missing to prevent crash)
           if [ -f "./game/icon.png" ]; then
             cp ./game/icon.png ./build-workspace/icon.png
           else
-            # Create a tiny dummy icon if missing so it doesn't crash
             echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" | base64 -d > ./build-workspace/icon.png
           fi
 
-      - name: Final Config Fix
-        run: |
-          node -e "
-          const fs = require('fs');
-          const p = './build-workspace/package.json';
-          const pkg = JSON.parse(fs.readFileSync(p));
-          
-          // Core Setup
-          pkg.name = 'leviathan-story';
-          pkg.productName = 'Leviathan-Story';
-          pkg.main = 'main.js'; // The template's entry script
-          
-          // Ensure the template knows to load from the src folder
-          pkg.config = pkg.config || {};
-          pkg.config.forge = pkg.config.forge || {};
-          
-          fs.writeFileSync(p, JSON.stringify(pkg, null, 2));"
-
-      - name: Build
+      - name: Manual Build via Packager
         working-directory: ./build-workspace
         run: |
           npm install
-          npm run make -- --targets @electron-forge/maker-zip
+          # We bypass Forge's 'make' and use electron-packager directly
+          npx electron-packager . Leviathan-Story --platform=win32 --arch=x64 --out=dist --overwrite
+
+      - name: Zip the Build
+        shell: powershell
+        run: |
+          Compress-Archive -Path ./build-workspace/dist/Leviathan-Story-win32-x64/* -DestinationPath ./Leviathan-Story-Windows.zip
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            build-workspace/out/make/zip/win32/x64/*.zip
+          files: ./Leviathan-Story-Windows.zip
