@@ -81,6 +81,25 @@ jobs:
           npm install
           npm run build-icons
           npm run make
+          
+# 5. Configure Metadata (CRITICAL FIX FOR MODULE NOT FOUND)
+      - name: Configure Package
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = './electron-build-box/package.json';
+          const pkg = JSON.parse(fs.readFileSync(path));
+          
+          // 1. Give the app your name
+          pkg.name = 'leviathan-story';
+          pkg.productName = 'Leviathan Story Dev Build';
+          pkg.version = '1.0.${{ github.run_number }}';
+          
+          // 2. THE FIX: Set the entry point to main.js in the root, 
+          // NOT src/index.js or src/main.js
+          pkg.main = 'main.js'; 
+
+          fs.writeFileSync(path, JSON.stringify(pkg, null, 2));"
 
       # 5. Release
       - name: Create GitHub Release
