@@ -1,110 +1,102 @@
-name: Build the Twine game
-
-permissions:
-  contents: write
+name: Build Twine Game to Windows EXE
 
 on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 0 */15 * *"
+  workflow_dispatch: # Allows you to run this manually from the Actions tab
 
-defaults:
-  run:
-    shell: bash
+permissions:
+  contents: write
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
+
     steps:
-      - uses: actions/checkout@v3
+      # 1. Pull your repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Set game configuration
-        run: |
-          echo "APP_NAME=Leviathan Story Dev Build" >> $GITHUB_ENV
-          echo "DESCRIPTION=A story dev build for interactions in game Leviathan" >> $GITHUB_ENV
-          echo "VERSION=1.0.0" >> $GITHUB_ENV
-          echo "AUTHOR=${{ github.repository_owner }}" >> $GITHUB_ENV
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      # 2. Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Check out Electron app template
-        uses: actions/checkout@v3
+      # 3. Pull the Electron Wrapper Template into a separate folder
+      - name: Checkout Electron Template
+        uses: actions/checkout@v4
         with:
           repository: lazerwalker/electron-wrapper-template
           ref: v1.1.0
-          path: build-workspace  # Renamed to clarify this is the only build area
+          path: electron-build-box
 
-      - name: Prepare Build Workspace
+      # 4. Prepare the Build (The "Magic" Step)
+      - name: Prepare Assets
+        shell: bash
         run: |
-          # 1. Save the essential Electron main.js
-          cp ./build-workspace/src/main.js ./main-backup.js
+          # A. Backup the template's startup script (main.js)
+          cp ./electron-build-box/src/main.js ./main-temp.js
 
-          # 2. Wipe the template's source to ensure no "test-electron-forge" remains
-          rm -rf ./build-workspace/src/*
+          # B. Clear out ALL template boilerplate
+          rm -rf ./electron-build-box/src/*
 
-          # 3. Copy ONLY the contents of your /game folder into the build workspace
+          # C. Restore the startup script
+          mv ./main-temp.js ./electron-build-box/src/main.js
+
+          # D. Copy ONLY your /game folder contents into the Electron source
           if [ -d "./game" ]; then
-            cp -ra ./game/. ./build-workspace/src/
-            echo "Copied /game contents to workspace."
+            cp -ra ./game/. ./electron-build-box/src/
+            echo "Successfully copied /game assets."
           else
-            echo "ERROR: /game folder not found!"
+            echo "ERROR: /game directory not found!"
             exit 1
           fi
 
-          # 4. Put the Electron "brain" back
-          mv ./main-backup.js ./build-workspace/src/main.js
-
-          # 5. Ensure the HTML entry point is named index.html
-          if [ -f "./build-workspace/src/game.html" ]; then
-            mv ./build-workspace/src/game.html ./build-workspace/src/index.html
+          # E. Ensure game.html is the entry point
+          # If game.html exists in src, rename it to index.html for Electron
+          if [ -f "./electron-build-box/src/game.html" ]; then
+            mv ./electron-build-box/src/game.html ./electron-build-box/src/index.html
+            echo "Renamed game.html to index.html"
           fi
 
-          # 6. Handle the icon
+          # F. Handle icons (searches game folder then root)
           if [ -f "./game/icon.png" ]; then
-            cp ./game/icon.png ./build-workspace/icon.png
+            cp ./game/icon.png ./electron-build-box/icon.png
+          elif [ -f "./icon.png" ]; then
+            cp ./icon.png ./electron-build-box/icon.png
           fi
 
-          # 7. CRITICAL: Delete the original game folder from the root
-          # This prevents the Electron packager from finding and including it in the final EXE
-          rm -rf ./game
-
-      - name: Install Dependencies
-        working-directory: ./build-workspace
-        run: npm install
-
-      - name: Set package metadata
+      # 5. Configure Metadata (App Name, Version, etc.)
+      - name: Configure Package
         run: |
           node -e "
           const fs = require('fs');
-          const pkg = JSON.parse(fs.readFileSync('./build-workspace/package.json'));
-          pkg.name = 'leviathan-build';
-          pkg.description = process.env.DESCRIPTION;
-          pkg.version = process.env.VERSION;
-          pkg.author = process.env.AUTHOR;
+          const path = './electron-build-box/package.json';
+          const pkg = JSON.parse(fs.readFileSync(path));
+          pkg.name = 'leviathan-story';
+          pkg.productName = 'Leviathan Story Dev Build';
+          pkg.version = '1.0.${{ github.run_number }}';
+          pkg.description = 'Twine game build from /game directory';
           pkg.main = 'src/main.js';
-          fs.writeFileSync('./build-workspace/package.json', JSON.stringify(pkg, null, 2));"
+          fs.writeFileSync(path, JSON.stringify(pkg, null, 2));"
 
-      - name: Build icons
-        working-directory: ./build-workspace
-        run: npm run build-icons
+      # 6. Install Dependencies and Compile
+      - name: Build EXE
+        working-directory: ./electron-build-box
+        run: |
+          npm install
+          npm run build-icons
+          npm run make
 
-      - name: Build the app
-        working-directory: ./build-workspace
-        run: npm run make
-
-      - name: Create Release
+      # 7. Release the Build
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         if: github.ref == 'refs/heads/main'
         with:
-          tag_name: ${{ format('{0}.0.0', github.run_number) }}
+          tag_name: build-${{ github.run_number }}
+          name: Release Build ${{ github.run_number }}
           files: |
-            build-workspace/out/**/*.deb
-            build-workspace/out/**/*.dmg
-            build-workspace/out/**/*Setup.exe
-            build-workspace/out/**/*.rpm
-            build-workspace/out/**/*.zip
+            electron-build-box/out/**/*.zip
+            electron-build-box/out/**/*Setup.exe
