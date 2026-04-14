@@ -47,42 +47,41 @@ jobs:
           ref: v1.1.0
           path: electron-temp
 
+ # 3. Merging your files with the template
       - name: move webapp into Electron folder
         run: |
-          # 1. Clean the template's default source directory entirely
+          # Create a backup of the essential main.js before clearing src
+          cp ./electron-temp/src/main.js ./main-backup.js
+
+          # Now safe to clear the template's placeholder HTML/CSS
           rm -rf ./electron-temp/src/*
 
-          # 2. Copy the ENTIRE contents of /game (including subfolders like images/ or sounds/)
-          # The -a flag preserves attributes and recursion perfectly
+          # Restore the essential Electron "brain" file
+          mv ./main-backup.js ./electron-temp/src/main.js
+
+          # Copy your entire 'game' folder contents into src
           if [ -d "./game" ]; then
             cp -ra ./game/. ./electron-temp/src/
-            echo "Contents of /game copied to Electron src:"
-            ls -R ./electron-temp/src/
           else
-            echo "ERROR: Directory /game not found at root!"
+            echo "ERROR: Directory /game not found!"
             exit 1
           fi
           
-          # 3. Handle the HTML entry point
-          # We rename game.html to index.html because Electron looks for index.html by default
+          # Rename game.html to index.html (Electron expects index.html)
           if [ -f "./electron-temp/src/game.html" ]; then
             mv ./electron-temp/src/game.html ./electron-temp/src/index.html
-            echo "Successfully renamed game.html to index.html"
-          elif [ -f "./electron-temp/src/index.html" ]; then
-            echo "index.html already exists, proceeding..."
-          else
-            echo "ERROR: Neither game.html nor index.html found in ./game folder!"
-            exit 1
           fi
 
-          # 4. Handle Icon
-          if [ -f "./game/icon.png" ]; then
-            cp ./game/icon.png ./electron-temp/icon.png
-          elif [ -f "./icon.png" ]; then
-            cp ./icon.png ./electron-temp/icon.png
-          fi
-          
-          # 5. Finalize directory structure
+          # Ensure the template's package.json correctly points to main.js
+          # Some environments default to index.js; we force it to src/main.js
+          node -e "
+          const fs = require('fs');
+          const pkg = JSON.parse(fs.readFileSync('./electron-temp/package.json'));
+          pkg.main = 'src/main.js'; 
+          fs.writeFileSync('./electron-temp/package.json', JSON.stringify(pkg, null, 2));"
+
+          # Finalize icon and folder move
+          if [ -f "./game/icon.png" ]; then cp ./game/icon.png ./electron-temp/icon.png; fi
           rm -rf ./app 
           mv ./electron-temp ./app
 
