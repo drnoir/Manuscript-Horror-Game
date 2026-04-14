@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Allows you to run this manually from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -14,17 +14,15 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # 1. Pull your repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # 3. Pull the Electron Wrapper Template into a separate folder
+      # 1. Pull the Template
       - name: Checkout Electron Template
         uses: actions/checkout@v4
         with:
@@ -32,20 +30,14 @@ jobs:
           ref: v1.1.0
           path: electron-build-box
 
-      # 4. Prepare the Build (The "Magic" Step)
+      # 2. Prepare the Source
       - name: Prepare Assets
         shell: bash
         run: |
-          # A. Backup the template's startup script (main.js)
-          cp ./electron-build-box/src/main.js ./main-temp.js
-
-          # B. Clear out ALL template boilerplate
+          # Clear out the template's default src folder completely
           rm -rf ./electron-build-box/src/*
 
-          # C. Restore the startup script
-          mv ./main-temp.js ./electron-build-box/src/main.js
-
-          # D. Copy ONLY your /game folder contents into the Electron source
+          # Copy your /game folder contents into the template's src
           if [ -d "./game" ]; then
             cp -ra ./game/. ./electron-build-box/src/
             echo "Successfully copied /game assets."
@@ -54,35 +46,35 @@ jobs:
             exit 1
           fi
 
-          # E. Ensure game.html is the entry point
-          # If game.html exists in src, rename it to index.html for Electron
+          # Force rename your game.html to index.html (Standard Electron Entry)
           if [ -f "./electron-build-box/src/game.html" ]; then
             mv ./electron-build-box/src/game.html ./electron-build-box/src/index.html
-            echo "Renamed game.html to index.html"
           fi
 
-          # F. Handle icons (searches game folder then root)
+          # Handle the icon
           if [ -f "./game/icon.png" ]; then
             cp ./game/icon.png ./electron-build-box/icon.png
-          elif [ -f "./icon.png" ]; then
-            cp ./icon.png ./electron-build-box/icon.png
           fi
 
-      # 5. Configure Metadata (App Name, Version, etc.)
+      # 3. Configure Metadata and Entry Point
       - name: Configure Package
         run: |
           node -e "
           const fs = require('fs');
           const path = './electron-build-box/package.json';
           const pkg = JSON.parse(fs.readFileSync(path));
+          
+          // These are the critical values for Electron Forge
           pkg.name = 'leviathan-story';
           pkg.productName = 'Leviathan Story Dev Build';
           pkg.version = '1.0.${{ github.run_number }}';
-          pkg.description = 'Twine game build from /game directory';
-          pkg.main = 'src/main.js';
+          
+          // The template usually has its main script in the root, 
+          // we leave pkg.main as it was in the template to avoid the 'cannot stat' error.
+          
           fs.writeFileSync(path, JSON.stringify(pkg, null, 2));"
 
-      # 6. Install Dependencies and Compile
+      # 4. Install and Build
       - name: Build EXE
         working-directory: ./electron-build-box
         run: |
@@ -90,7 +82,7 @@ jobs:
           npm run build-icons
           npm run make
 
-      # 7. Release the Build
+      # 5. Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         if: github.ref == 'refs/heads/main'
