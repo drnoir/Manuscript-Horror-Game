@@ -26,106 +26,85 @@ jobs:
           echo "DESCRIPTION=A story dev build for interactions in game Leviathan" >> $GITHUB_ENV
           echo "VERSION=1.0.0" >> $GITHUB_ENV
           echo "AUTHOR=${{ github.repository_owner }}" >> $GITHUB_ENV
-          echo "PUBLISH_ON_WEB=false" >> $GITHUB_ENV
 
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Test for presence of Windows codesigning secrets
-        id: vars
-        run: |
-          if [[ -n "${{ secrets.CERTIFICATE_WINDOWS_PFX }}" ]]; then 
-            echo "HAS_WINDOWS_CREDS=true" >> $GITHUB_OUTPUT
-          fi
-
       - name: Check out Electron app template
         uses: actions/checkout@v3
         with:
           repository: lazerwalker/electron-wrapper-template
           ref: v1.1.0
-          path: electron-temp
+          path: build-workspace  # Renamed to clarify this is the only build area
 
- # 3. Merging your files with the template
-      - name: move webapp into Electron folder
+      - name: Prepare Build Workspace
         run: |
-          # Create a backup of the essential main.js before clearing src
-          cp ./electron-temp/src/main.js ./main-backup.js
+          # 1. Save the essential Electron main.js
+          cp ./build-workspace/src/main.js ./main-backup.js
 
-          # Now safe to clear the template's placeholder HTML/CSS
-          rm -rf ./electron-temp/src/*
+          # 2. Wipe the template's source to ensure no "test-electron-forge" remains
+          rm -rf ./build-workspace/src/*
 
-          # Restore the essential Electron "brain" file
-          mv ./main-backup.js ./electron-temp/src/main.js
-
-          # Copy your entire 'game' folder contents into src
+          # 3. Copy ONLY the contents of your /game folder into the build workspace
           if [ -d "./game" ]; then
-            cp -ra ./game/. ./electron-temp/src/
+            cp -ra ./game/. ./build-workspace/src/
+            echo "Copied /game contents to workspace."
           else
-            echo "ERROR: Directory /game not found!"
+            echo "ERROR: /game folder not found!"
             exit 1
           fi
-          
-          # Rename game.html to index.html (Electron expects index.html)
-          if [ -f "./electron-temp/src/game.html" ]; then
-            mv ./electron-temp/src/game.html ./electron-temp/src/index.html
+
+          # 4. Put the Electron "brain" back
+          mv ./main-backup.js ./build-workspace/src/main.js
+
+          # 5. Ensure the HTML entry point is named index.html
+          if [ -f "./build-workspace/src/game.html" ]; then
+            mv ./build-workspace/src/game.html ./build-workspace/src/index.html
           fi
 
-          # Ensure the template's package.json correctly points to main.js
-          # Some environments default to index.js; we force it to src/main.js
-          node -e "
-          const fs = require('fs');
-          const pkg = JSON.parse(fs.readFileSync('./electron-temp/package.json'));
-          pkg.main = 'src/main.js'; 
-          fs.writeFileSync('./electron-temp/package.json', JSON.stringify(pkg, null, 2));"
+          # 6. Handle the icon
+          if [ -f "./game/icon.png" ]; then
+            cp ./game/icon.png ./build-workspace/icon.png
+          fi
 
-          # Finalize icon and folder move
-          if [ -f "./game/icon.png" ]; then cp ./game/icon.png ./electron-temp/icon.png; fi
-          rm -rf ./app 
-          mv ./electron-temp ./app
+          # 7. CRITICAL: Delete the original game folder from the root
+          # This prevents the Electron packager from finding and including it in the final EXE
+          rm -rf ./game
 
-      - name: Set up Electron app environment
-        working-directory: ./app
+      - name: Install Dependencies
+        working-directory: ./build-workspace
         run: npm install
 
-      - name: Generate icons
-        working-directory: ./app
-        run: npm run build-icons
-
-      - name: Add Windows certificate
-        if: steps.vars.outputs.HAS_WINDOWS_CREDS
-        id: write_file
-        uses: timheuer/base64-to-file@v1
-        with:
-          fileName: "win-certificate.pfx"
-          encodedString: ${{ secrets.CERTIFICATE_WINDOWS_PFX }}
-
-      - name: Set description and version number
+      - name: Set package metadata
         run: |
           node -e "
           const fs = require('fs');
-          const pkg = require('./app/package.json');
+          const pkg = JSON.parse(fs.readFileSync('./build-workspace/package.json'));
+          pkg.name = 'leviathan-build';
           pkg.description = process.env.DESCRIPTION;
           pkg.version = process.env.VERSION;
           pkg.author = process.env.AUTHOR;
-          fs.writeFileSync('./app/package.json', JSON.stringify(pkg, null, '\t'));"
-          
+          pkg.main = 'src/main.js';
+          fs.writeFileSync('./build-workspace/package.json', JSON.stringify(pkg, null, 2));"
+
+      - name: Build icons
+        working-directory: ./build-workspace
+        run: npm run build-icons
+
       - name: Build the app
-        working-directory: ./app
-        env:
-          WINDOWS_PFX_FILE: ${{ steps.write_file.outputs.filePath }}
-          WINDOWS_PFX_PASSWORD: ${{ secrets.WINDOWS_PFX_PASSWORD }}
+        working-directory: ./build-workspace
         run: npm run make
 
-      - name: Create Tag and Release
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         if: github.ref == 'refs/heads/main'
         with:
           tag_name: ${{ format('{0}.0.0', github.run_number) }}
           files: |
-            app/out/**/*.deb
-            app/out/**/*.dmg
-            app/out/**/*Setup.exe
-            app/out/**/*.rpm
-            app/out/**/*.zip
+            build-workspace/out/**/*.deb
+            build-workspace/out/**/*.dmg
+            build-workspace/out/**/*Setup.exe
+            build-workspace/out/**/*.rpm
+            build-workspace/out/**/*.zip
