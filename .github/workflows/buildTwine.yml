@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# THIS SECTION IS THE FIX FOR THE 403 ERROR
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -17,7 +21,7 @@ jobs:
         with:
           node-version: 18
 
-      # 1. Get the template and put it in a separate workspace
+      # 1. Get the template
       - name: Checkout Template
         uses: actions/checkout@v4
         with:
@@ -33,34 +37,31 @@ jobs:
           rm -rf ./build-workspace/src/*
 
           # Copy ONLY your game contents into the template's src folder
-          cp -ra ./game/. ./build-workspace/src/
+          if [ -d "./game" ]; then
+            cp -ra ./game/. ./build-workspace/src/
+          else
+            echo "ERROR: /game folder not found!"
+            exit 1
+          fi
 
-          # RENAME your game.html to index.html so main.js can find it
+          # RENAME your game.html to index.html
           if [ -f "./build-workspace/src/game.html" ]; then
             mv ./build-workspace/src/game.html ./build-workspace/src/index.html
           fi
 
-          # Copy icon if it exists
-          if [ -f "./game/icon.png" ]; then
-            cp ./game/icon.png ./build-workspace/icon.png
-          fi
-
-      # 3. Fix the "Module Not Found" by forcing package.json settings
+      # 3. Metadata Fix
       - name: Configure App Metadata
         run: |
           node -e "
           const fs = require('fs');
           const path = './build-workspace/package.json';
           const pkg = JSON.parse(fs.readFileSync(path));
-          
           pkg.name = 'leviathan-story';
-          pkg.productName = 'Leviathan Story';
-          // Ensure Electron looks for the template's main script in the root
+          pkg.productName = 'Leviathan-Story';
           pkg.main = 'main.js'; 
-          
           fs.writeFileSync(path, JSON.stringify(pkg, null, 2));"
 
-      # 4. Final Compilation
+      # 4. Compilation
       - name: Install and Make
         working-directory: ./build-workspace
         run: |
@@ -68,10 +69,13 @@ jobs:
           npm run build-icons
           npm run make
 
-      - name: Release
+      # 5. Release (Updated pattern to find files reliably)
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.${{ github.run_number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             build-workspace/out/**/*.zip
             build-workspace/out/**/*Setup.exe
+            build-workspace/out/**/*.exe
