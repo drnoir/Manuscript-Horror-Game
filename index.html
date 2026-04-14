@@ -1106,13 +1106,57 @@
         ${isDir ? `<span class="ext-badge">folder</span>` : ''}
       </span>`;
 
-        row.addEventListener('click', () => isDir ? navigateTo(item.path) : openViewer(item, type));
+       row.addEventListener('click', async () => {
+  if (isDir) {
+    // Check if folder contains index.html
+    try {
+      const contents = await apiFetch(`/repos/${CONFIG.OWNER}/${CONFIG.REPO}/contents/${item.path}?ref=${CONFIG.BRANCH}`);
+      
+      const hasIndex = contents.find(f => f.name.toLowerCase() === "index.html");
+
+      if (hasIndex) {
+        openHTMLFolder(item.path);
+      } else {
+        navigateTo(item.path);
+      }
+
+    } catch (e) {
+      navigateTo(item.path);
+    }
+  } else {
+    openViewer(item, type);
+  }
+});
         table.appendChild(row);
       });
 
       body.innerHTML = '';
       body.appendChild(table);
     }
+
+    function openHTMLFolder(folderPath) {
+  const content = document.getElementById('vw-content');
+
+  document.getElementById('vw-name').textContent = folderPath.split('/').pop();
+  document.getElementById('vw-path').textContent = folderPath;
+
+  const url = `https://${CONFIG.OWNER}.github.io/${CONFIG.REPO}/${folderPath}/`;
+
+  document.getElementById('vw-raw').href = url;
+  document.getElementById('vw-gh').href = ghFile(folderPath);
+
+  content.innerHTML = `<div class="viewer-loading"><span class="spinner"></span>Loading…</div>`;
+  document.getElementById('overlay').classList.add('open');
+
+  const iframe = document.createElement('iframe');
+  iframe.src = url; // 🔥 CRITICAL: use real URL, not srcdoc
+  iframe.style.background = "white";
+
+  iframe.onload = clearLoading;
+  iframe.onerror = viewerError;
+
+  content.appendChild(iframe);
+}
 
     // ════════════════════════════════════════════════════════════
     //  VIEWER (UPDATED FOR HTML RENDERING)
@@ -1161,7 +1205,7 @@
           const f = document.createElement('iframe');
           f.style.background = "white";
           // Injecting the raw text into srcdoc allows the browser to render it as HTML
-          f.srcdoc = text;
+      f.src = raw;
           f.onload = clearLoading;
           content.appendChild(f);
         }).catch(viewerError);
