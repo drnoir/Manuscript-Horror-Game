@@ -5,7 +5,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# THIS SECTION IS THE FIX FOR THE 403 ERROR
 permissions:
   contents: write
 
@@ -21,7 +20,6 @@ jobs:
         with:
           node-version: 18
 
-      # 1. Get the template
       - name: Checkout Template
         uses: actions/checkout@v4
         with:
@@ -29,53 +27,56 @@ jobs:
           ref: v1.1.0
           path: build-workspace
 
-      # 2. Setup the internal structure
       - name: Prepare Internal Structure
         shell: bash
         run: |
-          # Delete template's sample files
+          # 1. Clean out template
           rm -rf ./build-workspace/src/*
 
-          # Copy ONLY your game contents into the template's src folder
-          if [ -d "./game" ]; then
-            cp -ra ./game/. ./build-workspace/src/
-          else
-            echo "ERROR: /game folder not found!"
-            exit 1
-          fi
+          # 2. Move your game files in
+          cp -ra ./game/. ./build-workspace/src/
 
-          # RENAME your game.html to index.html
+          # 3. Ensure index.html exists
           if [ -f "./build-workspace/src/game.html" ]; then
             mv ./build-workspace/src/game.html ./build-workspace/src/index.html
           fi
 
-      # 3. Metadata Fix
-      - name: Configure App Metadata
+          # 4. Handle Icon (Always needed)
+          if [ -f "./game/icon.png" ]; then
+            cp ./game/icon.png ./build-workspace/icon.png
+          else
+            # Create a tiny dummy icon if missing so it doesn't crash
+            echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" | base64 -d > ./build-workspace/icon.png
+          fi
+
+      - name: Final Config Fix
         run: |
           node -e "
           const fs = require('fs');
-          const path = './build-workspace/package.json';
-          const pkg = JSON.parse(fs.readFileSync(path));
+          const p = './build-workspace/package.json';
+          const pkg = JSON.parse(fs.readFileSync(p));
+          
+          // Core Setup
           pkg.name = 'leviathan-story';
           pkg.productName = 'Leviathan-Story';
-          pkg.main = 'main.js'; 
-          fs.writeFileSync(path, JSON.stringify(pkg, null, 2));"
+          pkg.main = 'main.js'; // The template's entry script
+          
+          // Ensure the template knows to load from the src folder
+          pkg.config = pkg.config || {};
+          pkg.config.forge = pkg.config.forge || {};
+          
+          fs.writeFileSync(p, JSON.stringify(pkg, null, 2));"
 
-      # 4. Compilation
-      - name: Install and Make
+      - name: Build
         working-directory: ./build-workspace
         run: |
           npm install
-          npm run build-icons
-          npm run make
+          npm run make -- --targets @electron-forge/maker-zip
 
-      # 5. Release (Updated pattern to find files reliably)
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.${{ github.run_number }}
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            build-workspace/out/**/*.zip
-            build-workspace/out/**/*Setup.exe
-            build-workspace/out/**/*.exe
+            build-workspace/out/make/zip/win32/x64/*.zip
