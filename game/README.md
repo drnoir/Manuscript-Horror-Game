@@ -1,4 +1,7 @@
-# Twine App Builder
+# Twine App Builder - forked for doing builds of twine levels for Leviathan 
+
+Put html file into src folder with game.html as well as any images used in twine file to create a windows build
+Once files are built- store in folder areas(Windows) in root
 
 ![Build and Test](https://github.com/lazerwalker/twine-app-builder/actions/workflows/main.yml/badge.svg)
 

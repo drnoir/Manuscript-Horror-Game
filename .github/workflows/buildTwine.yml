@@ -2,7 +2,7 @@ name: Build the Twine game
 
 permissions:
   contents: write
-  
+
 on:
   push:
     branches:
@@ -16,9 +16,8 @@ defaults:
 
 jobs:
   build:
-    runs-on: windows-latest # Simplified matrix as you're only targeting windows
+    runs-on: windows-latest
     steps:
-      # 1. Pull your code from GitHub
       - uses: actions/checkout@v3
 
       - name: Set game configuration
@@ -41,7 +40,6 @@ jobs:
             echo "HAS_WINDOWS_CREDS=true" >> $GITHUB_OUTPUT
           fi
 
-      # 2. Pull the template into a TEMPORARY folder so it doesn't overwrite your 'app' folder
       - name: Check out Electron app template
         uses: actions/checkout@v3
         with:
@@ -49,23 +47,26 @@ jobs:
           ref: v1.1.0
           path: electron-temp
 
-      # 3. Merging your files with the template
       - name: move webapp into Electron folder
         run: |
-          # Copy your game files (index.html, etc) into the template's src
-          # This assumes your repo has a folder named 'app' containing index.html
-          cp -r ./app/. ./electron-temp/src/
+          # 1. Copy everything from your 'game' folder into the template's src
+          cp -r ./game/. ./electron-temp/src/
           
-          # Find and copy the icon.png
-          if [ -f "./app/icon.png" ]; then
-            cp ./app/icon.png ./electron-temp/icon.png
+          # 2. Rename game.html to index.html inside the template (Electron expects index.html by default)
+          if [ -f "./electron-temp/src/game.html" ]; then
+            mv ./electron-temp/src/game.html ./electron-temp/src/index.html
+          fi
+
+          # 3. Find and copy the icon.png
+          if [ -f "./game/icon.png" ]; then
+            cp ./game/icon.png ./electron-temp/icon.png
           elif [ -f "./icon.png" ]; then
             cp ./icon.png ./electron-temp/icon.png
           else
             echo "No icon.png found, using template default"
           fi
           
-          # Delete your original 'app' folder and replace it with the prepared template
+          # 4. Clean up and prepare the 'app' directory for building
           rm -rf ./app 
           mv ./electron-temp ./app
 
