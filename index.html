@@ -1106,27 +1106,27 @@
         ${isDir ? `<span class="ext-badge">folder</span>` : ''}
       </span>`;
 
-       row.addEventListener('click', async () => {
-  if (isDir) {
-    // Check if folder contains index.html
-    try {
-      const contents = await apiFetch(`/repos/${CONFIG.OWNER}/${CONFIG.REPO}/contents/${item.path}?ref=${CONFIG.BRANCH}`);
-      
-      const hasIndex = contents.find(f => f.name.toLowerCase() === "index.html");
+        row.addEventListener('click', async () => {
+          if (isDir) {
+            // Check if folder contains index.html
+            try {
+              const contents = await apiFetch(`/repos/${CONFIG.OWNER}/${CONFIG.REPO}/contents/${item.path}?ref=${CONFIG.BRANCH}`);
 
-      if (hasIndex) {
-        openHTMLFolder(item.path);
-      } else {
-        navigateTo(item.path);
-      }
+              const hasIndex = contents.find(f => f.name.toLowerCase() === "index.html");
 
-    } catch (e) {
-      navigateTo(item.path);
-    }
-  } else {
-    openViewer(item, type);
-  }
-});
+              if (hasIndex) {
+                openHTMLFolder(item.path);
+              } else {
+                navigateTo(item.path);
+              }
+
+            } catch (e) {
+              navigateTo(item.path);
+            }
+          } else {
+            openViewer(item, type);
+          }
+        });
         table.appendChild(row);
       });
 
@@ -1134,29 +1134,7 @@
       body.appendChild(table);
     }
 
-    function openHTMLFolder(folderPath) {
-  const content = document.getElementById('vw-content');
 
-  document.getElementById('vw-name').textContent = folderPath.split('/').pop();
-  document.getElementById('vw-path').textContent = folderPath;
-
-  const url = `https://${CONFIG.OWNER}.github.io/${CONFIG.REPO}/${folderPath}/`;
-
-  document.getElementById('vw-raw').href = url;
-  document.getElementById('vw-gh').href = ghFile(folderPath);
-
-  content.innerHTML = `<div class="viewer-loading"><span class="spinner"></span>Loading…</div>`;
-  document.getElementById('overlay').classList.add('open');
-
-  const iframe = document.createElement('iframe');
-  iframe.src = url; // 🔥 CRITICAL: use real URL, not srcdoc
-  iframe.style.background = "white";
-
-  iframe.onload = clearLoading;
-  iframe.onerror = viewerError;
-
-  content.appendChild(iframe);
-}
 
     // ════════════════════════════════════════════════════════════
     //  VIEWER (UPDATED FOR HTML RENDERING)
@@ -1183,7 +1161,7 @@
         img.onerror = viewerError;
         content.appendChild(img);
 
-      // VIDEO
+        // VIDEO
       } else if (type === 'video') {
         const v = document.createElement('video');
         v.controls = true;
@@ -1192,25 +1170,25 @@
         v.onerror = viewerError;
         content.appendChild(v);
 
-      // PDF
+        // PDF
       } else if (type === 'pdf') {
         const f = document.createElement('iframe');
         f.src = raw;
         f.onload = clearLoading;
         content.appendChild(f);
 
-      // HTML (RENDER AS LIVE PREVIEW)
+        // HTML (RENDER AS LIVE PREVIEW)
       } else if (type === 'html') {
         fetchFileText(raw).then(text => {
           const f = document.createElement('iframe');
           f.style.background = "white";
           // Injecting the raw text into srcdoc allows the browser to render it as HTML
-      f.src = raw;
+          f.srcdoc = text;
           f.onload = clearLoading;
           content.appendChild(f);
         }).catch(viewerError);
 
-      // MARKDOWN
+        // MARKDOWN
       } else if (type === 'md') {
         fetchFileText(raw)
           .then(text => {
@@ -1222,7 +1200,7 @@
           })
           .catch(viewerError);
 
-      // CODE / TEXT (RENDER AS RAW TEXT)
+        // CODE / TEXT (RENDER AS RAW TEXT)
       } else if (type === 'code' || type === 'text') {
         fetchFileText(raw).then(text => {
           const wrap = document.createElement('div');
@@ -1237,6 +1215,30 @@
       } else {
         viewerError(new Error("Preview not available for this file type."));
       }
+    }
+
+    function openHTMLFolder(folderPath) {
+      const content = document.getElementById('vw-content');
+
+      document.getElementById('vw-name').textContent = folderPath.split('/').pop();
+      document.getElementById('vw-path').textContent = folderPath;
+
+      const url = `https://${CONFIG.OWNER}.github.io/${CONFIG.REPO}/${folderPath}/`;
+
+      document.getElementById('vw-raw').href = url;
+      document.getElementById('vw-gh').href = ghFile(folderPath);
+
+      content.innerHTML = `<div class="viewer-loading"><span class="spinner"></span>Loading…</div>`;
+      document.getElementById('overlay').classList.add('open');
+
+      const iframe = document.createElement('iframe');
+      iframe.src = url; // 🔥 CRITICAL: use real URL, not srcdoc
+      iframe.style.background = "white";
+
+      iframe.onload = clearLoading;
+      iframe.onerror = viewerError;
+
+      content.appendChild(iframe);
     }
 
     function clearLoading() {
@@ -1337,19 +1339,19 @@
     init();
 
     function promptToken() {
-  const token = prompt("Enter your GitHub Personal Access Token (PAT):", localStorage.getItem('gh_token') || "");
-  
-  if (token === null) return; // User cancelled
-  
-  if (token === "") {
-    localStorage.removeItem('gh_token');
-    alert("Token cleared. Using unauthenticated rate limits.");
-  } else {
-    localStorage.setItem('gh_token', token);
-    alert("Token saved to your browser! Page will now refresh.");
-  }
-  window.location.reload();
-}
+      const token = prompt("Enter your GitHub Personal Access Token (PAT):", localStorage.getItem('gh_token') || "");
+
+      if (token === null) return; // User cancelled
+
+      if (token === "") {
+        localStorage.removeItem('gh_token');
+        alert("Token cleared. Using unauthenticated rate limits.");
+      } else {
+        localStorage.setItem('gh_token', token);
+        alert("Token saved to your browser! Page will now refresh.");
+      }
+      window.location.reload();
+    }
   </script>
 </body>
 
