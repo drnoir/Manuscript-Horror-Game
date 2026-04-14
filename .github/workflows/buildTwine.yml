@@ -47,37 +47,42 @@ jobs:
           ref: v1.1.0
           path: electron-temp
 
-
-
-      # 3. Merging your files with the template
       - name: move webapp into Electron folder
         run: |
-          # Remove the template's default source files to prevent "test-electron-forge" from showing
+          # 1. Clean the template's default source directory entirely
           rm -rf ./electron-temp/src/*
 
-          # Copy everything from your 'game' folder into the template's src
-          # We use -v (verbose) so you can see the files moving in the Action logs
-          cp -rv ./game/. ./electron-temp/src/
+          # 2. Copy the ENTIRE contents of /game (including subfolders like images/ or sounds/)
+          # The -a flag preserves attributes and recursion perfectly
+          if [ -d "./game" ]; then
+            cp -ra ./game/. ./electron-temp/src/
+            echo "Contents of /game copied to Electron src:"
+            ls -R ./electron-temp/src/
+          else
+            echo "ERROR: Directory /game not found at root!"
+            exit 1
+          fi
           
-          # Force rename game.html to index.html
-          # Electron templates look for index.html; if we don't rename it, it won't find your game.
+          # 3. Handle the HTML entry point
+          # We rename game.html to index.html because Electron looks for index.html by default
           if [ -f "./electron-temp/src/game.html" ]; then
             mv ./electron-temp/src/game.html ./electron-temp/src/index.html
             echo "Successfully renamed game.html to index.html"
+          elif [ -f "./electron-temp/src/index.html" ]; then
+            echo "index.html already exists, proceeding..."
           else
-            echo "ERROR: game.html not found in ./game folder!"
-            ls -R ./game
+            echo "ERROR: Neither game.html nor index.html found in ./game folder!"
             exit 1
           fi
 
-          # Find and copy the icon.png
+          # 4. Handle Icon
           if [ -f "./game/icon.png" ]; then
             cp ./game/icon.png ./electron-temp/icon.png
           elif [ -f "./icon.png" ]; then
             cp ./icon.png ./electron-temp/icon.png
           fi
           
-          # Replace the app directory with our prepared version
+          # 5. Finalize directory structure
           rm -rf ./app 
           mv ./electron-temp ./app
 
