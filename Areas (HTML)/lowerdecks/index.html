@@ -227,7 +227,10 @@ temp: 10
 monsterAlive: true
 powerGenPassword: &#39;0000&#39;
 blowUp:false
+sound.ambient.music.url: &#39;music.mp3&#39;
 --
+
+{ambient sound: &#39;music&#39;}
 
 # Lower Decks
 
@@ -247,7 +250,7 @@ A Corridor with a strobing light. Ahead there is a computer panel and an entranc
 
 &gt;[[Observation Posts]]
 &gt;[[Investigate Computer Panel]]
-&gt;[[Examine Strobing Light]]</tw-passagedata><tw-passagedata pid="4" name="Observation Posts" tags="Area" position="1125,375" size="100,100">##OBSERVATION POSTS
+&gt;[[Examine Strobing Light]]</tw-passagedata><tw-passagedata pid="4" name="Observation Posts" tags="Area" position="1250,350" size="100,100">##OBSERVATION POSTS
 
 {embed image: &#39;observation posts.jpg&#39;}
 
@@ -260,7 +263,8 @@ You arrive in a room full of control monitors and dimly lit there are two ahead 
 Or continue on down the corridor further to the 
 
 &gt;[[Prisoner Cell Blocks]]
-&gt;[[Turn Right to the Nuclear Control Room]]</tw-passagedata><tw-passagedata pid="5" name="Investigate Computer Panel" tags="Examine" position="1025,75" size="100,100">## COMPUTER PANEL
+&gt;[[Turn Right to the Nuclear Control Room]]
+&gt;[[Move Foward to Mess Hall]]</tw-passagedata><tw-passagedata pid="5" name="Investigate Computer Panel" tags="Examine" position="1025,75" size="100,100">## COMPUTER PANEL
 
 {embed image: &#39;corrirdor.jpg&#39;}
 
@@ -345,7 +349,7 @@ Don&#39;t forget this time, shit for brains. Give me some extra portions of your
 {text input for: &#39;powerpassword&#39;}
 
 &gt;[[Enter Temp Control Board Password]]
-&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="Area" position="1325,975" size="100,100"># A list of Prisoners is listed on a Note 
+&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="Area" position="1325,925" size="100,100"># A list of Prisoners is listed on a Note 
 
 There are 8 prisoners listed as being on Work Detail Month 1
 You can enter their room if they are unlocked.
@@ -367,7 +371,7 @@ return to the corridor
 &gt;[[Corridor]] 
 
 
-</tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="Area" position="1450,475" size="100,100">## Nuclear Control Room
+</tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="Area" position="1550,425" size="100,100">## Nuclear Control Room
 
 This room houses the sacophcus like room which hold the Nuclear Power Generators which power the entire submarine. This is a fiercly secure room. You see a collection of dead technicaians lying on the floor. A paranoid looking man with a overgrown beard stares at you.
 
@@ -515,7 +519,7 @@ DIALOGUE
 
 LORE
 
-&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="38" name="Enter the Power Generator Vent" tags="Area" position="1475,725" size="100,100">The Door is locked it must be unlocked by a technician or with the relevent passcode.
+&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="38" name="Enter the Power Generator Vent" tags="Area" position="1475,675" size="100,100">The Door is locked it must be unlocked by a technician or with the relevent passcode.
 
 {text input for: &#39;powerGenPassword&#39;}
 
@@ -532,6 +536,7 @@ LORE
 ## TERRY
 
 {embed image: &#39;TerryGnasher.jpg&#39;}
+
 Terry Gnasher stands before you. An East end gangster of some refute. 
 From your days in London you knew his name struck fear in the East End. A stocky brutish man he is the classic gangster achetype driven by honour codes and business. 
 
@@ -657,4 +662,56 @@ Best not to touch it....
 &gt;[[Unlock Nuclear Control Room]] 
 
 [continued]
-</tw-passagedata></tw-storydata></html>
+</tw-passagedata><tw-passagedata pid="52" name="Move Foward to Mess Hall" tags="" position="3025,400" size="100,100">You enter the Mess hall where the prison labourers would eat. It is dimly lit with long tables excuding a errie green glow and a series of wooden makeshift chairs. To your right is a round table and a makeshift cluttered and dirty kitchen area.
+
+&gt;[[Approach the Serving Tables]]
+&gt;[[Enter the Kitchen Area]]
+&gt;[[Move to the East Side Prison Corridor]]
+
+
+</tw-passagedata><tw-passagedata pid="53" name="Approach the Serving Tables" tags="" position="3525,525" size="100,100"></tw-passagedata><tw-passagedata pid="54" name="Enter the Kitchen Area" tags="" position="3550,325" size="100,100"></tw-passagedata><tw-passagedata pid="55" name="Move to the East Side Prison Corridor" tags="" position="2725,700" size="100,100">You walk along this long corridor. On the walls are all sorts of strange artworks and photo collated by the Prisoners - the only form of outlet or free space they have. You enter the corridor which seems to go on forever.
+
+&gt;[[Examine Prisoner Artworks]]
+&gt;[[Walk to the End of the Corridor]]
+
+</tw-passagedata><tw-passagedata pid="56" name="Walk to the End of the Corridor" tags="" position="3150,1000" size="100,100">You are approaching the Lower Decks Service Lift. This is the main lift for all mainteenance on the ship with access to every area. 
+
+There is a groutesque monster before you which looks like a abomintion. A Mixture of Man and Fisheggs. Its fleshy body glistens in the dim orange light.
+
+&gt;[[Attack the Fishmonger Monster]]
+</tw-passagedata><tw-passagedata pid="57" name="Examine Prisoner Artworks" tags="" position="3050,725" size="100,100"></tw-passagedata><tw-passagedata pid="58" name="Attack the Fishmonger Monster" tags="" position="3475,825" size="100,100">You kill the Fishmonger by lighting up a deodrant can with the lighter you found in the messhall. It gurgles before finally it stops moving.
+
+&gt;[[Enter the Maintenance Lift]]
+
+Return:
+[[Move to the East Side Prison Corridor]] </tw-passagedata><tw-passagedata pid="59" name="Enter the Maintenance Lift" tags="" position="3650,1025" size="100,100">You enter the Lift. A shallow transparent pans of glass is above you and you are surrounded by the tall walls of the maintenece shaft. Designed to hold all manner of equipment and men. 
+
+You look out the window to the right are amazed to see a Dolphin swimming nearby
+
+&gt;[[Examine the Dolphin]]
+&gt;[[Use the Lift]]
+
+Return:
+&gt;[[Walk to the End of the Corridor]] </tw-passagedata><tw-passagedata pid="60" name="Use the Lift" tags="" position="3950,1175" size="100,100"></tw-passagedata><tw-passagedata pid="61" name="Examine the Dolphin" tags="" position="3450,1225" size="100,100">You see a dolphin swimming around outside. It looks almost curious..
+
+&gt;[[Talk to the Dolphin]]
+&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="62" name="Talk to the Dolphin" tags="" position="3450,1400" size="100,100">You look afar at the Dolphin
+
+BRADLEE SUDDENLY PASSES OUT AND FALLS TO THE FLOOR 
+
+Suddenly you are overcome with a sharp light which strikes your eyes and you pass out
+The dolpin appears in your minds eye
+
+BRADLEE SUDDENLY PASSES OUT AND FALLS TO THE FLOOR 
+
+FADE TO A COSMIC SEA BACKGROUND WITH THE DOLPHIN SPEAKING
+
+Bradlee! You must go up! All the way to the top of this machine.
+This strange machine.
+Something alien has taken it hostage!
+Seek out the dark hooded one! 
+Please heed my message
+
+ZOOM OUT FROM BRADLEES BODY ON FLOOR ZOOMING OUT FROM EYES
+
+&#39;What the hell was that. Did I bang my head on the rough journey here?&#39;</tw-passagedata></tw-storydata></html>
