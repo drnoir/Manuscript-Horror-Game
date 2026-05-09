@@ -225,6 +225,8 @@ sanity: 10
 flowers: false
 medbay1:false
 medbay2:false
+medboxes: 15
+pills: 15
 --
 
 # Infirmary
@@ -326,7 +328,19 @@ You read the sign on her Medbay Monitor
 &gt;[[It was you wasn&#39;t it, You were the one who tended to those flowers]]
 [continue]
 
-Return to the [[Corridor]] </tw-passagedata><tw-passagedata pid="11" name="Supply draw" tags="" position="1700,450" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="External Cameras" tags="" position="1400,25" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Inventory" tags="" position="1525,250" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Messages" tags="" position="1550,0" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Log" tags="" position="1400,225" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Talk to Icarus AI" tags="" position="675,325" size="100,100">You stare at the Icarus AI avatar, which gives you a chill down your spine as you look upon its uncanny face all coloured in blue lines - an approximation of a human face complete with expressions. 
+Return to the [[Corridor]] </tw-passagedata><tw-passagedata pid="11" name="Supply draw" tags="" position="1700,400" size="100,100">**You open the Supply Draw which holds medical supplies **
+
+- You see {medboxes} medboxes which can restore your health and
+- {pills} Valium Pills which can help restore your sanity and calm you down
+
+&gt;[[Take the Medboxes]]
+&gt;[[Take the Pills]]
+
+**Return to**
+&gt;[[Corridor]] 
+
+
+</tw-passagedata><tw-passagedata pid="12" name="External Cameras" tags="" position="1025,0" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Inventory" tags="" position="1350,200" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Messages" tags="" position="1225,0" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Log" tags="" position="1500,75" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Talk to Icarus AI" tags="" position="675,325" size="100,100">You stare at the Icarus AI avatar, which gives you a chill down your spine as you look upon its uncanny face all coloured in blue lines - an approximation of a human face complete with expressions. 
 
 **DIALOGUE : ** Hello Bradlee, how can I help?
 
@@ -341,4 +355,16 @@ You think to yourself
 &gt;[[Surely such survllience technology is illegal!]]
 &gt;[[Who is in this section of the Sub?]] 
 &gt;[[Can you open Medbay 2?]] 
-</tw-passagedata><tw-passagedata pid="18" name="Can you open Medbay 2?" tags="" position="475,425" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Who is in this section of the Sub?" tags="" position="150,575" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Surely such survllience technology is illegal!" tags="" position="550,750" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Say Hello to Mary D Bligh" tags="" position="1375,675" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="It was you wasn&#39;t it, You were the one who tended to those flowers" tags="" position="1050,775" size="100,100"></tw-passagedata></tw-storydata></html>
+</tw-passagedata><tw-passagedata pid="18" name="Can you open Medbay 2?" tags="" position="400,300" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Who is in this section of the Sub?" tags="" position="300,550" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Surely such survllience technology is illegal!" tags="" position="450,725" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Say Hello to Mary D Bligh" tags="" position="1200,725" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="It was you wasn&#39;t it, You were the one who tended to those flowers" tags="" position="800,800" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Take the Medboxes" tags="" position="1575,525" size="100,100">medboxes: medboxes-1
+--
+
+You take a single medbox to heal your wounds
+
+**Return to** 
+&gt;[[Corridor]] </tw-passagedata><tw-passagedata pid="24" name="Take the Pills" tags="" position="1900,375" size="100,100">pills: pills-1
+--
+
+You take a single pill to heal your sanity.
+
+**Return to** 
+&gt;[[Corridor]] </tw-passagedata></tw-storydata></html>
