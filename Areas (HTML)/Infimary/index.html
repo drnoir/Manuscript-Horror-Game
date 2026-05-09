@@ -223,6 +223,8 @@ config.style.dark.page.link.active.color: &quot;black on white&quot;
 config.style.dark.page.link.lineColor: &quot;raspberry-1&quot;
 sanity: 10
 flowers: false
+medbay1:false
+medbay2:false
 --
 
 # Infirmary
@@ -252,7 +254,7 @@ To the right of the flowers are two medbays to provide healing, a supply draw an
 &gt;[[Supply draw]]
 &gt;[[Investigate Computer Panel]] 
 
-Return to the [[Lift]]</tw-passagedata><tw-passagedata pid="4" name="Investigate Computer Panel" tags="" position="975,0" size="100,100">## COMPUTER PANEL
+Return to the [[Lift]]</tw-passagedata><tw-passagedata pid="4" name="Investigate Computer Panel" tags="" position="1100,125" size="100,100">## COMPUTER PANEL
 
 {embed image: &#39;corrirdor.jpg&#39;}
 
@@ -306,17 +308,23 @@ You examine the flowers which have been watered recently as evidenced by a few d
 
 return [[Corridor]] 
 
-</tw-passagedata><tw-passagedata pid="9" name="Medbay 1" tags="" position="850,450" size="100,100"></tw-passagedata><tw-passagedata pid="10" name="Medbay 2" tags="" position="1050,650" size="100,100">You enter Medbay 2 which is lit with a dim golden light radiating from a candle with wax dripping down it&#39;s side, suggesting it had been burning for a few hours.
+</tw-passagedata><tw-passagedata pid="9" name="Medbay 1" tags="" position="850,450" size="100,100"></tw-passagedata><tw-passagedata pid="10" name="Medbay 2" tags="" position="1050,650" size="100,100">[if medbay2===false]
+This Medbay is Locked
+[else]
+
+[continued]
+
+You enter Medbay 2 which is lit with a dim golden light radiating from a candle with wax dripping down it&#39;s side, suggesting it had been burning for a few hours.
 
 A girl of about 15 years looks out, a little afraid peeking out from under the bed covers she is cowering under.
 
 **&#39;Mary D Bligh&#39; **
 
 You read the sign on her Medbay Monitor
-
 &gt;[[Say Hello to Mary D Bligh]]
-
+[if flowers]
 &gt;[[It was you wasn&#39;t it, You were the one who tended to those flowers]]
+[continue]
 
 Return to the [[Corridor]] </tw-passagedata><tw-passagedata pid="11" name="Supply draw" tags="" position="1700,450" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="External Cameras" tags="" position="1400,25" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Inventory" tags="" position="1525,250" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Messages" tags="" position="1550,0" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Log" tags="" position="1400,225" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Talk to Icarus AI" tags="" position="675,325" size="100,100">You stare at the Icarus AI avatar, which gives you a chill down your spine as you look upon its uncanny face all coloured in blue lines - an approximation of a human face complete with expressions. 
 
@@ -333,4 +341,4 @@ You think to yourself
 &gt;[[Surely such survllience technology is illegal!]]
 &gt;[[Who is in this section of the Sub?]] 
 &gt;[[Can you open Medbay 2?]] 
-</tw-passagedata><tw-passagedata pid="18" name="Can you open Medbay 2?" tags="" position="250,325" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Who is in this section of the Sub?" tags="" position="150,575" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Surely such survllience technology is illegal!" tags="" position="350,750" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Say Hello to Mary D Bligh" tags="" position="1375,675" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="It was you wasn&#39;t it, You were the one who tended to those flowers" tags="" position="1050,775" size="100,100"></tw-passagedata></tw-storydata></html>
+</tw-passagedata><tw-passagedata pid="18" name="Can you open Medbay 2?" tags="" position="475,425" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Who is in this section of the Sub?" tags="" position="150,575" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="Surely such survllience technology is illegal!" tags="" position="550,750" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Say Hello to Mary D Bligh" tags="" position="1375,675" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="It was you wasn&#39;t it, You were the one who tended to those flowers" tags="" position="1050,775" size="100,100"></tw-passagedata></tw-storydata></html>
