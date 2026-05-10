@@ -227,6 +227,7 @@ medbay1:false
 medbay2:false
 medboxes: 15
 pills: 15
+maryFather: false
 --
 
 # Infirmary
@@ -300,7 +301,7 @@ A rotting corpse lies on the bed, looks like whoever it was died from injuries t
 
 **Cleanup in Progress - Please do not interupt**
 
-Return to [[Corridor]] </tw-passagedata><tw-passagedata pid="8" name="Medbay 2" tags="" position="1150,625" size="100,100">[if medbay2===false]
+Return to [[Corridor]] </tw-passagedata><tw-passagedata pid="8" name="Medbay 2" tags="" position="1175,650" size="100,100">[if medbay2===false]
 This Medbay is Locked
 [else]
 
@@ -314,7 +315,7 @@ A girl of about 15 years looks out, a little afraid peeking out from under the b
 
 You read the sign on her Medbay Monitor
 &gt;[[Say Hello to Mary D Bligh]]
-[if flowers]
+[if flowers &amp;&amp; medbay2===true]
 &gt;[[It was you wasn&#39;t it, You were the one who tended to those flowers]]
 [continue]
 
@@ -420,4 +421,18 @@ Oh it&#39;s all so terrible....&quot;
 
 &gt;[[Ask her who her Father is]] 
 &gt;[[Ask her how she got injured]]
-&gt;[[Tell her you have talked to the Captain on comms]]</tw-passagedata><tw-passagedata pid="29" name="Tell her you have talked to the Captain on comms" tags="" position="400,775" size="100,100"></tw-passagedata></tw-storydata></html>
+&gt;[[Tell her you have talked to the Captain on comms]]</tw-passagedata><tw-passagedata pid="29" name="Tell her you have talked to the Captain on comms" tags="" position="600,725" size="100,100">maryFather: true
+--
+
+**DIALOGUE : PLAYER**
+&quot;Mary, your Dad is still Alive. I have been in touch with him on the comms, he&#39;s on the control deck, injured, but still alive&quot;
+
+**DIALOGUE : MARY**
+&quot;Oh fantastic news, I had almost given up hope I would see him again. Please come and see me if you get to the control deck, tell him I am recovering here. If I am well in the next few days, I will try and contact you over the comms, I will talk to Iracus about it&quot;
+
+&gt;[[Ask her how she got injured]] 
+
+return to [[Corridor]] 
+
+
+</tw-passagedata></tw-storydata></html>
