@@ -267,7 +267,7 @@ A Corridor with a strobing light. Ahead there is a computer panel and an entranc
 
 &gt;[[Observation Posts]]
 &gt;[[Investigate Computer Panel]]
-&gt;[[Examine Strobing Light]]</tw-passagedata><tw-passagedata pid="4" name="Observation Posts" tags="Area" position="1125,400" size="100,100">## OBSERVATION POSTS
+&gt;[[Examine Strobing Light]]</tw-passagedata><tw-passagedata pid="4" name="Observation Posts" tags="Area" position="875,425" size="100,100">## OBSERVATION POSTS
 
 {embed image: &#39;observation posts.jpg&#39;}
 
@@ -280,13 +280,11 @@ You arrive in a room full of control monitors and dimly lit there are two ahead 
 &gt;[[Examine window to the right]]
 &gt;[[Enter Observation Post 1]]
 &gt;[[Enter Observation Post 2]]
-&gt;[[Journal]]
-
-Or continue on down the corridor further to the 
-
 &gt;[[Prisoner Cell Blocks]]
 &gt;[[Turn Right to the Nuclear Control Room]]
-&gt;[[Move Foward to Mess Hall]]</tw-passagedata><tw-passagedata pid="5" name="Investigate Computer Panel" tags="Examine" position="1050,50" size="100,100">## COMPUTER PANEL
+&gt;[[Move Foward to Mess Hall]]
+
+&gt;[[Journal]]</tw-passagedata><tw-passagedata pid="5" name="Investigate Computer Panel" tags="Examine" position="1050,50" size="100,100">## COMPUTER PANEL
 
 {embed image: &#39;corrirdor.jpg&#39;}
 
@@ -330,7 +328,7 @@ A single monitor is playing a old television noir in the corner of the room. A d
 &gt;[[Examine Obserservation Post 2 Control Panel]]
 &gt;[[Examine TV]]
 
-Return to [[Observation Posts]]  or move to [[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="10" name="Examine Skeleton" tags="Examine" position="500,675" size="100,100">The skeleton lies motionless on the floor. The bones are unnaturally shiny and gloss. There are no signs of decomposistion. There is a note clutched in the cadavers right hand. 
+Return to [[Observation Posts]]  or move to [[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="10" name="Examine Skeleton" tags="Examine" position="375,825" size="100,100">The skeleton lies motionless on the floor. The bones are unnaturally shiny and gloss. There are no signs of decomposistion. There is a note clutched in the cadavers right hand. 
 
 &gt;[[Read the note on the skeleton]]
 &gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="11" name="Examine Obserservation Post 2 Control Panel" tags="Examine" position="700,775" size="100,100">## Observation Post 2 Control Panel
@@ -339,8 +337,6 @@ A control panel. It seems to control access to the Nuclear Power Generator rooms
 To access it requires a password. 
 
 You see the input form flashing slowly in front of oyu
-
-{text input for: &#39;password&#39;}
 
 &gt;[[Enter Observation Post 2]] 
 &gt;[[Attempt Password Entry]]
@@ -351,7 +347,7 @@ A Documentary on recent history recorded onto an old VHS tape from this televisi
 ## LORE
 
 &gt;[[Enter Observation Post 2]] 
-&gt;[[Examine Video case]]</tw-passagedata><tw-passagedata pid="13" name="Read the note on the skeleton" tags="Look" position="525,850" size="100,100">## Skeleton&#39;s Note
+&gt;[[Examine Video case]]</tw-passagedata><tw-passagedata pid="13" name="Read the note on the skeleton" tags="Look" position="675,925" size="100,100">## Skeleton&#39;s Note
 
 The note reads:
 
@@ -375,10 +371,8 @@ It simply reads in slighty spidery handwriting
 
 Hmm looks like this is involved with the temperature control in the nuclear generator room. It requires a password to control.
 
-{text input for: &#39;powerpassword&#39;}
-
 &gt;[[Enter Temp Control Board Password]]
-&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="Area" position="1500,1275" size="100,100">&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
+&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="Area" position="1400,1275" size="100,100">&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 &quot;Proceed with Caution, Some of these people are beyond evil. A few of them will rip your face off given half a chance, so don&#39;t give them one&quot;
 
@@ -394,8 +388,10 @@ You can enter their room if they are unlocked.
 &gt;[[ROOM 5 - Rex Rogers]]
 &gt;[[ROOM 6 - Robert Finnigan - The Candyman]]
 
-**DIALOGUE**
 
+&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+**DIALOGUE**
 What a delectable bunch of bastards.
 
 &gt;[[Prisoner Cell Blocks]] 
@@ -404,20 +400,26 @@ return to the corridor
 &gt;[[Corridor]] 
 
 
-</tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="Area" position="1400,475" size="100,100">## Nuclear Control Room
+</tw-passagedata><tw-passagedata pid="17" name="Turn Right to the Nuclear Control Room" tags="Area" position="1550,550" size="100,100">## Nuclear Control Room
 
 &lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 **Is there any sign of life? This area is highly dangeous. I would not go pressing any buttons.**
 
-This room houses the sacophcus like room which hold the Nuclear Power Generators which power the entire submarine. This is a fiercly secure room. You see a collection of dead technicaians lying on the floor. A paranoid looking man with a overgrown beard stares at you.
 
+[if powerGenPassword]
+
+This room houses the sacophcus like room which hold the Nuclear Power Generators which power the entire submarine. This is a fiercly secure room. You see a collection of dead technicaians lying on the floor. A paranoid looking man with a overgrown beard stares at you.
 &gt;[[Talk to Crazy Ivan]]
 &gt;[[Enter the Power Generator Vent]]
 &gt;[[Use Computer Terminals]]
-
 **Return:**
-[[Corridor]] </tw-passagedata><tw-passagedata pid="18" name="Attempt Password Entry" tags="" position="750,1050" size="100,100">## Attempt Password Entry 
+[[Corridor]] 
+[else]
+**Return:**
+[[Corridor]] 
+[continued]
+</tw-passagedata><tw-passagedata pid="18" name="Attempt Password Entry" tags="" position="750,1050" size="100,100">## Attempt Password Entry 
 
 [if password]
 Password Entered Correctly. 
@@ -449,7 +451,7 @@ or exit from the control panel and return [[Enter Observation Post 2]] </tw-pass
 &gt;[[Unlock Door 6 Prison Cell]]
 
 **Return:**
-&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="21" name="Lighting Control" tags="Use" position="675,1250" size="100,100">### Lighting Control
+&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="21" name="Lighting Control" tags="Use" position="650,1300" size="100,100">### Lighting Control
 
 This controls the light on / off state for various rooms in the lower decks
 
@@ -459,7 +461,10 @@ This controls the light on / off state for various rooms in the lower decks
 
 or return to the computer menu 
 
-[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="Look" position="125,950" size="100,100">&gt;[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="425,1300" size="100,100">You hear a vent of steam in the distance. You now have access to the Nuclear Control Room.
+[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="Look" position="125,950" size="100,100">&gt;[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="500,1250" size="100,100">powerGenPassword: true
+--
+
+You hear a vent of steam in the distance. You now have access to the Nuclear Control Room.
 
 &gt;[[Door Access]] 
 &gt;[[Examine Computer Panel OS OS1]]</tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="50,1150" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="50,1750" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="Use" position="1025,825" size="100,100">
@@ -565,9 +570,9 @@ DIALOGUE
 
 LORE
 
-&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="38" name="Enter the Power Generator Vent" tags="Area" position="1675,800" size="100,100">The Door is locked it must be unlocked by a technician or with the relevent passcode.
+&gt;[[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="38" name="Enter the Power Generator Vent" tags="Area" position="1550,850" size="100,100">## Power Generator Vent
 
-{text input for: &#39;powerGenPassword&#39;}
+The Door is locked it must be unlocked by a technician or with the relevent passcode.
 
 &lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
 
