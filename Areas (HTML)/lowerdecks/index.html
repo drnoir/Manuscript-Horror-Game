@@ -226,11 +226,11 @@ margin:0.5em;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Examine" color="yellow"></tw-tag><tw-tag name="Dialogue" color="orange"></tw-tag><tw-tag name="Look" color="blue"></tw-tag><tw-tag name="Area" color="green"></tw-tag><tw-tag name="Use" color="purple"></tw-tag><tw-tag name="End" color="red"></tw-tag><tw-passagedata pid="1" name="Lower Decks" tags="Area" position="450,75" size="100,100">config.style.dark.page.color: &quot;white on black&quot;
 config.style.dark.page.link.active.color: &quot;black on white&quot;
 config.style.dark.page.link.lineColor: &quot;raspberry-1&quot;
-password: &#39;0000&#39;
-powerpassword: &#39;0000&#39;
+password: false
+powerpassword: false
 temp: 10
 monsterAlive: true
-powerGenPassword: &#39;0000&#39;
+powerGenPassword: false
 blowUp:false
 sound.ambient.music.url: &#39;music.mp3&#39;
 controlDeckAccess: false
@@ -280,6 +280,7 @@ You arrive in a room full of control monitors and dimly lit there are two ahead 
 &gt;[[Examine window to the right]]
 &gt;[[Enter Observation Post 1]]
 &gt;[[Enter Observation Post 2]]
+&gt;[[Journal]]
 
 Or continue on down the corridor further to the 
 
@@ -332,7 +333,7 @@ A single monitor is playing a old television noir in the corner of the room. A d
 Return to [[Observation Posts]]  or move to [[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="10" name="Examine Skeleton" tags="Examine" position="500,675" size="100,100">The skeleton lies motionless on the floor. The bones are unnaturally shiny and gloss. There are no signs of decomposistion. There is a note clutched in the cadavers right hand. 
 
 &gt;[[Read the note on the skeleton]]
-&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="11" name="Examine Obserservation Post 2 Control Panel" tags="Examine" position="700,775" size="100,100">##Observation Post 2 Control Panel
+&gt;[[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="11" name="Examine Obserservation Post 2 Control Panel" tags="Examine" position="700,775" size="100,100">## Observation Post 2 Control Panel
 
 A control panel. It seems to control access to the Nuclear Power Generator rooms.
 To access it requires a password. 
@@ -370,7 +371,9 @@ It simply reads in slighty spidery handwriting
 
 # LORE
 
-&gt;[[Examine TV]] </tw-passagedata><tw-passagedata pid="15" name="Examine Observation Post 1 Control Panel" tags="Examine" position="1075,625" size="100,100">Hmm looks like this is involved with the temperature control in the nuclear generator room. It requires a password to control.
+&gt;[[Examine TV]] </tw-passagedata><tw-passagedata pid="15" name="Examine Observation Post 1 Control Panel" tags="Examine" position="1075,625" size="100,100">&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+Hmm looks like this is involved with the temperature control in the nuclear generator room. It requires a password to control.
 
 {text input for: &#39;powerpassword&#39;}
 
@@ -416,7 +419,7 @@ This room houses the sacophcus like room which hold the Nuclear Power Generators
 **Return:**
 [[Corridor]] </tw-passagedata><tw-passagedata pid="18" name="Attempt Password Entry" tags="" position="750,1050" size="100,100">## Attempt Password Entry 
 
-[if password === &#39;0878&#39;]
+[if password]
 Password Entered Correctly. 
 &gt;[[Examine Computer Panel OS OS1]]
 [else]
@@ -460,7 +463,7 @@ or return to the computer menu
 
 &gt;[[Door Access]] 
 &gt;[[Examine Computer Panel OS OS1]]</tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="50,1150" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="50,1750" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="Use" position="1025,825" size="100,100">
-[if powerpassword === &#39;0887&#39;]
+[if powerpassword]
 
 You see a blue neon UI pop up on the control board.
 
@@ -496,7 +499,7 @@ You hear a horrendus howl in the distance. The temperateure has fallen cold enou
 
 [continue]
 
-[if powerpassword!== &#39;0887&#39;]
+[if !powerpassword]
 Wrong password. 
 [[Examine Observation Post 1 Control Panel]] 
 [continue]
@@ -550,6 +553,8 @@ Monster Dead
 
 {embed image: &#39;nuclearPowerGen.jpg&#39;}
 
+&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
+
 **THOUGHT**
 Pulsating with an errie glow these power generators supply the energy to the entire submarine. I must proceed with extreme caution.
 
@@ -564,7 +569,8 @@ LORE
 
 {text input for: &#39;powerGenPassword&#39;}
 
-{embed image: &#39;captain.jpg&#39;}
+&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
+
 **That&#39;s the nuclear generator Vault laddie, I would not reccomend going in there unless you have some high powered suntan lotion.**
 
 &gt;[[Attempt Password Entry of Power Generator Vault]]
@@ -628,13 +634,14 @@ There is nothing reedamble about Rob Finnigan, known as The Candyman he is the m
 
 &gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="46" name="Talk to the Mutant Monster" tags="Dialogue" position="2075,225" size="100,100">{embed image: &#39;nuclearPowerGen.jpg&#39;}
 
-
 The monster looks at you before shrieking an unholy shreik
 You listen to the hoarse scream on your dictophone. 
 There are shards of what sound like words in the inhumane screaming.
 It might be worth analyzing on the dictophone.
 
-DIALOGUE: Bone chilling, it reminds me of the time I covered the bombing of civilian populations during the war in Korea. 
+&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+**DIALOGUE:** Bone chilling, it reminds me of the time I covered the bombing of civilian populations during the war in Korea. 
 
 A time I would rather forget.
 
@@ -716,7 +723,7 @@ Best not to touch it....
 &gt;[[Enter the Power Generator Vent]]
 
 [continued]
-</tw-passagedata><tw-passagedata pid="52" name="Move Foward to Mess Hall" tags="" position="3175,350" size="100,100">## Mess Hall 
+</tw-passagedata><tw-passagedata pid="52" name="Move Foward to Mess Hall" tags="Area" position="2475,350" size="100,100">## Mess Hall 
 
 You enter the Mess hall where the prison labourers would eat. It is dimly lit with long tables excuding a errie green glow and a series of wooden makeshift chairs. To your right is a round table and a makeshift cluttered and dirty kitchen area.
 
@@ -724,33 +731,41 @@ You enter the Mess hall where the prison labourers would eat. It is dimly lit wi
 &gt;[[Enter the Kitchen Area]]
 &gt;[[Move to the East Side Prison Corridor]]
 
-</tw-passagedata><tw-passagedata pid="53" name="Approach the Serving Tables" tags="" position="3650,450" size="100,100">You approach the long dining tables. Messy and covered with discarded crumbs and splatters of a strange green  liquid which gurgles away at the head of each table in a large metal pot.
+</tw-passagedata><tw-passagedata pid="53" name="Approach the Serving Tables" tags="Area" position="3500,425" size="100,100">## Serving Tables
+
+You approach the long dining tables. Messy and covered with discarded crumbs and splatters of a strange green  liquid which gurgles away at the head of each table in a large metal pot.
 
 &gt;[[Examine Table 1]]
 &gt;[[Examine Table 2]]
-&gt;[[Examine Table 3]]</tw-passagedata><tw-passagedata pid="54" name="Enter the Kitchen Area" tags="" position="3450,125" size="100,100"></tw-passagedata><tw-passagedata pid="55" name="Move to the East Side Prison Corridor" tags="" position="2800,500" size="100,100">## East Side Prison Corridor 
+&gt;[[Examine Table 3]]
+
+&gt;[[Move Foward to Mess Hall]] </tw-passagedata><tw-passagedata pid="54" name="Enter the Kitchen Area" tags="" position="3475,200" size="100,100"></tw-passagedata><tw-passagedata pid="55" name="Move to the East Side Prison Corridor" tags="Area" position="2775,675" size="100,100">## East Side Prison Corridor 
 
 You walk along this long corridor. On the walls are all sorts of strange artworks and photo collated by the Prisoners - the only form of outlet or free space they have. You enter the corridor which seems to go on forever.
 
 &gt;[[Examine Prisoner Artworks]]
 &gt;[[Walk to the End of the Corridor]]
 
-</tw-passagedata><tw-passagedata pid="56" name="Walk to the End of the Corridor" tags="" position="3000,950" size="100,100">You are approaching the Lower Decks Service Lift. This is the main lift for all maintenance on the ship with access to every area. 
+</tw-passagedata><tw-passagedata pid="56" name="Walk to the End of the Corridor" tags="Area" position="2925,925" size="100,100">You are approaching the Lower Decks Service Lift. This is the main lift for all maintenance on the ship with access to every area. 
 
 There is a groutesque monster before you which looks like a abomintion. A Mixture of Man and Fisheggs. Its fleshy body glistens in the dim orange light.
 
 &gt;[[Attack the Fishmonger Monster]]
-</tw-passagedata><tw-passagedata pid="57" name="Examine Prisoner Artworks" tags="" position="2900,225" size="100,100">You see a carnival of bizarre drawings before you, presumbaly the only leisure activity allowed to the prisoners apart from slurping down the foul looking green juice in the Mess Hall.
+</tw-passagedata><tw-passagedata pid="57" name="Examine Prisoner Artworks" tags="Examine" position="2925,250" size="100,100">## Prisoner Artworks 
+
+You see a carnival of bizarre drawings before you, presumbaly the only leisure activity allowed to the prisoners apart from slurping down the foul looking green juice in the Mess Hall.
 
 &gt;[[Examine Drawing 1]]
 &gt;[[Examine Drawing 2]]
 &gt;[[Examine Drawing 3]]
-&gt;[[Examine Drawing 4]]</tw-passagedata><tw-passagedata pid="58" name="Attack the Fishmonger Monster" tags="" position="3400,625" size="100,100">You kill the Fishmonger by lighting up a deodrant can with the lighter you found in the messhall. It gurgles before finally it stops moving.
+&gt;[[Examine Drawing 4]]</tw-passagedata><tw-passagedata pid="58" name="Attack the Fishmonger Monster" tags="Use" position="3375,650" size="100,100">You kill the Fishmonger by lighting up a deodrant can with the lighter you found in the messhall. It gurgles before finally it stops moving.
 
 &gt;[[Enter the Maintenance Lift]]
 
 Return:
-[[Move to the East Side Prison Corridor]] </tw-passagedata><tw-passagedata pid="59" name="Enter the Maintenance Lift" tags="" position="3650,1025" size="100,100">You enter the Lift. A shallow transparent pans of glass is above you and you are surrounded by the tall walls of the maintenece shaft. Designed to hold all manner of equipment and men. 
+[[Move to the East Side Prison Corridor]] </tw-passagedata><tw-passagedata pid="59" name="Enter the Maintenance Lift" tags="Area" position="3650,1025" size="100,100">## Maintenance Lift
+
+You enter the Lift. A shallow transparent pans of glass is above you and you are surrounded by the tall walls of the maintenece shaft. Designed to hold all manner of equipment and men. 
 
 You look out the window to the right are amazed to see a Dolphin swimming nearby
 
@@ -761,7 +776,7 @@ You look out the window to the right are amazed to see a Dolphin swimming nearby
 &gt;[[Use the Lift]]
 
 Return:
-&gt;[[Walk to the End of the Corridor]] </tw-passagedata><tw-passagedata pid="60" name="Use the Lift" tags="" position="4200,1050" size="100,100">Which level do you want to Access?
+&gt;[[Walk to the End of the Corridor]] </tw-passagedata><tw-passagedata pid="60" name="Use the Lift" tags="End" position="4125,1025" size="100,100">Which level do you want to Access?
 
 **The Control Deck is **
 
@@ -796,15 +811,19 @@ locked
 
 or Return to [[Enter the Maintenance Lift]]
 
-</tw-passagedata><tw-passagedata pid="61" name="Examine the Dolphin" tags="" position="3225,1300" size="100,100">You see a dolphin swimming around outside. It looks almost curious..
+</tw-passagedata><tw-passagedata pid="61" name="Examine the Dolphin" tags="Examine" position="3225,1300" size="100,100">You see a dolphin swimming around outside. It looks almost curious..
 
 &gt;[[Talk to the Dolphin]]
-&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="62" name="Talk to the Dolphin" tags="" position="2975,1125" size="100,100">You look afar at the Dolphin.
+&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="62" name="Talk to the Dolphin" tags="Dialogue" position="2975,1125" size="100,100">## Talk to the Dolphin
+
+You look afar at the Dolphin.
 Suddenly you are overcome with a sharp light which strikes your eyes and you pass out
 The dolpin appears in your minds eye
 
 **BRADLEE SUDDENLY PASSES OUT AND FALLS TO THE FLOOR **
 **FADE TO A COSMIC SEA BACKGROUND WITH THE DOLPHIN SPEAKING**
+
+&lt;img src = &quot;dolphin.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 Bradlee! You must go up! All the way to the top of this machine.
 This strange machine.
@@ -813,6 +832,8 @@ Seek out the dark hooded one!
 Please heed my message
 
 **ZOOM OUT FROM BRADLEES BODY ON FLOOR ZOOMING OUT FROM EYES**
+
+&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 **DIALOGUE**
 &#39;What the hell was that. Did I bang my head on the rough journey here?&#39;
@@ -825,32 +846,32 @@ You unlock cell 5 which contains Rex Rogers.
 You can talk to him now
 [[ROOM 5 - Rex Rogers]] 
 
-or Return to [[Door Access]]  to unlock another cell</tw-passagedata><tw-passagedata pid="64" name="Unlock Door 6 Prison Cell" tags="" position="275,1625" size="100,100"></tw-passagedata><tw-passagedata pid="65" name="Escape Pods" tags="" position="3700,1250" size="100,100"></tw-passagedata><tw-passagedata pid="66" name="Brig" tags="" position="4825,850" size="100,100"></tw-passagedata><tw-passagedata pid="67" name="Chapel" tags="" position="4900,1275" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Resurant and Theatre" tags="" position="4850,1050" size="100,100"></tw-passagedata><tw-passagedata pid="69" name="Beauty Spa and Viewing Gallery" tags="" position="4825,1425" size="100,100"></tw-passagedata><tw-passagedata pid="70" name="Infirmary" tags="" position="4325,700" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Comedy Bar" tags="" position="4650,1525" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Investor Museum" tags="" position="4425,1425" size="100,100"></tw-passagedata><tw-passagedata pid="73" name="Dance Hall" tags="" position="4225,1550" size="100,100"></tw-passagedata><tw-passagedata pid="74" name="Nightclub" tags="" position="4425,1575" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Boardroom and Casino" tags="" position="4025,1650" size="100,100"></tw-passagedata><tw-passagedata pid="76" name="Resturant" tags="" position="4250,1725" size="100,100"></tw-passagedata><tw-passagedata pid="77" name="Piano Bar" tags="" position="4550,1725" size="100,100"></tw-passagedata><tw-passagedata pid="78" name="Buffet" tags="" position="4150,1900" size="100,100"></tw-passagedata><tw-passagedata pid="79" name="Bridge" tags="" position="4275,1875" size="100,100"></tw-passagedata><tw-passagedata pid="80" name="Examine Table 1" tags="" position="3800,275" size="100,100"></tw-passagedata><tw-passagedata pid="81" name="Examine Table 2" tags="" position="3975,300" size="100,100"></tw-passagedata><tw-passagedata pid="82" name="Examine Table 3" tags="" position="3850,600" size="100,100"></tw-passagedata><tw-passagedata pid="83" name="Talk to Rex Rogers" tags="Dialogue" position="975,1825" size="100,100">DIALOGUE: What do you want? play nice or piss off, I&#39;ve had enough of Mutants ruining my day to last me a liftime. 
+or Return to [[Door Access]]  to unlock another cell</tw-passagedata><tw-passagedata pid="64" name="Unlock Door 6 Prison Cell" tags="" position="275,1625" size="100,100"></tw-passagedata><tw-passagedata pid="65" name="Escape Pods" tags="" position="4725,700" size="100,100"></tw-passagedata><tw-passagedata pid="66" name="Brig" tags="" position="4825,850" size="100,100"></tw-passagedata><tw-passagedata pid="67" name="Chapel" tags="" position="4900,1275" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Resurant and Theatre" tags="" position="4850,1050" size="100,100"></tw-passagedata><tw-passagedata pid="69" name="Beauty Spa and Viewing Gallery" tags="" position="4825,1425" size="100,100"></tw-passagedata><tw-passagedata pid="70" name="Infirmary" tags="" position="4325,700" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Comedy Bar" tags="" position="4650,1525" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Investor Museum" tags="" position="4425,1425" size="100,100"></tw-passagedata><tw-passagedata pid="73" name="Dance Hall" tags="" position="4225,1550" size="100,100"></tw-passagedata><tw-passagedata pid="74" name="Nightclub" tags="" position="4425,1575" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Boardroom and Casino" tags="" position="4025,1650" size="100,100"></tw-passagedata><tw-passagedata pid="76" name="Resturant" tags="" position="4250,1725" size="100,100"></tw-passagedata><tw-passagedata pid="77" name="Piano Bar" tags="" position="4550,1725" size="100,100"></tw-passagedata><tw-passagedata pid="78" name="Buffet" tags="" position="4150,1900" size="100,100"></tw-passagedata><tw-passagedata pid="79" name="Bridge" tags="" position="4275,1875" size="100,100"></tw-passagedata><tw-passagedata pid="80" name="Examine Table 1" tags="Examine" position="3800,275" size="100,100"></tw-passagedata><tw-passagedata pid="81" name="Examine Table 2" tags="Examine" position="3975,300" size="100,100"></tw-passagedata><tw-passagedata pid="82" name="Examine Table 3" tags="Examine" position="3850,600" size="100,100"></tw-passagedata><tw-passagedata pid="83" name="Talk to Rex Rogers" tags="Dialogue" position="975,1825" size="100,100">DIALOGUE: What do you want? play nice or piss off, I&#39;ve had enough of Mutants ruining my day to last me a liftime. 
 
 &gt;[[Who are you?]]
 &gt;[[Why are you in this cell Rex?]]
-&gt;[[Tell Rex you will free him]]</tw-passagedata><tw-passagedata pid="84" name="Examine Drawing 1" tags="" position="2575,0" size="100,100"></tw-passagedata><tw-passagedata pid="85" name="Examine Drawing 2" tags="" position="2425,25" size="100,100"></tw-passagedata><tw-passagedata pid="86" name="Examine Drawing 3" tags="" position="2750,0" size="100,100"></tw-passagedata><tw-passagedata pid="87" name="Examine Drawing 4" tags="" position="2950,0" size="100,100"></tw-passagedata><tw-passagedata pid="88" name="Who are you?" tags="" position="975,1950" size="100,100"></tw-passagedata><tw-passagedata pid="89" name="Why are you in this cell Rex?" tags="" position="1100,1950" size="100,100"></tw-passagedata><tw-passagedata pid="90" name="Tell Rex you will free him" tags="" position="850,1950" size="100,100"></tw-passagedata><tw-passagedata pid="91" name="Journal" tags="" position="0,650" size="100,100">## Journal
+&gt;[[Tell Rex you will free him]]</tw-passagedata><tw-passagedata pid="84" name="Examine Drawing 1" tags="Examine" position="2800,100" size="100,100"></tw-passagedata><tw-passagedata pid="85" name="Examine Drawing 2" tags="Examine" position="2550,100" size="100,100"></tw-passagedata><tw-passagedata pid="86" name="Examine Drawing 3" tags="Examine" position="3025,50" size="100,100"></tw-passagedata><tw-passagedata pid="87" name="Examine Drawing 4" tags="Examine" position="3250,25" size="100,100"></tw-passagedata><tw-passagedata pid="88" name="Who are you?" tags="" position="975,1950" size="100,100"></tw-passagedata><tw-passagedata pid="89" name="Why are you in this cell Rex?" tags="" position="1100,1950" size="100,100"></tw-passagedata><tw-passagedata pid="90" name="Tell Rex you will free him" tags="" position="850,1950" size="100,100"></tw-passagedata><tw-passagedata pid="91" name="Journal" tags="" position="200,475" size="100,100">## Journal
 
 **Passwords**
 
-[if powerGenPassword===6966]
+[if powerGenPassword]
 The password for the nuclear power area is 6966 
 It can grant you access to the nuclear generator area. 
 Highly Dangerous.
 [continue]
 
-[if powerpassword===0877 ]
+[if powerpassword]
 The password for the nuclear power control room is 0877
 It can grant you access to the nuclear generator monitoring area
 [continue]
 
 
-[if password===0878]
+[if password]
 The Password for Computer Panel OS is 0878 
 This gives you access to unlock many doors and the prison cells on the lower decks
 [continue]
 
-&gt;[[Observation Posts]] </tw-passagedata><tw-passagedata pid="92" name="You have found the password for the Nuclear Control Room" tags="" position="1950,575" size="100,100">powerGenPassword: 6966 
+&gt;[[Observation Posts]] </tw-passagedata><tw-passagedata pid="92" name="You have found the password for the Nuclear Control Room" tags="" position="1950,575" size="100,100">powerGenPassword:true
 --
 
 **DIALOGUE: **
