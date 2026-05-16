@@ -234,7 +234,7 @@ powerGenPassword: false
 blowUp:false
 sound.ambient.music.url: &#39;music.mp3&#39;
 controlDeckAccess: false
-dolphin: false
+dolphin: true
 sanity:10
 --
 
@@ -811,10 +811,16 @@ locked
 
 or Return to [[Enter the Maintenance Lift]]
 
-</tw-passagedata><tw-passagedata pid="61" name="Examine the Dolphin" tags="Examine" position="3225,1300" size="100,100">You see a dolphin swimming around outside. It looks almost curious..
-
+</tw-passagedata><tw-passagedata pid="61" name="Examine the Dolphin" tags="Examine" position="3200,1275" size="100,100">
+[if dolphin]
+You see a dolphin swimming around outside. It looks almost curious..
 &gt;[[Talk to the Dolphin]]
-&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="62" name="Talk to the Dolphin" tags="Dialogue" position="2975,1125" size="100,100">## Talk to the Dolphin
+[continue]
+
+&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="62" name="Talk to the Dolphin" tags="Dialogue" position="2975,1125" size="100,100">dolphin: false
+--
+
+## Talk to the Dolphin
 
 You look afar at the Dolphin.
 Suddenly you are overcome with a sharp light which strikes your eyes and you pass out
