@@ -238,6 +238,11 @@ sound.ambient.music.url: &#39;music.wav&#39;
 controlDeckAccess: false
 dolphin: true
 sanity:10
+terryFree: false
+wastemanFree: false
+maryFree: false
+robertFree: false
+rexFree:false
 --
 
 {ambient sound: &#39;music&#39;}
@@ -374,7 +379,7 @@ It simply reads in slighty spidery handwriting
 Hmm looks like this is involved with the temperature control in the nuclear generator room. It requires a password to control.
 
 &gt;[[Enter Temp Control Board Password]]
-&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="Area" position="1400,1275" size="100,100">&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
+&gt;[[Enter Observation Post 1]] </tw-passagedata><tw-passagedata pid="16" name="Prisoner Cell Blocks" tags="Area" position="1475,1200" size="100,100">&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 &quot;Proceed with Caution, Some of these people are beyond evil. A few of them will rip your face off given half a chance, so don&#39;t give them one&quot;
 
@@ -430,7 +435,7 @@ Password Entered Correctly.
 Password Incorrect
 [continued]
 &gt;[[Enter Observation Post 1]] 
-</tw-passagedata><tw-passagedata pid="19" name="Examine Computer Panel OS OS1" tags="Use" position="475,1050" size="100,100">This is the control panel interface for the Nuclear Control Room. The desktop background is a garish poster of a semi nude woman on a beach. 
+</tw-passagedata><tw-passagedata pid="19" name="Examine Computer Panel OS OS1" tags="Use" position="525,1075" size="100,100">This is the control panel interface for the Nuclear Control Room. The desktop background is a garish poster of a semi nude woman on a beach. 
 
 *&#39;Classy Guys&#39; *
 
@@ -442,7 +447,7 @@ Before you there are a few buttons which allow you to control door access and so
 &gt;[[Lighting Control]]
 &gt;[[Randell Smithers Inbox]]
 
-or exit from the control panel and return [[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="20" name="Door Access" tags="Use" position="275,1125" size="100,100">You can control door access to some of the areas within the lower decks here
+or exit from the control panel and return [[Enter Observation Post 2]] </tw-passagedata><tw-passagedata pid="20" name="Door Access" tags="Use" position="250,1200" size="100,100">You can control door access to some of the areas within the lower decks here
 
 &gt;[[Unlock Nuclear Control Room]]
 &gt;[[Unlock Door 1 Prison Cell]]
@@ -463,13 +468,32 @@ This controls the light on / off state for various rooms in the lower decks
 
 or return to the computer menu 
 
-[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="Look" position="125,950" size="100,100">&gt;[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="500,1250" size="100,100">powerGenPassword: true
+[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="22" name="Randell Smithers Inbox" tags="Look" position="125,950" size="100,100">&gt;[[Examine Computer Panel OS OS1]] </tw-passagedata><tw-passagedata pid="23" name="Unlock Nuclear Control Room" tags="" position="500,1275" size="100,100">powerGenPassword: true
 --
 
 You hear a vent of steam in the distance. You now have access to the Nuclear Control Room.
 
 &gt;[[Door Access]] 
-&gt;[[Examine Computer Panel OS OS1]]</tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="50,1150" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="75,1325" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="137.5,1450" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="50,1750" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="Use" position="1025,825" size="100,100">
+&gt;[[Examine Computer Panel OS OS1]]</tw-passagedata><tw-passagedata pid="24" name="Unlock Door 1 Prison Cell" tags="" position="75,1125" size="100,100">
+[if terryFree===false]
+**DOOR 1 UNLOCKED - TERRY GNASHER**
+
+You hear a large metal thud and a sinister cockney chuckle in the distance. 
+[continued]
+
+**DOOR 1 has already been Unlocked**
+
+&gt;[[Door Access]] </tw-passagedata><tw-passagedata pid="25" name="Unlock Door 2 Prison Cell" tags="" position="50,1300" size="100,100">wastemanFree:true
+--
+
+[if wastemanFree]
+**DOOR  2 UNLOCKED - WASTEMAN**
+You hear a large metal thud and a nervous shivering exhale 
+[continued]
+
+**DOOR 2 has already been Unlocked**
+
+&gt;[[Door Access]] </tw-passagedata><tw-passagedata pid="26" name="Unlock Door 3 Prison Cell" tags="" position="175,1425" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="Unlock Door 4 Prison Cell" tags="" position="250,1775" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="Enter Temp Control Board Password" tags="Use" position="1025,825" size="100,100">
 [if powerpassword]
 
 You see a blue neon UI pop up on the control board.
@@ -510,7 +534,7 @@ You hear a horrendus howl in the distance. The temperateure has fallen cold enou
 Wrong password. 
 [[Examine Observation Post 1 Control Panel]] 
 [continue]
-</tw-passagedata><tw-passagedata pid="29" name="Increase Temp by 10" tags="Use" position="1000,975" size="100,100">temp: temp+10
+</tw-passagedata><tw-passagedata pid="29" name="Increase Temp by 10" tags="Use" position="950,1000" size="100,100">temp: temp+10
 --
 
 The Temperature is increased by 10 in the Nuclear Generator Room
@@ -526,7 +550,7 @@ The Temperature is increased  by 10 in the Nuclear Generator Room
 Temp is currently {temp}
 
 &gt;[[Enter Temp Control Board Password]] 
-&gt;[[Increase Temp by 10]] </tw-passagedata><tw-passagedata pid="31" name="END GAME" tags="End" position="2325,1275" size="100,100">### GAME END STATE TRIGGERED
+&gt;[[Increase Temp by 10]] </tw-passagedata><tw-passagedata pid="31" name="END GAME" tags="End" position="2425,675" size="100,100">### GAME END STATE TRIGGERED
 
 SOMEHOW THE GAME ENDED
 
@@ -596,13 +620,17 @@ The Door is locked it must be unlocked by a technician or with the relevent pass
 Terry Gnasher stands before you. An East end gangster of some refute. 
 From your days in London you knew his name struck fear in the East End. A stocky brutish man he is the classic gangster achetype driven by honour codes and business. 
 
+&gt;[[Talk to Terry]]
+[if terryFree]
+&gt;[[Greet Terry as a free man]]
+[continued]
 &gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="41" name="ROOM2 - Barry Goob Aka Wasteman" tags="Dialogue" position="1325,1625" size="100,100">### MORALITY : Chaotic Nuetral
 
 ## WASTEMAN 
 
 Barry Goob known better as Wasteman by the other inmates stands before you. A drug dealer and hacker from the lower east Side of Manhatten. He is in prison for minor drug dealing charges and volunteered for the submarine in order to improve his chances of a early release. He is idealistic and wishes to reorder the balance of power in the world and is an engaged and active anarchist who was previously involved in a activist cell. He skirts the edges of conventional morality but is essentially guided by a vision of a better world. 
-
-&gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="42" name="ROOM 3 - Mary Tunnenberg" tags="Dialogue" position="1725,1725" size="100,100">### MORALITY : TRUE NEUTRAL
+&gt;[[Talk to Wasteman]]
+&gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="42" name="ROOM 3 - Mary Tunnenberg" tags="Dialogue" position="1775,1575" size="100,100">### MORALITY : TRUE NEUTRAL
 
 ## Mary Tunnenberg
 
@@ -611,7 +639,11 @@ Mary Tunnenberg cuts a different figure to the rest of the half madmen and monst
 **DIALOGUE**
 **Mary: **&#39;Who&#39;s That? Who&#39;s there?&#39;
 
-&gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="43" name="ROOM4 - Craig Roland Aka The Crybaby Killer" tags="Dialogue" position="1200,1450" size="100,100">### MORALITY : CHAOTIC EVILr
+&gt;[[Talk to Mary]]
+[if maryFree]
+&gt;[[Greet Mary as a free woman]]
+[continued]
+&gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="43" name="ROOM4 - Craig Roland Aka The Crybaby Killer" tags="Dialogue" position="1175,1275" size="100,100">### MORALITY : CHAOTIC EVILr
 
 {embed image: &#39;thecrybabykiller.jpg&#39;}
 
@@ -619,7 +651,8 @@ Mary Tunnenberg cuts a different figure to the rest of the half madmen and monst
 
 Craig Ronald is an unassuming chubby man who excudes calm. He is however a homicidal maniac who was found guilty of the murder of 20 women. He was known as the Crybaby killer as there were several witness reports of eyewitnesses hearing blubbering near the time of the murders - this was Craig Roland crying after each killing. He targeted sex workers and escorts and is known to be highly manipulative. Whilst he may profess regret verbally he is a highly manipulative pyschopath incapable of empathy or true emotion. 
 
-&gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="44" name="ROOM 5 - Rex Rogers" tags="Dialogue" position="1025,1500" size="100,100">### MORALITY :  CHAOTIC GOOD
+&gt;[[Talk to the Crybaby Killer]]
+&gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="44" name="ROOM 5 - Rex Rogers" tags="Dialogue" position="1050,1450" size="100,100">### MORALITY :  CHAOTIC GOOD
 
 ## REX ROGERS
 
@@ -630,15 +663,19 @@ Rex is in jail for murdering his wife&#39;s rapist. He laments being in such a d
 [if rexUnlocked]
 &gt;[[Talk to Rex Rogers]]
 [continue]
-</tw-passagedata><tw-passagedata pid="45" name="ROOM 6 - Robert Finnigan - The Candyman" tags="Dialogue" position="1800,1550" size="100,100">### MORALITY : CHAOTIC EVIL
+</tw-passagedata><tw-passagedata pid="45" name="ROOM 6 - Robert Finnigan - The Candyman" tags="Dialogue" position="2000,1525" size="100,100">### MORALITY : CHAOTIC EVIL
 
 ## Robert Finnigan Aka The Candyman
 
 {embed image: &#39;candyman.jpg&#39;}
 
 The Candyman stands before you. 
-There is nothing reedamble about Rob Finnigan, known as The Candyman he is the most notourious serial killer in all Irish History known to speak in riddles before gutting his victims with a jagged hook. Raised by a pair of deliquiant alcoholic parents who were also circus perfomers his mind was warped by decades of abuse and maltreatment. He is very much a product of his upbringing but had almost no chance of being able to reintergrate into convential society. He is diagnosed with being a pyschopath with an extremely  rare mixed diagnosis of schizophenia and dissassocitive disorder such that he experienecs halluciliations, hearing voices and delusions as well as severe shifts in personality and behaviour.
 
+There is nothing reedamble about Rob Finnigan, known as The Candyman he is the most notourious serial killer in all Irish History known to speak in riddles before gutting his victims with a jagged hook. Raised by a pair of deliquiant alcoholic parents who were also circus perfomers his mind was warped by decades of abuse and maltreatment. He is very much a product of his upbringing but had almost no chance of being able to reintergrate into convential society.
+
+He is diagnosed with being a pyschopath with an extremely  rare mixed diagnosis of schizophenia and dissassocitive disorder such that he experienecs halluciliations, hearing voices and delusions as well as severe shifts in personality and behaviour.
+
+&gt;[[Talk to the Candyman]]
 &gt;[[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="46" name="Talk to the Mutant Monster" tags="Dialogue" position="2075,225" size="100,100">{embed image: &#39;nuclearPowerGen.jpg&#39;}
 
 The monster looks at you before shrieking an unholy shreik
@@ -706,9 +743,9 @@ This room is the radiation vent for the submarine. You enter and feel a slight s
 &gt;[[Examine the dead body in the Vent Room]]
 &gt;[[Use Computer OS NPG Vent]]
 
-Return to [[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="50" name="Examine the dead body in the Vent Room" tags="Examine" position="2100,1525" size="100,100">### LORE
+Return to [[Turn Right to the Nuclear Control Room]] </tw-passagedata><tw-passagedata pid="50" name="Examine the dead body in the Vent Room" tags="Examine" position="2250,1350" size="100,100">### LORE
 
-&gt;[[Enter the Power Generator Vent Room]] </tw-passagedata><tw-passagedata pid="51" name="Use Computer OS NPG Vent" tags="Use" position="2275,875" size="100,100">
+&gt;[[Enter the Power Generator Vent Room]] </tw-passagedata><tw-passagedata pid="51" name="Use Computer OS NPG Vent" tags="Use" position="2400,1025" size="100,100">
 [if blowUp]
 
 ### Self Destruct Ending
@@ -853,19 +890,19 @@ Please heed my message
 **DIALOGUE**
 &#39;What the hell was that. Did I bang my head on the rough journey here?&#39;
 
-&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="63" name="Unlock Door 5 Prison Cell" tags="" position="475,1775" size="100,100">### Cell 5 unlocked
+&gt;[[Enter the Maintenance Lift]] </tw-passagedata><tw-passagedata pid="63" name="Unlock Door 5 Prison Cell" tags="" position="650,1850" size="100,100">### Cell 5 unlocked
 
 You hear the distant turning of mechnical gears
 You unlock cell 5 which contains Rex Rogers.
 
 You can talk to him now
-[[ROOM 5 - Rex Rogers]] 
+&gt;[[ROOM 5 - Rex Rogers]] 
 
-or Return to [[Door Access]]  to unlock another cell</tw-passagedata><tw-passagedata pid="64" name="Unlock Door 6 Prison Cell" tags="" position="275,1625" size="100,100"></tw-passagedata><tw-passagedata pid="65" name="Escape Pods" tags="" position="4725,700" size="100,100"></tw-passagedata><tw-passagedata pid="66" name="Brig" tags="" position="4825,850" size="100,100"></tw-passagedata><tw-passagedata pid="67" name="Chapel" tags="" position="4900,1275" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Resurant and Theatre" tags="" position="4850,1050" size="100,100"></tw-passagedata><tw-passagedata pid="69" name="Beauty Spa and Viewing Gallery" tags="" position="4825,1425" size="100,100"></tw-passagedata><tw-passagedata pid="70" name="Infirmary" tags="" position="4325,700" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Comedy Bar" tags="" position="4650,1525" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Investor Museum" tags="" position="4425,1425" size="100,100"></tw-passagedata><tw-passagedata pid="73" name="Dance Hall" tags="" position="4225,1550" size="100,100"></tw-passagedata><tw-passagedata pid="74" name="Nightclub" tags="" position="4425,1575" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Boardroom and Casino" tags="" position="4025,1650" size="100,100"></tw-passagedata><tw-passagedata pid="76" name="Resturant" tags="" position="4250,1725" size="100,100"></tw-passagedata><tw-passagedata pid="77" name="Piano Bar" tags="" position="4550,1725" size="100,100"></tw-passagedata><tw-passagedata pid="78" name="Buffet" tags="" position="4150,1900" size="100,100"></tw-passagedata><tw-passagedata pid="79" name="Bridge" tags="" position="4275,1875" size="100,100"></tw-passagedata><tw-passagedata pid="80" name="Examine Table 1" tags="Examine" position="3800,275" size="100,100"></tw-passagedata><tw-passagedata pid="81" name="Examine Table 2" tags="Examine" position="3975,300" size="100,100"></tw-passagedata><tw-passagedata pid="82" name="Examine Table 3" tags="Examine" position="3850,600" size="100,100"></tw-passagedata><tw-passagedata pid="83" name="Talk to Rex Rogers" tags="Dialogue" position="975,1825" size="100,100">DIALOGUE: What do you want? play nice or piss off, I&#39;ve had enough of Mutants ruining my day to last me a liftime. 
+or Return to [[Door Access]]  to unlock another cell</tw-passagedata><tw-passagedata pid="64" name="Unlock Door 6 Prison Cell" tags="" position="400,1650" size="100,100"></tw-passagedata><tw-passagedata pid="65" name="Escape Pods" tags="" position="4725,700" size="100,100"></tw-passagedata><tw-passagedata pid="66" name="Brig" tags="" position="4825,850" size="100,100"></tw-passagedata><tw-passagedata pid="67" name="Chapel" tags="" position="4900,1275" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Resurant and Theatre" tags="" position="4850,1050" size="100,100"></tw-passagedata><tw-passagedata pid="69" name="Beauty Spa and Viewing Gallery" tags="" position="4825,1425" size="100,100"></tw-passagedata><tw-passagedata pid="70" name="Infirmary" tags="" position="4325,700" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Comedy Bar" tags="" position="4650,1525" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Investor Museum" tags="" position="4425,1425" size="100,100"></tw-passagedata><tw-passagedata pid="73" name="Dance Hall" tags="" position="4225,1550" size="100,100"></tw-passagedata><tw-passagedata pid="74" name="Nightclub" tags="" position="4425,1575" size="100,100"></tw-passagedata><tw-passagedata pid="75" name="Boardroom and Casino" tags="" position="4025,1650" size="100,100"></tw-passagedata><tw-passagedata pid="76" name="Resturant" tags="" position="4250,1725" size="100,100"></tw-passagedata><tw-passagedata pid="77" name="Piano Bar" tags="" position="4550,1725" size="100,100"></tw-passagedata><tw-passagedata pid="78" name="Buffet" tags="" position="4150,1900" size="100,100"></tw-passagedata><tw-passagedata pid="79" name="Bridge" tags="" position="4275,1875" size="100,100"></tw-passagedata><tw-passagedata pid="80" name="Examine Table 1" tags="Examine" position="3800,275" size="100,100"></tw-passagedata><tw-passagedata pid="81" name="Examine Table 2" tags="Examine" position="3975,300" size="100,100"></tw-passagedata><tw-passagedata pid="82" name="Examine Table 3" tags="Examine" position="3850,600" size="100,100"></tw-passagedata><tw-passagedata pid="83" name="Talk to Rex Rogers" tags="Dialogue" position="1075,1800" size="100,100">DIALOGUE: What do you want? play nice or piss off, I&#39;ve had enough of Mutants ruining my day to last me a liftime. 
 
 &gt;[[Who are you?]]
 &gt;[[Why are you in this cell Rex?]]
-&gt;[[Tell Rex you will free him]]</tw-passagedata><tw-passagedata pid="84" name="Examine Drawing 1" tags="Examine" position="2800,100" size="100,100"></tw-passagedata><tw-passagedata pid="85" name="Examine Drawing 2" tags="Examine" position="2550,100" size="100,100"></tw-passagedata><tw-passagedata pid="86" name="Examine Drawing 3" tags="Examine" position="3025,50" size="100,100"></tw-passagedata><tw-passagedata pid="87" name="Examine Drawing 4" tags="Examine" position="3250,25" size="100,100"></tw-passagedata><tw-passagedata pid="88" name="Who are you?" tags="" position="975,1950" size="100,100"></tw-passagedata><tw-passagedata pid="89" name="Why are you in this cell Rex?" tags="" position="1100,1950" size="100,100"></tw-passagedata><tw-passagedata pid="90" name="Tell Rex you will free him" tags="" position="850,1950" size="100,100"></tw-passagedata><tw-passagedata pid="91" name="Journal" tags="" position="200,475" size="100,100">## Journal
+&gt;[[Tell Rex you will free him]]</tw-passagedata><tw-passagedata pid="84" name="Examine Drawing 1" tags="Examine" position="2800,100" size="100,100"></tw-passagedata><tw-passagedata pid="85" name="Examine Drawing 2" tags="Examine" position="2550,100" size="100,100"></tw-passagedata><tw-passagedata pid="86" name="Examine Drawing 3" tags="Examine" position="3025,50" size="100,100"></tw-passagedata><tw-passagedata pid="87" name="Examine Drawing 4" tags="Examine" position="3250,25" size="100,100"></tw-passagedata><tw-passagedata pid="88" name="Who are you?" tags="" position="1075,1975" size="100,100"></tw-passagedata><tw-passagedata pid="89" name="Why are you in this cell Rex?" tags="" position="1225,1950" size="100,100"></tw-passagedata><tw-passagedata pid="90" name="Tell Rex you will free him" tags="" position="850,1950" size="100,100"></tw-passagedata><tw-passagedata pid="91" name="Journal" tags="" position="200,475" size="100,100">## Journal
 
 **Passwords**
 
@@ -886,10 +923,31 @@ The Password for Computer Panel OS is 0878
 This gives you access to unlock many doors and the prison cells on the lower decks
 [continue]
 
-&gt;[[Observation Posts]] </tw-passagedata><tw-passagedata pid="92" name="You have found the password for the Nuclear Control Room" tags="" position="1950,575" size="100,100">powerGenPassword:true
+&gt;[[Observation Posts]] </tw-passagedata><tw-passagedata pid="92" name="You have found the password for the Nuclear Control Room" tags="" position="1775,775" size="100,100">powerGenPassword:true
 --
 
 **DIALOGUE: **
 What could that mean? Best make a note of it. Could be a random bunch of numbers it spits out, could be a memory of whoever that poor soul was before she was ragahed by the pestilence that haunts these halls.
 
-&gt;[[Observation Posts]] </tw-passagedata></tw-storydata></html>
+&gt;[[Observation Posts]] </tw-passagedata><tw-passagedata pid="93" name="Talk to Terry" tags="" position="1500,1800" size="100,100"></tw-passagedata><tw-passagedata pid="94" name="Talk to Wasteman" tags="" position="1325,1750" size="100,100"></tw-passagedata><tw-passagedata pid="95" name="Talk to the Candyman" tags="" position="2200,1475" size="100,100">Ahoy Ahoy and who do that be
+I&#39;m me the Candyman, one, two, three
+I hop to the left 
+and I skip to the right
+if you see me and my mummy - 
+you&#39;re in a fight. 
+Free me above or leave me below,
+Either way laddie I&#39;ll put on a good show!
+
+You feel yourself mentally wretch listening to the madman&#39;s voice
+[if candymanFree]
+&gt;[[Greet The Candyman as a free Candyman]]
+[continued]
+Leave quickly to the [[Prisoner Cell Blocks]] </tw-passagedata><tw-passagedata pid="96" name="Talk to Mary" tags="" position="2075,1850" size="100,100"></tw-passagedata><tw-passagedata pid="97" name="Talk to the Crybaby Killer" tags="" position="1100,1125" size="100,100"></tw-passagedata><tw-passagedata pid="98" name="Greet Terry as a free man" tags="" position="1700,1800" size="100,100"></tw-passagedata><tw-passagedata pid="99" name="Greet Mary as a free woman" tags="" position="1775,1950" size="100,100"></tw-passagedata><tw-passagedata pid="100" name="Greet The Candyman as a free Candyman" tags="End" position="2375,1725" size="100,100">Ahhh haha laddie you heard my perplexing song
+and now I&#39;m free, even though I&#39;m wrong
+I promise you boy you&#39;ll get your award
+in ancient valhalla and here is my
+**S W O R D **
+
+The Candyman leaps from him cell with a rusty sword, jumps on the player and cuts them down - attacking Bredlee savagely till he dies. 
+
+&gt;[[END GAME]] </tw-passagedata></tw-storydata></html>
