@@ -1,3 +1,5 @@
+## Klaxon Idea by Warren
+
 Wassup guys, I’ve just been dropping my kids off at school when inspiration 
 struck. Long story short I have to wait at a gate that has to be remotely
  unlocked and used a klaxon style ringing when requesting access, one for
@@ -9,8 +11,6 @@ walking the streets post strike and just hearing that same alarm blaring
 out from around the area (also out of sync) and figured it would help when
  writing in some sort of emergency on the sub, maybe we have to restore 
  power to the reactor and the alarm plays as a timer ticks down before the
-  reactor meltsdown or something. But I think those two factors could 
-  really add to the tension when playing in comparison to just having a 
-  singular alarm playing in sync throughout the whole area. Just an idea 
-  really but feel it could help add to that “not quite right” environment
-   we’re trying to build
+  reactor meltsdown or something.
+  
+But I think those two factors could really add to the tension when playing in comparison to just having a singular alarm playing in sync throughout the whole area. Just an idea really but feel it could help add to that “not quite right” environment we’re trying to build

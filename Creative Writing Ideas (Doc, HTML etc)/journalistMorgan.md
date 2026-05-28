@@ -1,3 +1,4 @@
+### The Journalist by Morgan
 The journalist steps onto the submarine with the quiet satisfaction of a 
 man who has finally caught the break he's been chasing. For years, 
 he's scratched at the edges of strange stories—whispers of ghost ships,

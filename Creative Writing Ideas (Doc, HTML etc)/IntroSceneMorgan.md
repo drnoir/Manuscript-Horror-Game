@@ -1,3 +1,5 @@
+## Intro Scene by Morgan
+
 The journalist steps onto the submarine with the quiet satisfaction of a man who has finally caught the break he's been chasing. For years, he's scratched at the edges of strange stories—whispers of ghost ships, unexplained disappearances, government submarines departing from hidden ports—but nothing ever stuck. Now this: an exclusive invitation to document the first ever dimensional voyage beneath the sea. A legitimate miracle of science. A frontier no human has crossed. He clutches his notebook like a lifeline, already drafting the opening lines in his head, already imagining the awards, the recognition, the doors this will open. He has no idea what's waiting below.
 
 The submarine descends through water so dark it seems to swallow the light from the observation windows. The wealthy guests sip champagne and press their faces to the glass, giddy with the exclusivity of it all. They've paid fortunes for this—to be the first, to be the ones who can say they were there. The journalist moves among them, jotting observations, capturing quotes, noting the way the light plays across their faces as the last traces of the sun disappear. In the galley, a teenage sou chef wipes down counters and dreams of one day cooking for people who actually notice. He doesn't notice the crew's averted eyes either. No one does. No one wonders about the lower decks, the sealed hatches, the compartments not marked on any map. They're all too busy with the story they think they're living.
@@ -60,7 +62,7 @@ You take a breath. You step forward.
 and that would be like, where the game would start I presume.
 also this is my idea for the ship changing over time mechanic:
 
-The Changing Environment:
+## The Changing Environment:
 •    Corridors that existed one hour are gone the next, sealed off by organic growth or crushed by pressure or simply moved—the ship rearranging itself like a body digesting a meal.
 •    Paths must be relearned constantly. A safe route becomes a dead end. A cleared hallway becomes a pulsing tunnel of flesh.
 •    The ship doesn't just decay—it becomes, and what it becomes is hungry.
