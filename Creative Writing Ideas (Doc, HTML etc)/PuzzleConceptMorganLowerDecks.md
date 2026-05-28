@@ -1,3 +1,5 @@
+## Puzzle concept by Morgan 
+
 So I had an idea on how you could implement something like this.
 
 Okay, so imagine there are three different colored buttons you need to press.
