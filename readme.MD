@@ -17,6 +17,9 @@ Ideas, documents, and experimental writing pieces for narrative development.
 ### 📁 Pitch Bible
 Design documentation and project specifications.
 
+### Windows Builds
+Downloable Windows builds of Twine
+
 ---
 
 **Attribution:** Heat Assembly 2026
