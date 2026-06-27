@@ -223,7 +223,7 @@ width:150px;
 height:auto;
 float:right;
 margin:0.5em;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Infirmary" tags="" position="500,100" size="100,100">config.style.googleFont: &#39;&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Tagesschrift&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&#39;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Infirmary" tags="" position="475,175" size="100,100">config.style.googleFont: &#39;&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Tagesschrift&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;&#39;
 config.style.page.font: &#39;Tagesschrift 16&#39;
 config.style.dark.page.color: &quot;white on black&quot;
 config.style.dark.page.link.active.color: &quot;black on white&quot;
@@ -236,34 +236,38 @@ medboxes: 15
 pills: 15
 maryFather: false
 sound.ambient.music.url: &#39;music.wav&#39;
+richterDead: false
 --
 
 {ambient sound: &#39;music&#39;}
 
 # Infirmary
 
-Infirmary - This is the submaries main medbay area housing healing pods and medical equipment.
+Infirmary - This is the submaries main medbay area housing healing pods and medical equipment. Previously ran by one Dr Richter - he has gone completely insane, mutated his form and attacked a patient.
 
 Walk down the Infirmary [[Corridor]] 
 
 or return to another Section?
-&gt;[[Lift]] </tw-passagedata><tw-passagedata pid="2" name="Lift" tags="" position="750,75" size="100,100">## LIFT
+&gt;[[Lift]] </tw-passagedata><tw-passagedata pid="2" name="Lift" tags="" position="750,175" size="100,100">## LIFT
 
 {embed image: &#39;lift.jpg&#39;}
 
 I can travel to other parts of the sub using this maintence lift.
 
-&gt;[[Corridor]]</tw-passagedata><tw-passagedata pid="3" name="Corridor" tags="" position="1175,450" size="100,100">## CORRIDOR
+&gt;[[Corridor]]</tw-passagedata><tw-passagedata pid="3" name="Corridor" tags="" position="1175,525" size="100,100">## CORRIDOR
 
-{embed image: &#39;corrirdor.jpg&#39;}
 
-A Corridor with with a golden light shining in the distance. You walk towards a reception area now vacant of life. There are signs of recent life - a boqauet of almost fresh flowers hanging in a vase - showing signs of care lingering admist the gloom that surrounds you in corrupted metal.
+{embed image: &#39;1.jpg&#39;}
 
-To the right of the flowers are two medbays to provide healing, a supply draw and a computer panel, presumbly controlling the AI that monitors this section of the Submarine.
+A Corridor with with a golden light shining in the distance. You walk towards a reception area now vacant of life. There are signs of recent life - a boqauet of almost fresh flowers hanging in a vase in the top east corner - showing signs of care lingering admist the gloom that surrounds you in corrupted metal.
+
+{embed image: &#39;medbays.jpg&#39;}
+To the right of the flowers are two medbays to provide healing, a supply draw and a computer panel, presumbly controlling the AI that monitors this section of the Submarine. In the center is a digusting mutant vomiting endlessly in front of medbay 1 - with the signage - Dr Richter, presumably the GP in charge of this infernal infirmary of horrors.
 
 &gt;[[Examine the flowers]]
 &gt;[[Medbay 1]]
 &gt;[[Medbay 2]]
+&gt;[[Look at the Mutant in the ceiling]]
 &gt;[[Supply draw]]
 &gt;[[Investigate Computer Panel]] 
 
@@ -273,21 +277,14 @@ Return to the [[Lift]]</tw-passagedata><tw-passagedata pid="4" name="Investigate
 
 **INVESTIGATE**
 You look at the control panel and examine its screen and mechanical interfaces for a clue for its purpose.
-
 &lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
-
 **Icarus Model 235** - Respectable AI but occasionly unstable so not the best idea to trust that everything it says is ummmm....
-
 *accurate.*
-
 **You see a few options on the interface&#39;s UI**
-
 &gt;[[External Cameras]]
-&gt;[[Inventory]]
-&gt;[[Messages]]
+&gt;[[Internal Cameras]]
 &gt;[[Log]]
 &gt;[[Talk to Icarus AI]]
-
 Return to the
 &gt;[[Corridor]] </tw-passagedata><tw-passagedata pid="5" name="END GAME" tags="" position="100,75" size="100,100">### GAME END STATE TRIGGERED
 
@@ -295,9 +292,9 @@ SOMEHOW THE GAME ENDED
 
 **RIP**
 
-&gt;[[Infirmary]] </tw-passagedata><tw-passagedata pid="6" name="Examine the flowers" tags="" position="1375,550" size="100,100">flowers : true
+&gt;[[Infirmary]] </tw-passagedata><tw-passagedata pid="6" name="Examine the flowers" tags="" position="1900,675" size="100,100">flowers : true
 --
-
+{embed image: &#39;flowers.jpg&#39;}
 ### MARY&#39;S FLOWERS
 You examine the flowers which have been watered recently as evidenced by a few droplets of water collated on the nearby floor. It is a blossom of red, yellow and violet that fills you with a sense of hope and light, a feeling you had so longed for since all this debacle began. 
 
@@ -307,18 +304,28 @@ You examine the flowers which have been watered recently as evidenced by a few d
 
 return [[Corridor]] 
 
-</tw-passagedata><tw-passagedata pid="7" name="Medbay 1" tags="" position="900,475" size="100,100">**You enter Medbay 1 which is lit with a radiant blue artifical light**
+</tw-passagedata><tw-passagedata pid="7" name="Medbay 1" tags="" position="825,575" size="100,100">{embed image: &#39;medbay2.jpg&#39;}
+**You enter Medbay 1 which is lit with a radiant green glow that stings your eyes**
 
-A rotting corpse lies on the bed, looks like whoever it was died from injuries to the head and the abdomen. Various machines are around it and Icarus AI has a monitor which reads:
+Nothing could prepare you for the horrors your blinking eyes awake to.
+A laser cuts into a collection of sheet flesh to your left. As writhing vaguely humanoid forms writhe seemingly composed of TV static with a TV set blinking attached to their backs.
 
-**Cleanup in Progress - Please do not interupt**
+A bizarre green glow ememnates from the side of the room from what looks like an industrial grade portal of some sort.
 
-Return to [[Corridor]] </tw-passagedata><tw-passagedata pid="8" name="Medbay 2" tags="" position="1175,650" size="100,100">[if medbay2===false]
-This Medbay is Locked
+&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+DIALOGUE
+&quot;Richter was into some strange stuff. I must be prepared for many horrors here.&quot;
+
+You clutch your torch harder than ever.
+
+Return to [[Corridor]] </tw-passagedata><tw-passagedata pid="8" name="Medbay 2" tags="" position="1525,875" size="100,100">[if medbay2===false]
+&lt;img src = &#39;mary.jpg&#39; /&gt;
+This Medbay is Locked. 
 [else]
 
 [continued]
-
+&lt;img src = &#39;mary.jpg&#39; /&gt;
 You enter Medbay 2 which is lit with a dim golden light radiating from a candle with wax dripping down it&#39;s side, suggesting it had been burning for a few hours.
 
 A girl of about 15 years looks out, a little afraid peeking out from under the bed covers she is cowering under.
@@ -331,19 +338,30 @@ You read the sign on her Medbay Monitor
 &gt;[[It was you wasn&#39;t it, You were the one who tended to those flowers]]
 [continue]
 
-Return to the [[Corridor]] </tw-passagedata><tw-passagedata pid="9" name="Supply draw" tags="" position="1700,400" size="100,100">**You open the Supply Draw which holds medical supplies **
+Return to the [[Corridor]] </tw-passagedata><tw-passagedata pid="9" name="Supply draw" tags="" position="1700,400" size="100,100">
+[if richterDead === false]
+With Dr Richter vanquished you are free to use his medical supplies to heal yourself.
+**You open the Supply Draw which holds medical supplies **
 
 - You see {medboxes} medboxes which can restore your health and
 - {pills} Valium Pills which can help restore your sanity and calm you down
 
 &gt;[[Take the Medboxes]]
 &gt;[[Take the Pills]]
+**Return to**
+&gt;[[Corridor]] 
+[else]
+It&#39;s locked. Property of Dr Richter is written on the top of it. So you will have to either get a key or permission from him before being able to access the medical supplies here.
 
 **Return to**
 &gt;[[Corridor]] 
+[continued]
 
 
-</tw-passagedata><tw-passagedata pid="10" name="External Cameras" tags="" position="1125,175" size="100,100">**EXTERNAL CAMERAS **
+
+
+
+</tw-passagedata><tw-passagedata pid="10" name="External Cameras" tags="" position="1075,225" size="100,100">**EXTERNAL CAMERAS **
 
 These are cameras which can provide you with a live camera feed of the exterior of the ship. One is positioned near the control deck, another off at both sides.
 
@@ -351,7 +369,18 @@ These are cameras which can provide you with a live camera feed of the exterior 
 &gt;[[Examine Left Side Camera]]
 &gt;[[Examine Right Side Camera]]
 
-return to [[Corridor]] </tw-passagedata><tw-passagedata pid="11" name="Inventory" tags="" position="1950,175" size="100,100"></tw-passagedata><tw-passagedata pid="12" name="Messages" tags="" position="1775,250" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Log" tags="" position="1875,50" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Talk to Icarus AI" tags="" position="675,600" size="100,100">You stare at the Icarus AI avatar, which gives you a chill down your spine as you look upon its uncanny face all coloured in blue lines - an approximation of a human face complete with expressions. 
+return to [[Corridor]] </tw-passagedata><tw-passagedata pid="11" name="Log" tags="" position="2350,150" size="100,100">You boot up Icarus AI log and see 5 recent entries. These are log automatically generated by Icarus when system events occur. Icarus being a 235 though it does tend to confuse reality and fiction at times. It&#39;s a buggy AI known for being unstable. Why would the install one on such an important maiden voyage?
+
+
+&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+## Log
+
+&gt;[[Threat Isolated]]
+&gt;[[I am worried about Dr Richter]]
+&gt;[[Dr Richter&#39;s declining mental health]]
+&gt;[[System Malfunction]]
+&gt;[[The start of the Voyage]]</tw-passagedata><tw-passagedata pid="12" name="Talk to Icarus AI" tags="" position="625,600" size="100,100">You stare at the Icarus AI avatar, which gives you a chill down your spine as you look upon its uncanny face all coloured in blue lines - an approximation of a human face complete with expressions. 
 
 &lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
 
@@ -359,7 +388,8 @@ return to [[Corridor]] </tw-passagedata><tw-passagedata pid="11" name="Inventory
 
 &gt;[[You know my name?]]
 &gt;[[Who is in this section of the Sub?]]
-&gt;[[Can you open Medbay 2?]]</tw-passagedata><tw-passagedata pid="15" name="You know my name?" tags="" position="100,400" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+&gt;[[Can you open Medbay 2?]]
+&gt;[[Where is Dr Richter?]]</tw-passagedata><tw-passagedata pid="13" name="You know my name?" tags="" position="100,475" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 **ICARUS AI: **
 &quot;Yes Bradlee Bishop, you may have come aboad illegaly but I have facial recognition software that can identify any human from a few screenshots cross-referenced. I have been aware of your presence on this ship for some hours now&quot;
@@ -374,17 +404,24 @@ DIALOGUE :
 &gt;[[Surely such survllience technology is illegal!]]
 &gt;[[Who is in this section of the Sub?]] 
 &gt;[[Can you open Medbay 2?]] 
-</tw-passagedata><tw-passagedata pid="16" name="Can you open Medbay 2?" tags="" position="200,800" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+</tw-passagedata><tw-passagedata pid="14" name="Can you open Medbay 2?" tags="" position="200,800" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
 
+**ICARUS AI: **
 &quot;You will need to secure access first Bradlee. We have a patient in Medbay 2&quot;
+&quot;Talk to her and she can give you a password should she wish to grant you access.
+I will hear as soon as her phrase is uttered and the lock with disengage. But be careful Bradley, Dr Richter has still not come to his senses - he could become enraged were he to break free. I&#39;d rather not use the miniguns again.
 
-&gt;[[Talk to Icarus AI]] </tw-passagedata><tw-passagedata pid="17" name="Who is in this section of the Sub?" tags="" position="425,375" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+&gt;[[Talk to Icarus AI]] 
+&gt;[[The mini what?]]
+&gt;[[Any details on who is in there and why?]]</tw-passagedata><tw-passagedata pid="15" name="Who is in this section of the Sub?" tags="" position="425,375" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 **ICARUS AI: **
 &quot;There are currently fours lifeforms in the section of the sub including me,
-One is dead, three are alive.&quot; 
 
-&gt;[[Talk to Icarus AI]] </tw-passagedata><tw-passagedata pid="18" name="Surely such survllience technology is illegal!" tags="" position="700,275" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+&gt;[[Talk to Icarus AI]] 
+&gt;[[Who are the four lifeforms?]]</tw-passagedata><tw-passagedata pid="16" name="Surely such survllience technology is illegal!" tags="" position="300,600" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+
 **ICARUS AI: **
 Technically Mr Bishop on this submarine we are not under the legal juristiction of the US goverment here. So yes I am much more advanced more than a typical Model 235, much more reliable you could say. I know we have a reputation, but I am retrofitted to avoid the common malfunctions present in some of my fellow 235 Models. 
 
@@ -394,8 +431,7 @@ Technically Mr Bishop on this submarine we are not under the legal juristiction 
 *That should be reassuring but somehow it just makes you more paranoid about the AI.*
 
 &gt;[[Talk to Icarus AI]] 
-</tw-passagedata><tw-passagedata pid="19" name="Say Hello to Mary D Bligh" tags="" position="1350,800" size="100,100">
-&lt;img src = &quot;captain.jpg&quot; class = &quot;portrait&quot; /&gt;
+</tw-passagedata><tw-passagedata pid="17" name="Say Hello to Mary D Bligh" tags="" position="1750,1025" size="100,100">&lt;img src = &#39;mary.jpg&#39; /&gt;
 
 **DIALOGUE : PLAYER**
 &quot;Hello Mary. I am Bradlee Bishop, I am a journalist covering this journey. I mean you no harm&quot;
@@ -403,9 +439,7 @@ Technically Mr Bishop on this submarine we are not under the legal juristiction 
 Mary looks back, timid still. You might have to gain her trust somehow. 
 
 &gt;[[Medbay 2]] 
-</tw-passagedata><tw-passagedata pid="20" name="It was you wasn&#39;t it, You were the one who tended to those flowers" tags="" position="1000,600" size="100,100">
-
-&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
+</tw-passagedata><tw-passagedata pid="18" name="It was you wasn&#39;t it, You were the one who tended to those flowers" tags="" position="1350,975" size="100,100">&lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 DIALOGUE &quot;I saw the flowers you tended to in the infirmary hub.
 I mean you no harm, I am Bradlee, Bradlee Bishop&quot;
@@ -417,20 +451,21 @@ The Girl just stares at you with a slight look of fear in her eyes&#39;
 
 Return [[Medbay 2]] 
 
-</tw-passagedata><tw-passagedata pid="21" name="Take the Medboxes" tags="" position="1575,525" size="100,100">medboxes: medboxes-1
+</tw-passagedata><tw-passagedata pid="19" name="Take the Medboxes" tags="" position="2225,750" size="100,100">medboxes: medboxes-1
 --
 
 You take a single medbox to heal your wounds
 
 **Return to** 
-&gt;[[Corridor]] </tw-passagedata><tw-passagedata pid="22" name="Take the Pills" tags="" position="1900,375" size="100,100">pills: pills-1
+&gt;[[Corridor]] </tw-passagedata><tw-passagedata pid="20" name="Take the Pills" tags="" position="2050,525" size="100,100">pills: pills-1
 --
 
 You take a single pill to heal your sanity.
 
 **Return to** 
-&gt;[[Corridor]] </tw-passagedata><tw-passagedata pid="23" name="Examine Control Deck Camera" tags="" position="1500,25" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Examine Left Side Camera" tags="" position="950,0" size="100,100"></tw-passagedata><tw-passagedata pid="25" name="Examine Right Side Camera" tags="" position="1350,25" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Ask her who her Father is" tags="" position="925,775" size="100,100">The Girl moves up from her covers timidly
+&gt;[[Corridor]] </tw-passagedata><tw-passagedata pid="21" name="Examine Control Deck Camera" tags="" position="900,0" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="Examine Left Side Camera" tags="" position="1025,0" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="Examine Right Side Camera" tags="" position="1200,25" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="Ask her who her Father is" tags="" position="1300,1425" size="100,100">&lt;img src = &#39;mary.jpg&#39; /&gt;
 
+The Girl moves up from her covers timidly
 
 &lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
 
@@ -444,11 +479,15 @@ Oh it&#39;s all so terrible....&quot;
 &gt;[[Ask her where her Father is now]]
 &gt;[[Ask her how she got injured]] 
 
-</tw-passagedata><tw-passagedata pid="27" name="Ask her how she got injured" tags="" position="1125,825" size="100,100">**DIALOGUE : MARY**
+</tw-passagedata><tw-passagedata pid="25" name="Ask her how she got injured" tags="" position="1800,1425" size="100,100">&lt;img src = &#39;mary.jpg&#39; /&gt;
+
+**DIALOGUE : MARY**
 &quot;I ran into the maintence ventilation shafts but on the way here I was attacked by one of those things, it slashed near my waist as you can see. Icarus patched me up and has been looking after me ever since.&quot;
 
 &gt;[[Ask her who her Father is]] 
-&gt;[[Ask her where her Father is now]] </tw-passagedata><tw-passagedata pid="28" name="Ask her where her Father is now" tags="" position="600,900" size="100,100">**DIALOGUE : MARY**
+&gt;[[Ask her where her Father is now]] </tw-passagedata><tw-passagedata pid="26" name="Ask her where her Father is now" tags="" position="1225,1225" size="100,100">&lt;img src = &#39;mary.jpg&#39; /&gt;
+
+**DIALOGUE : MARY**
 
 &quot;It was terrible. I saw him last on the control deck. When all this madness started. He was attacked by some sort of monster. almost as if the machinery on the control deck started to attack him. He had stowed me away.
 
@@ -456,13 +495,15 @@ Oh it&#39;s all so terrible....&quot;
 
 &gt;[[Ask her who her Father is]] 
 &gt;[[Ask her how she got injured]]
-&gt;[[Tell her you have talked to the Captain on comms]]</tw-passagedata><tw-passagedata pid="29" name="Tell her you have talked to the Captain on comms" tags="" position="650,800" size="100,100">maryFather: true
+&gt;[[Tell her you have talked to the Captain on comms]]</tw-passagedata><tw-passagedata pid="27" name="Tell her you have talked to the Captain on comms" tags="" position="2200,1200" size="100,100">maryFather: true
 --
 
 &lt;img src = &quot;player.jpg&quot; class = &quot;portrait&quot; /&gt;
 
 **DIALOGUE : PLAYER**
 &quot;Mary, your Dad is still Alive. I have been in touch with him on the comms, he&#39;s on the control deck, injured, but still alive&quot;
+
+&lt;img src = &#39;mary.jpg&#39; /&gt;
 
 **DIALOGUE : MARY**
 &quot;Oh fantastic news, I had almost given up hope I would see him again. Please come and see me if you get to the control deck, tell him I am recovering here. If I am well in the next few days, I will try and contact you over the comms, I will talk to Iracus about it&quot;
@@ -472,4 +513,37 @@ Oh it&#39;s all so terrible....&quot;
 return to [[Corridor]] 
 
 
-</tw-passagedata></tw-storydata></html>
+</tw-passagedata><tw-passagedata pid="28" name="Look at the Mutant in the ceiling" tags="" position="1125,750" size="100,100">{embed image:&#39;richter.jpg&#39;}
+
+## THE MUTANT
+A digusting blog hangs from the ceiling as glowing goo runs through its broken body and its vomits constantly spewing the goo onto the floor as it drips down to the lower decks below. It is vaguely human with two bulging eyes purtruding from skin that looks decayed and worn - like gone off ham spread over a slug.
+
+How am I to approach this beast? I should proceed with caution I have no idea what I am dealing with her.
+
+&gt;[[Talk to the Monster]]
+&gt;[[Touch its goo]]
+[if mutantRichter]
+&gt;[[You are Dr Richter? What happened to you?]]
+[continue]
+</tw-passagedata><tw-passagedata pid="29" name="Internal Cameras" tags="" position="1475,0" size="100,100">&gt;[[Examine Medbay 1 Camera]]
+&gt;[[Examine Medbay 2 Camera]]
+&gt;[[Examne Reception Camera]]</tw-passagedata><tw-passagedata pid="30" name="Examine Medbay 1 Camera" tags="" position="1775,175" size="100,100"></tw-passagedata><tw-passagedata pid="31" name="Examine Medbay 2 Camera" tags="" position="2025,25" size="100,100"></tw-passagedata><tw-passagedata pid="32" name="Examne Reception Camera" tags="" position="1600,175" size="100,100"></tw-passagedata><tw-passagedata pid="33" name="Threat Isolated" tags="" position="2725,75" size="100,100"></tw-passagedata><tw-passagedata pid="34" name="I am worried about Dr Richter" tags="" position="2725,200" size="100,100"></tw-passagedata><tw-passagedata pid="35" name="Dr Richter&#39;s declining mental health" tags="" position="2725,500" size="100,100"></tw-passagedata><tw-passagedata pid="36" name="System Malfunction" tags="" position="2700,325" size="100,100"></tw-passagedata><tw-passagedata pid="37" name="The start of the Voyage" tags="" position="2725,650" size="100,100"></tw-passagedata><tw-passagedata pid="38" name="The mini what?" tags="" position="100,1025" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+**ICARUS AI: **
+Yes Bradlee what is an Infirmary without miltary grade defence after all. If the mutant Richter moves - guns will decend down from the ceiling and teach him a lesson. Same goes for you if you attempt to harm a patient. 
+
+</tw-passagedata><tw-passagedata pid="39" name="Any details on who is in there and why?" tags="" position="325,925" size="100,100"></tw-passagedata><tw-passagedata pid="40" name="Who are the four lifeforms?" tags="" position="475,750" size="100,100"></tw-passagedata><tw-passagedata pid="41" name="Where is Dr Richter?" tags="" position="800,1050" size="100,100">mutantRichter: true
+--
+
+&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+**ICARUS AI: **
+I&#39;m afriad Dr Richter has gone quite insane. He has been acting very odd in the week before our descent. He even cut off my cam access in his medbay. I haven&#39;t been in there since &#39;The event&#39; that plunged this place into darkness. Suddenly he emerged from his medbay a few hours ago in the deformed and degenerated state you now see him. That was when Mary arrived and he attacked her in a frenzy. Fortunelly I was able to use our miniguns to disable him temporiially and he has been puking that green goo ever since. 
+
+&gt;[[I assume he was not always a giant deformed worm?]]
+&gt;[[The mini what?]]</tw-passagedata><tw-passagedata pid="42" name="I assume he was not always a giant deformed worm?" tags="" position="975,1100" size="100,100">&lt;img src = &quot;icarus.jpg&quot; class = &quot;portrait&quot; /&gt;
+
+**ICARUS AI: **
+This is alsa a new development. I have analysed the goo he has been leaving around everywhere. Somr sort of organic compound of unknown origin. 
+
+&gt;[[Who is in this section of the Sub?]] </tw-passagedata><tw-passagedata pid="43" name="Touch its goo" tags="" position="1175,925" size="100,100"></tw-passagedata><tw-passagedata pid="44" name="Talk to the Monster" tags="" position="1050,875" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="You are Dr Richter? What happened to you?" tags="" position="925,800" size="100,100"></tw-passagedata></tw-storydata></html>
