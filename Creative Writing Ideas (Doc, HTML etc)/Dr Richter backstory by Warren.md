@@ -1,0 +1,5 @@
+I believe he was doing experiments right? The idea being that he has a preservation tube, filled with the goo, but in there is a mutant, a patient 0 if you will, but this one is different, this one was made before the incident by dr anal.
+
+Dr anal was actually aware of an anomaly of sorts that was transforming things, he’d used a rock found in the Bermuda Triangle and had witnessed it change rats and rabbits in the lab, before eventually transforming his assistant. Fearing he would be arrested and lose progress made on the research of the mineral, he accepts a spot on the submarine, continuing his research whilst heading to the place that started it all.  Which was enough to open the door for the entity to take hold of the sub.
+
+Bradlee, our journalist catches wind of went on in the lab but was having no luck getting in contact with anyone from the original facility and hears about the dr moving his work to the submarine, driven by his desire to uncover what is actually happening, coerces a crewmate to let him know when they’re loading stock, stows away in one of the boxes and that’s how bradlee gets aboard
