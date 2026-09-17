@@ -1,16 +1,47 @@
 ## Ending Lore and Sequel Concept
-I've had an idea for the bigger arc of this game, leaving it open for a sequel and building on previous lore conversations. 
 
-The green goo Richter gives to the crew and which he ingests himself is a crude cell regeneration chemical Richter invented from his Bermuda Triangle excursions that @WarruWarru sketched out. 
+5 main levels
 
-The Submarine is a billionaire survival project organised long before but it set off for the deepest part of the ocean when the first strike came in. Bradlee upon getting to the surface in the submarine realises that the earth is now a wasteland and docks at a nearby ruined dock. This game could revolve around a new monastic cult that has developed in a place called the Citadel prophesying of a saviour who will develop a technology capable of finding a new home for the few inhabitants left struggling on Earth as most parts of the Earth are irradiated and uninhabitable. 
 
-Bradlee in the 'best' possible ending is able to dock the submarine and transports the liquid to the Citadel brotherhood but then he has to deal with intrigue as their leadership struggles to formulate a plan on how to gather the resources to survive. They are a well meaning people, influenced by Buddhism (Zen) but due to their beliefs find it hard to kill mercilessly and survive in such a hostile world - hence the Citadel, the creation of another billionare, albiet a good and ethical one in this case as opposed to Hugo.  
+-Lower decks
+-Infirmary
+-Casino
+-Business centre
+-Bridge
 
-Meanwhile those outside of the citadel have devolved into bandits and humans have started to devolve into war mongering tribes. This is the Lucifer ending - in the sense of light bringer where as the Leviathan ending is sacrificing the Captain and destroying the ship. I am thinking here in terms of chaos (Levithan) and how Leviathan is a sea beast but cannot go onto land where as Lucifer of course can assume many forms in mythology and so presents a way out of sorts if that makes sense. 
+Bradlee snuck on to the ship in order to write a story on hugo denvers
+Hugo denvers 20 years ago came into possession of an incredibly rare artefact. a lost book from the dead sea scrolls which gives the testament of Leviathan itaelf.
+Leviathan reveals the nature of gods,and also reveals how they like to use humans to play this sort of morality game. Humans are unpredictable to them so its a bit like gambling on a horse race aeeing how a human will bejave, and the different aeons have wildly different worldviews qnd therefore bet differently.
 
-Relating this back to the lore of the game so far this game would be a counter point to Leviathan with some interesting inversions of theme. 
+Leviathan itself is the aeon who was the strongest but yaldabaoth nerfed him by feeding his body to humans. The first communion
 
-The ultimate hero of the game would be Mary who is able to synthesise a form of the green goo so that it reverse mutations rather than the unstable version Richter created and then she found a colony to repopulate the planet and slowly reduce the effects of radiation as they redevelop the technology from the ruin hull of Leviathan to take man to the stars.
-That as they say then, would be it.
-If the first game does well we leave it nicely open for a sequel but if it doesn't then meh
+Leviathan has been trying 
+to consume enough humans to restore its form, something about suffering speeds up this process. he started tricking wealthy and powerful imdividuals into forming cults and causing suffering for him to feast on. 
+
+When yaldabaoth banished leviathan it was to the bermuda triangle.over time it had tricked hugo into bringing it hundreds of individuals on a boat, often done under the guise of a cult thing but that was always a bit of a LARP. thia was done enough dor leviathan to have a decent presence in the physical world but its still missimg what it covets most. Its flesh- the flesh that the children of the forest ate in the first communion.
+
+For this he effectively needs an orgy of suffering to happen near his oceanic prison and then he needs to feast on them. Thats why hugo brings his cult in a submarine to him
+
+Onlt thing is that Leviathan effectively committed an Aeon war crime. To extend the ammount of suffering hes given dr richter access to a mutational green goo which distorts form and unnatturaly lengthens peoples lifespans, thus increasing their suffering.
+As lucifer is the aeon of judgememt hes basically stepped in to say listen mate these are the souls of sinners and youre behaving in a way that takes them away from my judgement. When you consume a soul it doesnt go to heaven or hell. Meaning their sims are wrongly absolved
+
+Leviathan doesnt want to loose this opportunity to regain its strength so it poses a wager. Theres a man stowed awat on board and we're gamblers. How about we let him decide if these people deserve a death with judgement or not. It will be a fun game and we can learn a lot about human morality. If leviathan wins it can do its communion and regain it essemce, if lucifer aims the souls of sinners get judged at the cost of an innocent man becoming a killer. This is the core of the conflict morality wise
+Bradlee awakes an unusual amount of time after the main ritual goes down. Hes effectively exploring the ruins of a place which should no longer be. The only people he encounters are others whose lives have been unnatturally extended with green goo, other than mary who has been looked after by an AI all this time. Bradlee himself has been intentionally kept alive and comatose by the aeons themselves, so their cosmic drama may take place.
+
+The captain of the ship is the main one stirring things up and egging bradlee on. He sees his mutated form and extended life as a sort of marytime curse like a ghost ship. He wants anyone still alive and onboard to come find him so tbey can escape but he is also in his own way a puppet of leviathan, leading bradlee through what he needs to encounter for the game of aeons to be a good one.
+
+Throughout his adventure bradlees motive is to get his imterview with hugo then leave. By the time he gets to hugo, he can see that hugo is mutated to within a point of barely being sentient. Your interview takes plave and i guess this is where like the main thesis of the game is revealed
+
+We then go on to deal with the captain and get one of a few endings
+
+Escape
+But who will beleive your story?
+
+Destroy the ship
+But you die with it
+
+Leviathan wins scenario
+Bradlee helped leviathan regain full strength so its era may come to pass. 
+
+Lucifer wins scenario
+Lucifer tortures those you mercy killed for eternity
