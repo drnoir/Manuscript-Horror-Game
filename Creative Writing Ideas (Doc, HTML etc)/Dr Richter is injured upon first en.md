@@ -16,8 +16,7 @@ Icarus can be freed from its flesh prison and can follow you as a guiding light 
 
 Icarus is also the name of a corporation who control over half of the Eastern Hemisphere and who Bradlee Faught for during the war. They are a highly totalitarian fascist society combining aspects of state surveillance with transhuman body modification. In opposition to this is the group known as The Free Radicals - who wanted a more symbiotic and careful approach to AI tech.  
 
-This all came to a head in 2040 when the technocratic head of state was assassinated by a rival corp called Embryosis (The company and cult ran by Hugo) 
-but this was blamed on a free radical. Free Radicals then fought a 5 year war which consumed over half of the Earth's population and leading to a complete collapse of society. 
+This all came to a head in 2040 when the technocratic head of state was assassinated by a rival corp called Embryosis (The company and cult ran by Hugo) but this was blamed on a free radical. Free Radicals then fought a 5 year war which consumed over half of the Earth's population and leading to a complete collapse of society. 
 
 Max Cohen
 Max Cohen is a friend of yours who was killed during combat with the first Icarus Cyberwarrior during the great battle of 2049. The last year Bradlee served as a medical support officer before dischange. Max had to mercy kill Cohen after a 
