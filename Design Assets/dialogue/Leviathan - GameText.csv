@@ -1,0 +1,312 @@
+﻿ID,Type,Original text
+398,Speech,I can't pull that.
+389,Speech,"""He was a prisoner here."""
+390,Speech,I can't use that.
+391,Speech,There's no response.
+392,Speech,Doesn't look like anything to me.
+393,Speech,I can't pick that up.
+394,Speech,That doesn't need giving.
+105,MenuElement,Back
+104,MenuElement,Objectives
+132,MenuElement,Close
+102,MenuElement,Inventory
+101,MenuElement,Ingredients
+100,MenuElement,Close
+99,MenuElement,Create
+93,MenuElement,Inventory
+92,MenuElement,Take all
+388,Speech,"'Wait a minute this is Rex, the same Rex who wrote that note in the Observation posts."""
+387,MenuElement,Back
+386,MenuElement,Inputs
+385,CursorIcon,Walk to
+369,InventoryItem,Rex's Note
+370,InventoryItem,UberJuice[RR]
+371,InventoryItem,UberJuice [BB]
+372,InventoryItem,UberJuice [AA]
+373,InventoryItem,Hazmat
+374,InventoryItem,Rex's Mess Hall Key
+375,Variable,0000
+91,MenuElement,Close
+376,CursorIcon,Use
+378,CursorIcon,Look at
+379,CursorIcon,Pick up
+380,CursorIcon,Give
+381,CursorIcon,Open
+382,CursorIcon,Close
+383,CursorIcon,Push
+384,CursorIcon,Pull
+377,CursorIcon,Talk to
+90,MenuElement,Container
+103,MenuElement,Output
+130,MenuElement,Create new profile
+125,MenuElement,Profiles
+69,MenuElement,Load
+68,MenuElement,Save
+67,MenuElement,Options
+66,MenuElement,Resume
+131,MenuElement,Back
+120,HotspotPrefix,to
+70,MenuElement,Quit
+119,HotspotPrefix,Give
+117,HotspotPrefix,Use
+116,MenuElement,Autosave
+115,MenuElement,Import
+114,MenuElement,Save
+397,Speech,I can't push that.
+395,Speech,It doesn't seem to open.
+396,Speech,It doesn't seem to close.
+118,HotspotPrefix,on
+71,MenuElement,Options
+121,HotspotPrefix,Walk to
+73,MenuElement,Music volume
+72,MenuElement,Speech volume
+128,MenuElement,Profiles
+81,MenuElement,Back
+80,MenuElement,Load game
+89,MenuElement,Back
+88,MenuElement,New save
+79,MenuElement,Save game
+129,MenuElement,Current:
+136,MenuElement,Graphic options
+77,MenuElement,Back
+127,MenuElement,Off
+126,MenuElement,On
+76,MenuElement,Subtitles
+75,MenuElement,Language
+74,MenuElement,SFX volume
+137,MenuElement,Inputs
+349,Speech,'My God this man looks like he has somehow fused with part of the submarine. His body is wrecked and large parts of it are missing - replaced with a horrifying array of random gadgets and machines. The unfortunte man also has somesort of pipe connected to his anus which holds him in place as he groans and moans in agony. 
+348,Speech,What the hell?
+347,Speech,"""Help. I can't move Ughhhh how'd I get here. """
+346,Speech,'Ughhh Ughhhh'
+345,Speech,You look down at the vaguely human form that lies below you. It is glimmering and transluecent with only a skull and its shapes marking the trace of what othewise  seems human. Suddenly it groans 
+344,Speech,You contemplate your next move with care. The young lady in there is clearly scared and afraid and won't trust a stranger easily.
+343,Speech,PISS OFF!
+339,Speech,"You stare at the Icarus AI avatar, which gives you a chill down your spine as you look upon its uncanny face all coloured in blue lines - an approximation of a human face complete with expressions. "
+341,Speech,"You look at the intercom and press the button  [break][break]'Hello, who is in there?'"
+340,Speech,"Hello Bradlee, how can I help?"
+338,Speech,Icarus Model 235 - Respectable AI but occasionly unstable so not the best idea to trust that everything it says is ummmm....[break][break][break]accurate.[break][break][break]You see a few options on the interface's UI
+337,Speech,You look at the control panel and examine its screen and mechanical interfaces for a clue for its purpose.[break]
+336,Speech,'Hmmm' [break]You think to yourself[break]'Am I in danger here? Best tread carefully with this smart Tincan.'
+335,Speech,"Yes Bradlee Bishop, you may have come aboad illegaly but I have facial recognition software that can identify any human from a few screenshots cross-referenced. I have been aware of your presence on this ship for some hours now[break]"
+350,Character,Icarus AI
+342,Speech,"Who's there! Go Go Away. First taking daddy and now leaving me in such pain. Unless you're here to help just, just"
+351,Character,Mary
+355,DialogueOption,Who is in this section of the Sub?
+353,Hotspot,Patient Zero
+135,Character,Bradlee Bishop
+352,Hotspot,Icarus AI
+367,Hotspot,Icarus AI
+366,Character,Icarus AI
+365,Hotspot,Icarus AI
+364,Hotspot,Mary
+363,Character,Patient Zero
+362,Hotspot,Hotspot
+368,Character,Icarus AI
+360,DialogueOption,Talk To Icarus AI
+359,DialogueOption,External Cameras
+358,Hotspot,Icarus AI
+357,Character,Icarus AI
+356,DialogueOption,Can you open up Medbay 2
+354,DialogueOption,You know my Name?
+361,DialogueOption,Leave
+287,DialogueOption,Take a sample
+288,DialogueOption,Leave
+289,DialogueOption,Take a sample
+290,DialogueOption,Leave
+291,Character,Dish Dave
+294,Character,The Candyman
+293,Character,Fishmonger
+298,Hotspot,Icarus 
+295,DialogueOption,Take a sample
+296,DialogueOption,Leave
+297,Character,Icarus 
+286,DialogueOption,Leave
+292,Hotspot,Icarus 
+285,DialogueOption,Look at Nuclear Power Generators
+278,Character,The Captain
+283,DialogueOption,Walk Away Slowly 
+269,Speech,I have not taken out a HazMat Suit
+270,Character,Wasteman
+271,DialogueOption,Kill Rex
+272,DialogueOption,Leave Rex
+273,DialogueOption,Pick up the Key
+274,DialogueOption,Read the Note
+284,DialogueOption,Examine the Mutant Monster
+275,DialogueOption,Leave
+277,Hotspot,The Captain
+299,DialogueOption,Take a Hazmat Suit
+279,Hotspot,TerryGnasher
+280,Character,Rex
+281,Hotspot,Icarus 
+282,Hotspot,Wasteman
+276,Character,TerryGnasher
+300,DialogueOption,Leave
+308,Hotspot,Death
+302,DialogueOption,Return Hazmat Suit
+322,DialogueOption,Rex Rogers
+323,DialogueOption,Back to Main Menu
+324,Character,Icarus 
+325,Character,Death
+326,Character,Rex
+327,DialogueOption,Talk to the Dolphin
+321,DialogueOption,Robert Finnigan - The Candyman
+328,DialogueOption,Leave
+330,DialogueOption,Not to Be
+331,Hotspot,Rex
+332,DialogueOption,Agree to help
+333,DialogueOption,Refuse to help him
+334,DialogueOption,Remain silent to his forked tongue
+268,Speech,"There we go, back on the rack."
+329,DialogueOption,To Be
+301,DialogueOption,Watch Instructional Video
+320,DialogueOption,Craig Roland - The CryBaby Killer
+318,DialogueOption,Barry Goob - The Wasteman
+303,DialogueOption,Enter Password for Mess Hall Access
+304,DialogueOption,Check Console Log
+305,DialogueOption,Prisoner Info
+306,Hotspot,Rex
+307,Hotspot,The Candyman
+309,DialogueOption,Accept His Sacrifice
+319,DialogueOption,Margaret Tunnenberg
+310,DialogueOption,I am Bradlee
+312,DialogueOption,What Happened to you?
+313,DialogueOption,Can I Help You?
+314,DialogueOption,Leave
+315,Hotspot,Dish Dave
+316,Character,Icarus 
+317,DialogueOption,Terry Gnasher
+311,DialogueOption,You Disgust Me
+267,Speech,"Based on what I've seen so far, I ain't in a hurry to bump into any mutant pyschopaths.... "
+243,Speech,"A huge skull. There is an engraving upon it which reads [break]'To be or not to be, that is the question"
+265,Speech,"Ahhh I see, they're using prisoners as expendable labour. This is a nuclear sub after all. "
+169,Speech,"A tear forms in the tears around Dave's eyes. [break][break]""Like a good Catholic boy. I'm going to live by my beliefs!""[break][break]"
+170,Speech,L̺̲͘_̡̩͛̐̽͡ȩ̣̣͖̘̯̖̟̥̺̯̞̜̪̦̰͎̘ͥ̀̌̿̅̽̇̂̉̀ͬ͐̕̚͜͞͠͝͠v͎̖̬͎̬̳̞̂̿͒ͪ̀̅͐̂͗̓͌̊͟͡i_̣ͫa̵̖̘̓̇ͨ͟͟͜ͅt̴̸̡̢͍̲͍̺̙͚̱̠̮̼̪̬̜͔̂̃ͭ͆ͨ̑̂̆̚̚͜͜͠h̴̴̴̨̧̳̣̳̭̬̦̺̝̜͔̣͓̞ͥ̅̓̎̅ͪ̾̈ͭ̇̒ͣ̊͒͂ͥ̾͘̕͘͟͝͝a̷̧͈̪͂ͮṋ̶̸̷̢̨̮͙̣͎͇̝͔̘̠̄ͧ͐̊̑͗̌̑ͫ̇̓ͤ̓ͣ̉ͩ́̑͐ͯ͜͡͝͠!̛͚̖̣̺̙̳̳͍̜̥̱͆̏̓ͣ͗́̇̀̆̈̋ͦ̏̂ͫ̀͊ͦ͜͞ͅ 
+171,Speech,Dave woddles off into the fog. You hear a groan as a blinding light fills the mess hall before the dim returns and the fog that previously covered the end of the mess hall dissapates.
+172,Speech,You look afar at the Dolphin.[break][break][break]Suddenly you are overcome with a sharp light which strikes your eyes and you pass out.[break][break][break]The dolphin appears in your minds eye
+173,Speech,Bradlee! You must go up! All the way to the top of this machine.[break]This strange machine.[break][break]Something alien has taken it hostage![break][break]Seek out the dark hooded one! [break]Please heed my message
+174,Speech,What the hell was that. Did I bang my head on the rough journey here?
+175,Speech,Prisoner 6[break]Name: Rex Rogers[break]Sex: Male[break]Profile: Rex Rogers was imprisoned after he killed a man who had raped his wife. He was given 15 years for Manslaughter with a lighter charge due to diminished responsability [break]Build: Large[break]Nationality: Australian[break]Crime: Manslaughter [break]Parole Liable: 1 Month
+176,Speech,The Cage you put me in by Margaret
+177,Speech,'Oh Margaret what a truly brave soul you were. You must be the one reduced to a shadow of your former self in the Reactor Room. I hope there is another world so you can get the life you deserved'[break]
+178,Speech,You wipe a tear from your eye. This woman was not dealt a fair deal in life.
+179,Speech,"""Oh my god. This was once a man but he has sever radiation burns all over his body. I assume its a man anyway..... "
+180,Speech,"""Noooo, Noooooo Ohh ohhh AFGHHHHHH"""
+181,Speech,"""Holy Shit, who? Who are you?"
+182,Speech,"""Rex Rogers! I've been here for 3 days, I can't see anything. [break][break]The pain! The Pain! You wouldn't believe it. Please, Please Kill me!"""
+183,Speech,"Ok I am so sorry Rex. Just let me think, why are you here?"
+184,Speech,"""I killed my Wife's rapist. I only had a week left Aghhhhh Goddamnit. [break][break]Been through a war only to end like this, well I ain't continuing the cycle. End it Bradley!!"""
+185,Speech,A large industrial key is lodged within his irradiated skin
+186,Speech,I am so sorry. Rex. Forgive me
+187,Speech,Rage by Robert Finnigan
+188,Speech,Wow a regular Picasso. Terrible. No sense of line or form. Also considering the maker this is not a case where I can easily sepearte the artist from the art.
+189,Speech,You hear the sound of a heavy industrial door in the distance opening. A way out of this madness perhaps. 
+190,Speech,"Looks a bit flashy down there. Gotta keep yer chin up hey. I'd look to see if you can stabilise power, there's a series of nuclear reactors here after all and we don't want to go bang in the night haha[break]"
+191,Speech,"""Hmm it would appear there is a power supply issue here. This light is malfunctioning and I have no idea what all this green goo everywhere is and I am not sure I want to find out."""
+192,Speech,Prisoner 3[break]Name: Margaret Tunnenberg[break]Sex: Female[break]Profile: Margaret Tunnenberg was   found guilty of manslaughter after killing her abusive husband with a kitchen knife. [break]Build: Medium[break]Nationality: American[break]Crime: Manslaughter[break]Parole Liable: 2 Years
+193,Speech,"""Rex... There is only one way I can do this. I will have to cave your head in with my torch, are you sure? I know you are in pain... but I can't... I can't do this"
+194,Speech,"""Look Pal I can't see you but as a verteran of the great war, I am giving you an order. It's not your fault you're in pain too. I need it to end...."""
+195,Speech,"""o, o, o, O k,  Ok."
+196,Speech,"""I'm so so sorry Rex"""
+197,Speech,Tears form in your eyes as your vision mists.
+168,Speech,"""No problem Brad, don't worry about me, wouldn't want my mama seeing me like this. If you ever get back to the surface all I ask is you find her and tell her I miss her Funghi pizzaria."""
+198,Speech,BLEHGHH blefggghh Blehgh
+167,Speech,"""I got you your last meal. I am so Sorry Dave. I wish this day had never come. My apologies, here is your last meal. "
+165,Speech,"""A good one faced with an impossible choice. Please do it. I silip in an out now. The blob is taking over, do it for my dignity I beg..... BA ba ba[break][break]Just RRRRAABB Right. You got that. In that Order. Read the packets. Full of Protein. [break][break]"
+110,Character,Dolphin (1)
+113,Hotspot,Dolphin (1)
+138,Speech,Rex Rogers - Self Portrait
+139,Speech,"""This is more like it. This has real meaning and feeling. As it's a self portrait I assume Rex was a verteran of the war. Of all the people to end up here. What a ruined world we live in."""
+140,Speech,You Notice a note on the floor from which light blooms
+141,Speech,"After many years of hard toil and labour under the oppressive boot of the Technocratic High Council I am nearing my parole hearing. They have forgetten their roots was with us daring prometheans who built their castles in the sky. None of which I would tell a soul here as it would guarentee more years in this hole.[break][break]Soon I will see my love once more. The man who stained here is gone and I will be with her again. It has been 15 long, hard years.[break][break]"
+142,Speech,"I was told the process would be painless. That is what Hugo said. He at least comes down to our levels sometimes, even if it is just to caterogorise us. I've lived through the greatest war man ever knew and lived. I have but one wish and that is.....[break][break]Home and Her or Death and Silence[break]It is not a choice. [break]Death."
+143,Speech,You have released me Brad. My eternal thanks. Had you not come down with your Angel of Death hands I would have been trapped within the Leviathan Entity forever. 
+144,Speech,"""My cycle is broken.'"
+145,Speech,"Oi, you there, you’ve got to help me get out, I’m losing my mind in here"
+146,Speech,'CODE FOR ENTRY REQUIRED'
+147,Speech,NO CODE PROVIDED. PLEASE LEAVE THE AREA NOW.[break][break]I Do not want to use force but if you wait more than 30 seconds I will be forced to. [break][break]Please leave.
+148,Speech,I told you to leave. Miniguns will now deliver justice.
+149,Speech,CODE CORRECT. NUCLEAR REACTOR CORE OPEN. [break][break]DO NOT PROCEED WITHOUT APPRORIATE PROTECTION.
+150,Speech,The Door to the Nuclear Power Generator Opens. It will be highly radioactive in there.
+151,Speech,"A Documentary on recent history recorded onto an old VHS tape from this television, It seems to be playing on an endless broken loop with whoever was recording it getting bored and switching channels every few minutes. "
+152,Speech,There is VHS next to the TV that simply reads[break][break][break]Property of Rex Rogers
+153,Speech,[break]Terry Gnasher stands before you. An East end gangster of some refute.[break] [break]From your days in London you knew his name struck fear in the East End. [break][break]A stocky brutish man he is the classic gangster achetype driven by honour codes and business. 
+154,Speech,'My god this video is asinine.'
+155,Speech,"The note reads:[break]​[break]Count  the[break][break]-Soldiers[break]-Government [break]-CEO's[break]-Rioters[break]​[break]On the tape. [break][break]Don't forget this time, shit for brains. Give me some extra portions of your UberJuice to say Thank you later, Rex."
+156,Speech,Uberjuice. One of the many mixes of it anyway. Essential proteins only. These elite bastards won't give the crew more than the bare minimum. This is Roasted Rabbit flavour apparantly....
+157,Speech,Disgusting odour. Rancid rabbit.
+158,Speech,You take a scoop of the foul looking juice from the rusted cannister 
+159,Speech,"""DishaDave, I am Dish Dave and you are?"""
+160,Speech,You freeze in terror as you take in the sight of the abomination before you. Which seems to be talking to you in a Italian accent. 
+161,Speech,"You quiver a bit as you gain your composure[break][break]""I am Bradlee, Bradlee Bishop. I am here to umm investigate what exactly is going on here. What can you remember?"""
+162,Speech,The creature giggles like some demented infant which sends a chill down your spine. Does he not know that he is a monstourous blob. Maybe I should tell it.....
+163,Speech,"""Oh Mister, if you bring me my favourite dish I will make your path so clear sir. I have ventured ahead and seen something so terrrible. I would like to save you from it Brad. I do know. I know  how terrible I look. I just want one last meal before I exit from this life."""
+164,Speech,"""Are you telling me that you consent to me killing you? What sort of a man would that make me Dave?"""
+166,Speech,Dave once again returns to his regressed state. 
+266,Speech,Nobody is likely to complain if a few convicts get radioactive poisoning. Wonder how they keep them in line though. I can take a look at this log to get a better idea of the kind of scum that could still be skulking about
+199,Speech,The monstrositiy screams and makes other obscene noises from its eggy cell. I best find some way around the door of the lift or a way to clear the path. This fried egg is not shifting anytime soon.
+201,Speech,Prisoner  5[break]Name: Craig Ronald [break]Sex:  Male[break]Profile:[break]Craig Ronald is an unassuming chubby man who excudes calm. He is however a homicidal maniac who was found guilty of the murder of 20 women. He was known as the Crybaby killer as there were several witness reports of eyewitnesses hearing blubbering near the time of the murders - this was Craig Roland crying after each killing. He targeted sex workers and escorts and is known to be highly manipulative. [break]Build: Obese[break]Nationality: Danish[break]Crime:  Multiple counts of Murder[break]Parole Liable: Never
+235,Speech,Hmm a computer panel. Looks like it controls door access to the Mess Hall ahead and Workforce Cells. Sounds ominous. Why would the Sub's lower decks workforce need to be kept in cells? 
+236,Speech,"You peer through the thick window and see a strange mutant monster glowing which wonders the nuclear power generators, controlled by the reactor room. The mutant does not seem to notice you and walks around aimlessly."
+237,Speech,"You are disgusted by the blob before you[break][break]""What the hell happened to you? Dave you say? You are like some gone off blob left in the fridge too long. Nothing natural remains of you I hate to break the news."
+238,Speech,"""My God man do you think I didn't alredy notice? What an asshole you are. You get me that 2 parts Rabbit, 1 Part Bug n Banana and 1 part Apple Juice, Pronto.""[break][break]""You Complete asshole. And I am still willing to help you too."""
+239,Speech,Just RRRRAABB Right. You got that. In that Order. Read the packets. Full of Protein. 
+240,Speech,"""mmm Fried Egg'"
+241,Speech,'Oh my God!'[break][break]You gawp at the gross blob before you. I don't want to get close to that thing.
+242,Speech,There is the mutant form of a woman writhing around glowing a bright fluersecnt errie light. Clearly contaminated with radiation. Whilst she would have been a flower in life now she is nothing more than a ruined rose.[break]A radioactive rose.
+244,Speech,"""I wondered how long till you would knock on my door. Say did Dave live or is he now nevermore?"
+245,Speech,"""So you have a spine after all Bradlee. I think it will be a long time before we go on our final departure. I respect the game. Leviathan will be most displeased. Trust me, I hate him as much as you."
+246,Speech,"""Door's Locked. Looks like it leads to a dining area. Can't imagine anything worse than eating UberJuice slop here."""
+247,Speech,"""Time to see if the Lobster is as good as they say it is"""
+248,Speech,"This looks like its a mechanical door. Requires a heavy key. It would make sense to check with any living maintenace workers nearby"""
+249,Speech,Unlocked
+250,Speech,"Prisoner 2[break]Name: Barry Goob[break]Sex: Male[break]Profile: Barry Goob known better as Wasteman. A drug dealer and hacker from the lower east Side of Manhatten. Imprisoned for drug and cybersecrity related infractions[break]Build: Overweight[break]Nationality: American[break]Crime: Sustance Misues, Computer Misue [break]Parole Liable: 5 Years"
+251,Speech,"Prisoner 1[break]Name:Terry Gnasher[break]Sex: Male[break]Profile: An East end gangster and mob boss.[break]Build: Large[break]Nationality: British[break]Crime: Murder, Extortion [break]Parole Liable: 25 Years"
+252,Speech,"""Man this suit is stuffy. Unpleasent odour but it will shield me from dangeous levels of radiation."
+253,Speech,The last message relayed to this video messaging system is playing on a loop
+254,Speech,Log from Captain:[break]I have been attacked by some strange creature and am working my best to maintain the submarine on the control deck
+255,Speech,If by some miracle you were not transformed by whatever pestilence has infected this god foresaken vessel. Please head to the control room as fast as you can.
+256,Speech,"""You will first need to access the maintenance lift. Go please and fast I am not sure how much longer I can stay concious. [break][break]I decoded this message into a song I was singing the other night before all this madness started.""[break][break]Suddenly a live audio message comes through on the shack system. "
+257,Speech,The message ends. All other messages have been deleted. 
+258,Speech,This is the central hub of the lower decks laddie. You can gain access to other parts of the decks from the lift. Then if you can get through this den of thieves and lowlifes you'll be able to get up to the other decks and eventually to me on the control deck.
+259,Speech,This Rex must be the same Rex that was on that bizarre operating table. That poor man. My conscience will never feel clean again.
+260,Speech,Please Log on before entering
+261,Speech,"""You have left the area and I have now signed you out Bradlee Bishop. Thank you for complying. Next time I might not be so leniant."
+262,Speech,"'Greetings Bradlee Bishop Worker Number #2555. I have no idea why the a chef would be down in the Lower Decks of all places, but you must have your reasons. Proceed. I have logged your entry."
+263,Speech,'Here on reasons of investigation'[break]You think to yourself with a sly smile.
+264,Speech,"Wait, Wait a minute.... Prisoner Log"
+234,Speech,You see a dolphin swimming around outside. It looks almost curious.
+200,Speech,"""Mmmmm scrambled egg"""
+233,Speech,Pulsating with an errie glow these power generators supply the energy to the entire submarine. I must proceed with extreme caution.[break]
+231,Speech,"""Anyway fuck where was I. So I just finish my shift I am starting to dry the last pots, it's later on in the evening post dinner. The prisoners are in their cells. Time to clock off."
+202,Speech,Uberjuice. One of the many mixes of it anyway. Essential proteins only. These elite bastards won't give the crew more than the bare minimum. This is Bugs N Banana. Delightful. Words fail me this time.
+203,Speech,Smells like cockroaches and sugar
+204,Speech,The monster looks at you before shrieking an unholy shreik[break]You listen to the hoarse scream on your dictophone. [break]
+205,Speech,There are shards of what sound like words in the inhumane screaming.[break][break]It might be worth analyzing on the dictophone.
+206,Speech,"Bone chilling, it reminds me of the time I spent covering warring warlords in the Congo[break][break][break]A time I would rather forget."
+207,Speech,A call of one from random chaos.[break][break]You listen with intent as you hear a sequence of noise on the audio.[break]You rewind your dictophone and slow the speed down.[break]The numbers [break][break]6966 [break][break]are intoned at 5 second intervals. 
+208,Speech,A call of two from random chaos.[break][break]You hear nothing but the sharp shriek unable to discern any other noise admist the chaos.
+209,Speech,A call of three from random chaos.[break][break]You listen with intent as you hear a sequence of noise on the audio.[break]You rewind your dictophone and slow the speed down.[break]The numbers [break][break]6966 [break][break]are intoned at 5 second intervals. 
+210,Variable,6966
+211,Variable,0000
+212,Variable,6966
+213,Speech, Woah a Lift
+214,Speech,"""Oh Mister, if you bring me my favourite dish I will make your path so clear Sir. I have ventured ahead and seen something so terrible. I would like to save you from it Brad. I do know. I know  how terrible I look. I just want one last meal before I exit from this life."""
+215,Speech,Just RRRRAABB Right. You got that. In that Order. Read the packets. Full of Protein. 
+216,Speech,"Ahhh haha laddie you heard my perplexing song[break]and now I'm free, even though I'm wrong[break]I promise you boy you'll get your award[break]in ancient valhalla and here is my[break]S W O R D[break][break][break]The Candyman leaps from him cell with a rusty sword, jumps on the player and cuts them to bits."
+217,Speech,You take a scoop of the foul looking juice from the rusted cannister 
+218,Speech,Christ. What was that! What a journey. I best make my way through these lower decks. The contact who smuggled me in said this was the most dangerous area on the ship. The rest should be plain sailing. 
+219,Speech,If I can access the Maintence Lift Eduardo said i can access any area of the ship via it. Just need to get through here and get myself dressed then I can finally infiltrate and find out the truth about this strange sub. 
+220,Speech,Playing the big game. The only way I do business. Suddenly over the sub radio system you hear a distant sounding voice....
+221,Speech,Ahead there be a computer that will give you some control. There is a control ahead as well. Please hurry I'm struggling to maintain control up here. I'm the captain. Name's...
+222,Speech,The radio signal suddely cuts out.
+223,Speech,A series of Hazmat Suits. Used to protect against the excess nuclear radiation in the generator room.
+224,Speech,You take a scoop of the foul looking juice from the rusted cannister 
+225,Speech,"Prisoner 4[break]Name: Robert Finnigan AKA The Candyman[break]Sex:  Male[break]Profile:[break]Rob Finnigan, known as The Candyman. He is the most notourious serial killer in all Irish history known to speak in riddles before gutting his victims with a jagged hook. Raised by a pair of deliquiant alcoholic parents who were also circus perfomers his mind was warped by decades of abuse and maltreatment. [break]Build: Large[break]Nationality: Irish[break]Crime:  Multiple counts of Murder, GBH, Arson, Public Disorder[break]Parole Liable: Never"
+226,Speech,Uberjuice. One of the many mixes of it anyway. Essential proteins only. These elite bastards won't give the crew more than the bare minimum. This is Ancient Apples flavour - which is supposed to evoke awe but invites nothing but disgust to me personally.
+227,Speech,Smells like gone off Cider.
+228,Speech,A skeleton lies on the floor. Looks like the bony fella was a guard or an opeartor of some sort of this observation post. There is a note lying next to the cadaver.
+229,Speech,Before I found myself in this unfortunate clusterfuck of a situation you see me in I was a pot cleaner in this here mess hall.
+230,Speech,"I came here for an internship. I am 17 years old for fucks sake. Just my luck. Anyway I was a 17 year old teenage before until I guess it was this evening, you can't always tell down here..."
+232,Speech,"""Suddenly this huge fucking flash man, really fucking bright hits my eyes. I think fuck I must have banged my head. Wake up and I'm a fucking giant testicle. Its a fucking cosmic joke. Fuckaaa my life. I had a wife. Motherfucka...""[break][break]He wails in despair."
+111,Character,Bradlee Bishop
